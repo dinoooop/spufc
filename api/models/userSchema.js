@@ -1,5 +1,5 @@
  const mongoose = require('mongoose');
- const connectDb = require('../connect')
+ const connectDb = require('../connect');
 // const connect = mongoose.connect('mongodb://127.0.0.1:27017/Admin_123');
 
 // connect.then(() => {

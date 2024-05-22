@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const User = require('./models/user');
 const loginRouter = require('./routes/loginRouter');
 const RegisterRouter = require('./routes/RegisterRouter');
-const UserRouter = require('./routes/userRouter')
+const UserRouter = require('./routes/userRouter');
+const ImageRouter = require('./routes/ImgDataRouter');
+
+const multer = require('multer');
+const Image = require('./models/imageSchema');
 require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT;
@@ -11,10 +14,10 @@ const PORT = process.env.PORT;
 // Middleware
 app.use(express.json())
 app.use(bodyParser.json());
-app.use('/user',loginRouter);
-app.use('/users',RegisterRouter)
 app.use(UserRouter);
-
+app.use('/api',loginRouter);
+app.use('/api',RegisterRouter);
+app.use('/api/banners', ImageRouter);
 
 
 
