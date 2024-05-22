@@ -8,7 +8,10 @@ const ImageRouter = require('./routes/ImgDataRouter');
 const multer = require('multer');
 const Image = require('./models/imageSchema');
 require('dotenv').config();
+var cors = require('cors');
+
 const app = express();
+app.use(cors("*"));
 const PORT = process.env.PORT;
 
 // Middleware
