@@ -12,6 +12,7 @@ async function Register (req,res) {
         await newUser.save();
         res.status(201).send(newUser);
       } catch (error) {
+        console.log(error);
         if (error.name === 'MongoError' && error.code === 11000) {
           return res.status(400).send({ error: 'Email already exists' });
         }

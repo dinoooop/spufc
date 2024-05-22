@@ -70,7 +70,7 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 export const register = createAsyncThunk('auth/register', async (data) => {
     try {
-        const response = await axios.post(`${config.api}/auth/register`, data);
+        const response = await axios.post(`${config.api}/users/register`, data);
         return response.data;
     } catch (error) {
         throw error.response.data.message
