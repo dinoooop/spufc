@@ -4,11 +4,11 @@ const bcrypt = require("bcrypt");
 const User = require('../../models/userSchema');
 
  const login = async(req,res) =>{
-    const  name = req.body.name;
+    const  email = req.body.email;
     const  password = req.body.password;
     try {
-        console.log("req.body",req.body);
-        const user = await User.findOne({ name: name  });
+        
+        const user = await User.findOne({ email: email  });
         if(!user) return res.status(404).json({message:"Invalid Credentials"});
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -16,7 +16,7 @@ const User = require('../../models/userSchema');
         if(!isPasswordValid) return res.status.json({ message: 'invalid credentials'});
       
         const token = jwt.sign({userId: user._id}, 'secretkey') 
-        console.log("token",token);
+       
         res.send({ token });
 
     } catch (err) {
