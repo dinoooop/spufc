@@ -14,7 +14,7 @@ export default function () {
     const navigate = useNavigate()
     
 
-    const [formValues, setFormValues] = useState({ email: "admin@mail.com", password: "welcome" })
+    const [formValues, setFormValues] = useState({ email: "one@mail.com", password: "test" })
     const [errors, setErrors] = useState({})
     const { user, error, loading } = useSelector(state => state.auth)
 
@@ -33,7 +33,7 @@ export default function () {
             try {
                 const resultAction = await dispatch(login(newFormData))
                 unwrapResult(resultAction)
-                navigate('/admin/modules')
+                
             } catch (error) {
                 console.error(error)
             }
