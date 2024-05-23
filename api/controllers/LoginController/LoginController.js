@@ -15,9 +15,9 @@ const User = require('../../models/userSchema');
         
         if(!isPasswordValid) return res.status.json({ message: 'invalid credentials'});
       
-        const token = jwt.sign({userId: user._id}, 'secretkey') 
-       
-        res.send({ token });
+        const token = jwt.sign({userId: user._id}, 'secretkey') ; 
+      
+        res.send({ token ,user:{userId: user._id,name:user.name, email:user.email,}});
 
     } catch (err) {
         console.log("err",err);
@@ -28,30 +28,5 @@ const User = require('../../models/userSchema');
 module.exports ={ login }; 
 
 
-// app.post('/login', async (req, res) => {
-//     const { email, password } = req.body;
-  
-//     // Validate request
-//     if (!email || !password) {
-//       return res.status(400).json({ error: "Email and password are required" });
-//     }
-  
-//     try {
-//       const user = await User.findOne({ email });
-//       if (!user) {
-//         return res.status(401).json({ error: "Invalid email or password" });
-//       }
-  
-//       const isMatch = await user.comparePassword(password);
-//       if (!isMatch) {
-//         return res.status(401).json({ error: "Invalid email or password" });
-//       }
-  
-//       const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
-//       res.json({ token });
-//     } catch (err) {
-//       console.error('Error during login:', err);
-//       res.status(500).json({ error: "Internal server error" });
-//     }
-//   });
+
 

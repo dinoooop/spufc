@@ -5,12 +5,11 @@ const RegisterRouter = require('./routes/RegisterRouter');
 const UserRouter = require('./routes/userRouter');
 const ImageRouter = require('./routes/ImgDataRouter');
 
-const multer = require('multer');
-const Image = require('./models/imageSchema');
 require('dotenv').config();
 var cors = require('cors');
 
 const app = express();
+app.use(express.urlencoded({ extended:false}))
 app.use(cors("*"));
 const PORT = process.env.PORT;
 
@@ -21,6 +20,10 @@ app.use(UserRouter);
 app.use('/api',loginRouter);
 app.use('/api',RegisterRouter);
 app.use('/api/banners', ImageRouter);
+
+
+
+
 
 
 
