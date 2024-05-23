@@ -1,14 +1,14 @@
 
 export const validateForm = (key, value) => {
     switch (key) {
-        case "title":
+        case "name":
             if (value.length === 0) {
                 return "Title equired"
             } else {
                 return (value.length >= 20) ? "Maximum charecters cannot exceed 20" : false
             }
 
-        case "upload_banner":
+        case "file":
             if (!value) {
                 return "File is required";
             }

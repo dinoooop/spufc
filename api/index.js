@@ -4,6 +4,7 @@ const loginRouter = require('./routes/loginRouter');
 const RegisterRouter = require('./routes/RegisterRouter');
 const UserRouter = require('./routes/userRouter');
 const ImageRouter = require('./routes/ImgDataRouter');
+const path = require('path');
 
 require('dotenv').config();
 var cors = require('cors');
@@ -12,7 +13,7 @@ const app = express();
 app.use(express.urlencoded({ extended:false}))
 app.use(cors("*"));
 const PORT = process.env.PORT;
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Middleware
 app.use(express.json())
 app.use(bodyParser.json());

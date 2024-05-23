@@ -79,9 +79,7 @@ export const bannerSlice = createSlice({
                 state.loading = true
             })
             .addCase(index.fulfilled, (state, action) => {
-                state.items = action.payload.data
-                state.perPage = action.payload.per_page
-                state.total = action.payload.total
+                state.items = action.payload
                 state.loading = false
             })
             .addCase(index.rejected, (state, action) => {

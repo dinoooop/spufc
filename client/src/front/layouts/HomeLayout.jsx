@@ -31,7 +31,7 @@ export default function (props) {
 
             {showGoToTop && (
                 <div className="scroll-top" onClick={scrollToTop}>
-                    <i class="fa-solid fa-circle-up "></i>
+                    <i className="fa-solid fa-circle-up "></i>
                 </div>
             )}
         </div>
