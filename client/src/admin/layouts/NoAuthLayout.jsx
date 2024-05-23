@@ -8,22 +8,15 @@ import { useNavigate } from 'react-router-dom';
 export default function (props) {
 
     const dispatch = useDispatch()
-    const { token } = useSelector(state => state.auth)
-    const { stock } = useSelector(state => state.general)
     const navigate = useNavigate()
+    const { user } = useSelector(state => state.auth)
 
     useEffect(() => {
         dispatch(reset())
-
-        if(!stock) {
-            //dispatch(getStock())
+        if (user) {
+            navigate('/admin/banners')
         }
-
-        if (token) {
-            // navigate('/admin/banners')
-            // window.location.href = '/admin/banners'
-        }
-    }, [dispatch, token])
+    }, [dispatch, user])
 
     return (
         <div>

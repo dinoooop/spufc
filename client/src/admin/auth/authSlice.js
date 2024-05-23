@@ -22,28 +22,13 @@ export const check = createAsyncThunk('auth/check', async (data = {}) => {
             params: data,
             headers: config.header().headers,
         });
-        const user = response.data?.user
-        const currentURL = window.location.href;
-        if (user.is_verified) {
-            if (currentURL.indexOf("/login") !== -1) {
-                window.location.href = '/admin/banners'
-            }
-            return response.data;
-        } else {
-            // user is authenticated but not verified always redirect to verify page
-            if (currentURL.indexOf("/verify/") === -1) {
-                window.location.href = '/verify/' + user.process_link
-            }
-        }
+        const user = response.data.user 
     } catch (error) {
-        if (error.response && error.response.status === 401) {
-            localStorage.removeItem('authUser')
-            localStorage.removeItem('token')
-            window.location.href = '/login'
-        }
+        localStorage.removeItem('authUser')
+        localStorage.removeItem('token')
+        window.location.href = '/login'
     }
 });
-
 
 export const login = createAsyncThunk('auth/login', async (data) => {
     try {
@@ -57,16 +42,6 @@ export const login = createAsyncThunk('auth/login', async (data) => {
 });
 
 
-
-
-export const logout = createAsyncThunk('auth/logout', async () => {
-    try {
-        const response = await axios.post(`${config.api}/logout`, null, config.header());
-        return response.data;
-    } catch (error) {
-        throw error.response.data.message
-    }
-});
 
 export const register = createAsyncThunk('auth/register', async (data) => {
     try {
@@ -151,6 +126,11 @@ export const authSlice = createSlice({
             state.error = ''
             state.success = ''
         },
+        logout: (state, action) => {
+            localStorage.removeItem('authUser')
+            localStorage.removeItem('token')
+            window.location.href = '/'
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -161,28 +141,14 @@ export const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.user = action.payload.user
                 state.loading = false
-                // localStorage.setItem('authUser', JSON.stringify(action.payload.user))
+                localStorage.setItem('authUser', JSON.stringify(action.payload.user))
                 localStorage.setItem('token', action.payload.token)
             })
             .addCase(login.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
             })
-            // logout
-            .addCase(logout.pending, (state) => {
-                state.loading = true
-            })
-            .addCase(logout.fulfilled, (state, action) => {
-                state.user = false
-                state.loading = false
-                localStorage.removeItem('authUser')
-                localStorage.removeItem('token')
-            })
-            .addCase(logout.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message;
-                localStorage.removeItem('token')
-            })
+
             // Register
             .addCase(register.pending, (state) => {
                 state.loading = true;
@@ -190,7 +156,7 @@ export const authSlice = createSlice({
             .addCase(register.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.loading = false;
-                // localStorage.setItem('authUser', JSON.stringify(action.payload.user))
+                localStorage.setItem('authUser', JSON.stringify(action.payload.user))
                 localStorage.setItem('token', action.payload.token)
             })
             .addCase(register.rejected, (state, action) => {
@@ -289,6 +255,6 @@ export const authSlice = createSlice({
             })
     },
 })
-export const { toggleTheme, reset } = authSlice.actions
+export const { toggleTheme, reset, logout } = authSlice.actions
 
 export default authSlice.reducer
