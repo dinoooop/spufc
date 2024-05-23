@@ -1,15 +1,25 @@
 const express = require('express');
 const multer = require('multer');
 const Image = require('../models/imageSchema');
+const { get_All_Images } = require('../controllers/Image_data_controller/get_all_Image');
+
 const router = express.Router();
 
 
+router.get('/',get_All_Images );
+
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 1000000000);
+}
+
+// Set up storage engine
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/'); // Specify the destination directory for the uploaded files
+        cb(null, 'uploads/'); // Ensure this directory exists
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Specify the file name
+        const uniqueSuffix = Date.now() + '-' + generateRandomNumber();
+        cb(null, uniqueSuffix + '-' + file.originalname);
     }
 });
 
@@ -36,15 +46,7 @@ router.post('/', upload.single('file'), (req, res) => {
 
 
 
-// Read (Get) all images
-router.get('/', async (req, res) => {
-    try {
-        const images = await Image.find();
-        res.status(200).json(images);
-    } catch (err) {
-        res.status(500).json({ message: 'Server error' });
-    }
-});
+
 
 // Read (Get) an image by ID
 router.get('/:id', async (req, res) => {

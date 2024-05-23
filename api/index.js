@@ -6,11 +6,17 @@ const UserRouter = require('./routes/userRouter');
 const ImageRouter = require('./routes/ImgDataRouter');
 const path = require('path');
 
+
+
 require('dotenv').config();
 var cors = require('cors');
 
 const app = express();
+
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.urlencoded({ extended:false}))
+
 app.use(cors("*"));
 const PORT = process.env.PORT;
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
