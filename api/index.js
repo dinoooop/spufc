@@ -4,6 +4,7 @@ const loginRouter = require('./routes/loginRouter');
 const RegisterRouter = require('./routes/RegisterRouter');
 const UserRouter = require('./routes/userRouter');
 const ImageRouter = require('./routes/ImgDataRouter');
+const AuthRouter = require('./routes/AuthenticateUserRouter')
 
 
 
@@ -26,10 +27,7 @@ app.use(UserRouter);
 app.use('/api',loginRouter);
 app.use('/api',RegisterRouter);
 app.use('/api/banners', ImageRouter);
-
-
-
-
+app.use('/api', AuthRouter);
 
 
 
