@@ -5,6 +5,8 @@ import { Link as ScrollLink, Element } from 'react-scroll';
 import { useEffect, useState } from "react";
 import EnquirySection from "../components/EnquirySection";
 
+import BannerSection from "../components/BannerSection";
+
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -13,6 +15,8 @@ export default function () {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    
 
     return (
         <HomeLayout>
@@ -56,7 +60,7 @@ export default function () {
             </section>
 
             <section className="banner">
-                <img src="./images/banner.JPG" />
+                <BannerSection />
             </section>
 
             <Element name="about" className="part part-sky">

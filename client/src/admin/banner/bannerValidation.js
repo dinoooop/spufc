@@ -1,43 +1,31 @@
 
 export const validateForm = (key, value) => {
     switch (key) {
-        case "name":
+        case "title":
             if (value.length === 0) {
-                return "Name equired"
+                return "Title equired"
             } else {
                 return (value.length >= 20) ? "Maximum charecters cannot exceed 20" : false
             }
-        case "status":
-            if (value.length === 0) {
-                return "Status required"
-            } else {
-                return false
-            }
-        case "email":
-            if (value.length === 0) {
-                return "Email required";
-            } else {
-                const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-                return !regex.test(value) ? "Email not valid" : false;
-            }
 
+        case "upload_banner":
+            if (!value) {
+                return "File is required";
+            }
+            if (value.size > 10 * 1024 * 1024) {
+                return "File size cannot exceed 10MB";
+            }
+            if (
+                !value.name.endsWith(".png") &&
+                !value.name.endsWith(".jpg") &&
+                !value.name.endsWith(".jpeg")
+            ) {
+                return "Only images files are allowed";
+            } 
+            return false;
         default:
             return false;
 
     }
 
 }
-
-
-export const validateSecurityForm = (key, value, formData) => {
-    switch (key) {
-        case 'old_password':
-            return value.length === 0 ? 'Old Password is required' : false;
-        case 'password':
-            return value.length === 0 ? 'Password is required' : false;
-        case 'password_confirmation':
-            return value !== formData.password ? 'Passwords not matching' : false;
-        default:
-            return false;
-    }
-};

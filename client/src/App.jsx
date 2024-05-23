@@ -25,6 +25,9 @@ import AuthResetPasswordScreen from "./admin/auth/AuthResetPasswordScreen";
 import AuthProfileScreen from "./admin/auth/AuthProfileScreen";
 import AuthSecurityScreen from "./admin/auth/AuthSecurityScreen";
 import AuthWelcomeScreen from "./admin/auth/AuthWelcomeScreen";
+import BannerIndexScreen from "./admin/banner/BannerIndexScreen";
+import BannerCreateScreen from "./admin/banner/BannerCreateScreen";
+import BannerEditScreen from "./admin/banner/BannerEditScreen";
 
 function App() {
   return (
@@ -38,19 +41,16 @@ function App() {
           <Route path="/reset-password/:process_link" element={<AuthResetPasswordScreen />} />
           <Route path="/welcome/:process_link" element={<AuthWelcomeScreen />} />
 
-          <Route path='/admin/modules' element={<ModuleIndexScreen />} />
-          <Route path='/admin/modules/create' element={<ModuleCreateScreen />} />
-          <Route path='/admin/modules/:id' element={<ModuleEditScreen />} />
-          <Route path='/admin/generate/:id' element={<ModuleGenerateScreen />} />
-
-          <Route path='/admin/flush' element={<FlushScreen />} />
-
           <Route path='/admin/users' element={<UserIndexScreen />} />
           <Route path='/admin/users/create' element={<UserCreateScreen />} />
           <Route path='/admin/users/:id' element={<UserEditScreen />} />
           <Route path='/admin/profile' element={<AuthProfileScreen />} />
           <Route path='/admin/security' element={<AuthSecurityScreen />} />
           <Route path='/verify/:id' element={<AuthVerifyScreen />} />
+
+          <Route path='/admin/banners' element={<BannerIndexScreen />} />
+          <Route path='/admin/banners/create' element={<BannerCreateScreen />} />
+          <Route path='/admin/banners/:id' element={<BannerEditScreen />} />
 
         </Routes>
       </Router>

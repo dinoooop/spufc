@@ -33,6 +33,11 @@ body {
     color: var(--color-4);
 }
 
+.back {
+    background-color: var(--color-1);
+    
+}
+
 .container-blank {
     display: flex;
     align-items: center;
