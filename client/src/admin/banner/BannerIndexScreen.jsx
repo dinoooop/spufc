@@ -71,7 +71,6 @@ export default function () {
                         <table className="index-table">
                             <thead>
                                 <tr>
-                                    <th># <SortArrow onClick={handleSort} column="id" /></th>
                                     <th>Name <SortArrow onClick={handleSort} column="title" /></th>
                                     <th>Action</th>
                                 </tr>

@@ -33,6 +33,7 @@ export default function () {
             try {
                 const resultAction = await dispatch(login(newFormData))
                 unwrapResult(resultAction)
+                navigate("/admin/banners")
                 
             } catch (error) {
                 console.error(error)
