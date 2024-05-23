@@ -38,7 +38,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             dispatch(store(newFormData))
-            // navigate('/admin/banners')
+            navigate('/admin/banners')
         }
     }
 

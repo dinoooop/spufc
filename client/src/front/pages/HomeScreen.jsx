@@ -47,6 +47,7 @@ export default function () {
                         <li className="nav-item"><ScrollLink to="sponsers" smooth={true} duration={500} onClick={toggleMenu}>Sponsers</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="shop" smooth={true} duration={500} onClick={toggleMenu}>Shop</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="events" smooth={true} duration={500} onClick={toggleMenu}>Events</ScrollLink></li>
+                        <li className="nav-item"><Link to="/login">Login</Link></li>
                     </ul>
                     <div className="menu-icon" onClick={toggleMenu}>
                         {

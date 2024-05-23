@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export default function (props) {
 
     const dispatch = useDispatch()
-    const { user } = useSelector(state => state.auth)
+    const { token } = useSelector(state => state.auth)
     const { stock } = useSelector(state => state.general)
     const navigate = useNavigate()
 
@@ -16,13 +16,14 @@ export default function (props) {
         dispatch(reset())
 
         if(!stock) {
-            dispatch(getStock())
+            //dispatch(getStock())
         }
 
-        if (user) {
-            navigate('/admin/modules')
+        if (token) {
+            // navigate('/admin/banners')
+            // window.location.href = '/admin/banners'
         }
-    }, [dispatch, user])
+    }, [dispatch, token])
 
     return (
         <div>

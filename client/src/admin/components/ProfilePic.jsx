@@ -26,6 +26,7 @@ export default function () {
                 navigate('/login');
             })
             .catch((error) => {
+                navigate('/login');
                 console.error('Logout failed:', error);
             });
     }

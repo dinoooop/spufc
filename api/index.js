@@ -4,8 +4,6 @@ const loginRouter = require('./routes/loginRouter');
 const RegisterRouter = require('./routes/RegisterRouter');
 const UserRouter = require('./routes/userRouter');
 const ImageRouter = require('./routes/ImgDataRouter');
-const path = require('path');
-
 
 
 require('dotenv').config();

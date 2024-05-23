@@ -18,7 +18,7 @@ const initialState = {
 // When try to visit a protected page
 export const check = createAsyncThunk('auth/check', async (data = {}) => {
     try {
-        const response = await axios.get(`${config.api}/auth/check`, {
+        const response = await axios.get(`${config.api}/check`, {
             params: data,
             headers: config.header().headers,
         });
@@ -26,7 +26,7 @@ export const check = createAsyncThunk('auth/check', async (data = {}) => {
         const currentURL = window.location.href;
         if (user.is_verified) {
             if (currentURL.indexOf("/login") !== -1) {
-                window.location.href = '/admin/modules'
+                window.location.href = '/admin/banners'
             }
             return response.data;
         } else {
@@ -61,7 +61,7 @@ export const login = createAsyncThunk('auth/login', async (data) => {
 
 export const logout = createAsyncThunk('auth/logout', async () => {
     try {
-        const response = await axios.post(`${config.api}/auth/logout`, null, config.header());
+        const response = await axios.post(`${config.api}/logout`, null, config.header());
         return response.data;
     } catch (error) {
         throw error.response.data.message
@@ -70,7 +70,7 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 export const register = createAsyncThunk('auth/register', async (data) => {
     try {
-        const response = await axios.post(`${config.api}/users/register`, data);
+        const response = await axios.post(`${config.api}/register`, data);
         return response.data;
     } catch (error) {
         throw error.response.data.message
@@ -181,6 +181,7 @@ export const authSlice = createSlice({
             .addCase(logout.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
+                localStorage.removeItem('token')
             })
             // Register
             .addCase(register.pending, (state) => {
