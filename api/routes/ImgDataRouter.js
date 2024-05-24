@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const Image = require('../models/imageSchema');
 const { get_All_Images } = require('../controllers/Image_data_controller/get_all_Image');
-
+const path = require('path');
 const router = express.Router();
 
 
@@ -45,9 +45,6 @@ router.post('/', upload.single('file'), (req, res) => {
 });
 
 
-
-
-
 // Read (Get) an image by ID
 router.get('/:id', async (req, res) => {
     try {
@@ -81,7 +78,7 @@ router.put('/:id', upload.single('image'), async (req, res) => {
     }
 });
 
-//Delete an image
+// Delete an image
 router.delete('/:id', async (req, res) => {
     try {
         const image = await Image.findByIdAndDelete(req.params.id);
@@ -93,5 +90,34 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
+
+// router.delete('/:id', async (req, res) => {
+//     try {
+//         const image = await Image.findByIdAndDelete(req.params.id);
+//         console.log("image",image);
+//         if (!image) {
+//             return res.status(404).json({ message: 'Image not found' });
+//         }
+
+//         // Construct the file path
+//         const filePath = path.join(__dirname, 'uploads', image.filepath);
+
+//         // Delete the file from the filesystem
+//         fs.unlink(filePath, (err) => {
+//             if (err) {
+//                 console.error('Failed to delete file:', err);
+//                 return res.status(500).json({ message: 'Failed to delete file' });
+//             }
+
+//             res.status(200).json({ message: 'Image and file deleted' });
+//         });
+//     } catch (err) {
+//         console.error('Server error:', err);
+//         res.status(500).json({ message: 'Server error' });
+//     }
+// });
+
+
 
 module.exports = router;
