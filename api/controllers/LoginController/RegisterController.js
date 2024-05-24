@@ -1,6 +1,7 @@
-
-const User = require('../../models/userSchema');
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+const User = require('../../models/userSchema');
+
 
 async function Register (req,res) {
     try {
@@ -10,7 +11,12 @@ async function Register (req,res) {
         const newUser = new User({ name, email, password: hashedPassword });
        
         await newUser.save();
-        res.status(201).send(newUser);
+
+        const token = jwt.sign({userId: user._id}, 'secretkey') ; 
+      
+        res.send({ token , newUser});
+
+        //res.status(201).send(newUser);
       } catch (error) {
         console.log(error);
         if (error.name === 'MongoError' && error.code === 11000) {
