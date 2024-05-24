@@ -22,13 +22,6 @@ export default function () {
 
     const handleLogout = (e) => {
         dispatch(logout())
-            .then(() => {
-                navigate('/login');
-            })
-            .catch((error) => {
-                navigate('/login');
-                console.error('Logout failed:', error);
-            });
     }
 
     window.__root = document.getElementById('root');

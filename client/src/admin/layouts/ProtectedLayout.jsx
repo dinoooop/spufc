@@ -10,28 +10,25 @@ export default function ProtectedLayout({ roles, children, error = false }) {
 
 
     const dispatch = useDispatch()
-    const { token } = useSelector(state => state.auth)
+    const { user } = useSelector(state => state.auth)
     const navigate = useNavigate()
 
 
 
     useEffect(() => {
         // dispatch(check())
-        if (!token) { 
-            // navigate('/login') 
-            window.location.href = '/login'
+        if (!user) {
+            navigate('/login')
         }
-    }, [dispatch])
+    }, [dispatch, user])
 
 
     return (
         <>
             {
-
                 <DashboardLayout>
                     {children}
                 </DashboardLayout>
-
             }
         </>
     )

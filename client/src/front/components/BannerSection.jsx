@@ -15,9 +15,9 @@ export default function () {
     const dispatch = useDispatch()
     useEffect(() => { 
         dispatch(index())
-        console.log(items);
     }, [dispatch])
-
+    
+    console.log(items);
     const spanStyle = {
         padding: '20px',
         background: '#efefef',
