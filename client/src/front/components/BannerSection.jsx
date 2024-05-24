@@ -7,12 +7,17 @@ import { contact } from "../slices/homeSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import { index } from "../../admin/banner/bannerSlice";
 
 export default function () {
 
+    const { items, perPage, total } = useSelector(state => state.banner)
     const dispatch = useDispatch()
-    useEffect(() => { }, [dispatch])
-
+    useEffect(() => { 
+        dispatch(index())
+    }, [dispatch])
+    
+    console.log(items);
     const spanStyle = {
         padding: '20px',
         background: '#efefef',
@@ -28,15 +33,15 @@ export default function () {
     }
     const slideImages = [
         {
-            url: 'https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            image: 'http://127.0.0.1:8800/uploads/1716445250682.png',
             caption: 'Slide 1'
         },
         {
-            url: 'https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80',
+            image: 'https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80',
             caption: 'Slide 2'
         },
         {
-            url: 'https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            image: 'https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
             caption: 'Slide 3'
         },
     ];
@@ -44,10 +49,10 @@ export default function () {
     return (
         <div className="slide-container">
             <Slide>
-                {slideImages.map((slideImage, index) => (
+                {items && items.map((slideImage, index) => (
                     <div key={index}>
-                        <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
-                            
+                        <div style={{ ...divStyle }}>
+                            <img src={`http://127.0.0.1:8800/uploads/${slideImage.image}`} />
                         </div>
                     </div>
                 ))}

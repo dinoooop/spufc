@@ -17,18 +17,18 @@ export default function ProtectedLayout({ roles, children, error = false }) {
 
     useEffect(() => {
         // dispatch(check())
-        // if (!user) { navigate('/login') }
-    }, [dispatch])
+        if (!user) {
+            navigate('/login')
+        }
+    }, [dispatch, user])
 
 
     return (
         <>
             {
-
                 <DashboardLayout>
                     {children}
                 </DashboardLayout>
-
             }
         </>
     )

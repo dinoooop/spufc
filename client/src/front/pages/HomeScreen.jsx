@@ -23,9 +23,9 @@ export default function () {
             <section className="social-media">
                 <div className="wrapper">
                     <ul>
-                        <li><Link to="https://www.facebook.com/southperthfc/" target="_blank"><i class="fa-brands fa-square-facebook"></i></Link></li>
-                        <li><Link to="https://www.instagram.com/spufc/" target="_blank"><i class="fa-brands fa-square-instagram"></i></Link></li>
-                        <li><Link to="mailto:juniors@southperthunitedfc.com.au"><i class="fa-solid fa-envelope"></i></Link></li>
+                        <li><Link to="https://www.facebook.com/southperthfc/" target="_blank"><i className="fa-brands fa-square-facebook"></i></Link></li>
+                        <li><Link to="https://www.instagram.com/spufc/" target="_blank"><i className="fa-brands fa-square-instagram"></i></Link></li>
+                        <li><Link to="mailto:juniors@southperthunitedfc.com.au"><i className="fa-solid fa-envelope"></i></Link></li>
                     </ul>
                 </div>
             </section>
@@ -47,12 +47,13 @@ export default function () {
                         <li className="nav-item"><ScrollLink to="sponsers" smooth={true} duration={500} onClick={toggleMenu}>Sponsers</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="shop" smooth={true} duration={500} onClick={toggleMenu}>Shop</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="events" smooth={true} duration={500} onClick={toggleMenu}>Events</ScrollLink></li>
+                        <li className="nav-item"><Link to="/login">Login</Link></li>
                     </ul>
                     <div className="menu-icon" onClick={toggleMenu}>
                         {
                             isMenuOpen
                                 ? ''
-                                : <i class="fa-solid fa-bars"></i>
+                                : <i className="fa-solid fa-bars"></i>
                         }
                     </div>
                 </div>
@@ -172,9 +173,9 @@ export default function () {
                     </div>
                     <div className="footer-social">
                         <ul>
-                            <li><Link to="https://www.facebook.com/southperthfc/" target="_blank"><i class="fa-brands fa-square-facebook"></i></Link></li>
-                            <li><Link to="https://www.instagram.com/spufc/" target="_blank"><i class="fa-brands fa-square-instagram"></i></Link></li>
-                            <li><Link to="mailto:juniors@southperthunitedfc.com.au"><i class="fa-solid fa-envelope"></i></Link></li>
+                            <li><Link to="https://www.facebook.com/southperthfc/" target="_blank"><i className="fa-brands fa-square-facebook"></i></Link></li>
+                            <li><Link to="https://www.instagram.com/spufc/" target="_blank"><i className="fa-brands fa-square-instagram"></i></Link></li>
+                            <li><Link to="mailto:juniors@southperthunitedfc.com.au"><i className="fa-solid fa-envelope"></i></Link></li>
                         </ul>
                     </div>
                     <p className="copyright">&copy; {year} South Perth United Football Club. All Rights Reserved. Powered By <Link target="_blank" to="https://www.hellopeople.com.au">Hello People</Link></p>

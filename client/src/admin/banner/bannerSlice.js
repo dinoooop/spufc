@@ -53,7 +53,7 @@ export const update = createAsyncThunk('banner/update', async (data) => {
 
 export const destroy = createAsyncThunk('banner/destroy', async (data) => {
     try {
-        const response = await axios.delete(`${config.api}/banners/${data.id}`, config.header())
+        const response = await axios.delete(`${config.api}/banners/${data._id}`, config.header())
         return response.data
     } catch (error) {
         throw error.response.data.message
@@ -65,7 +65,7 @@ export const bannerSlice = createSlice({
     initialState,
     reducers: {
         remove: (state, action) => {
-            state.items = state.items.filter(item => item.id !== action.payload.id)
+            state.items = state.items.filter(item => item._id !== action.payload._id)
         },
         reset: (state, action) => {
             state.error = ''
@@ -79,9 +79,7 @@ export const bannerSlice = createSlice({
                 state.loading = true
             })
             .addCase(index.fulfilled, (state, action) => {
-                state.items = action.payload.data
-                state.perPage = action.payload.per_page
-                state.total = action.payload.total
+                state.items = action.payload
                 state.loading = false
             })
             .addCase(index.rejected, (state, action) => {

@@ -8,7 +8,6 @@ const AuthRouter = require('./routes/AuthenticateUserRouter');
 const SponsorsRouter = require('./routes/sponsorRouter')
 
 
-
 require('dotenv').config();
 var cors = require('cors');
 
@@ -20,7 +19,7 @@ app.use(express.urlencoded({ extended:false}))
 
 app.use(cors("*"));
 const PORT = process.env.PORT;
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Middleware
 app.use(express.json())
 app.use(bodyParser.json());

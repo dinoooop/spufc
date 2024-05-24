@@ -71,7 +71,6 @@ export default function () {
                         <table className="index-table">
                             <thead>
                                 <tr>
-                                    <th># <SortArrow onClick={handleSort} column="id" /></th>
                                     <th>Name <SortArrow onClick={handleSort} column="title" /></th>
                                     <th>Action</th>
                                 </tr>
@@ -79,13 +78,10 @@ export default function () {
                             <tbody>
                                 {
                                     items.map((item) => (
-                                        <tr key={item.id}>
-                                            <td>{item.id}</td>
-                                            <td><Link to={`/admin/banners/${item.id}`}>{item.name}</Link></td>
+                                        <tr key={item._id}>
+                                            <td>{item.name}</td>
                                             <td className='action'>
                                                 <AppIcon onClick={handleDelete} item={item} icon="trash" />
-                                                <AppIcon to={`/admin/banners/${item.id}`} icon="edit" />
-                                                <StatusIcon onClick={handleStatus} item={item} />
                                             </td>
                                         </tr>
                                     ))

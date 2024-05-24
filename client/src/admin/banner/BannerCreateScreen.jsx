@@ -38,7 +38,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             dispatch(store(newFormData))
-            // navigate('/admin/banners')
+            navigate('/admin/banners')
         }
     }
 
@@ -59,27 +59,27 @@ export default function () {
                             <label htmlFor="name">Title</label>
                             <input type="text"
                                 className="form-control input-field"
-                                id="title"
-                                value={formValues.title || ''}
-                                name="title"
+                                id="name"
+                                value={formValues.name || ''}
+                                name="name"
                                 onChange={onChangeForm}
                             />
-                            <div className="color-red">{errors.title}</div>
+                            <div className="color-red">{errors.name}</div>
                         </div>
                         <div className="form-group">
                             <label>Upload Banner Image</label>
-                            <label htmlFor="upload_banner"><i className="fas fa-file icon"></i></label>
+                            <label htmlFor="file"><i className="fas fa-file icon"></i></label>
 
                             <input
                                 type="file"
                                 ref={fileInputRef}
-                                id="upload_banner"
-                                name="upload_banner"
+                                id="file"
+                                name="file"
                                 onChange={onChangeForm}
                                 placeholder="test"
                             />
-                            <div>{formValues.upload_banner?.name || ''}</div>
-                            <div className="color-red">{errors.upload_banner}</div>
+                            <div>{formValues.file?.name || ''}</div>
+                            <div className="color-red">{errors.file}</div>
                         </div>
 
 

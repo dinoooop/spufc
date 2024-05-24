@@ -67,7 +67,7 @@ export default function () {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h2>General Contact</h2>
-                            <i class="fa-solid fa-circle-xmark " onClick={() => setShowModal(!showModal)}></i>
+                            <i className="fa-solid fa-circle-xmark " onClick={() => setShowModal(!showModal)}></i>
                         </div>
 
                         <form onSubmit={handleSubmit}>
