@@ -52,15 +52,7 @@ export default function () {
                 <h1>Banners</h1>
                 <div className="other-actions">
                     <AppIcon to="create" icon="add" />
-                    <div className="search">
-                        <input type="text"
-                            className="form-control input-field"
-                            id="search"
-                            value={formValues.search}
-                            name="search"
-                            onChange={handleSearch}
-                        />
-                    </div>
+                    
                 </div>
             </div>
 
@@ -90,13 +82,7 @@ export default function () {
                         </table>
 
                     </div>
-                    <Pagination
-                        activePage={formValues.page}
-                        itemsCountPerPage={perPage}
-                        totalItemsCount={total}
-                        pageRangeDisplayed={5}
-                        onChange={handlePagination}
-                    />
+                    
                 </div>
             </div>
 

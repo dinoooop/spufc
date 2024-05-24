@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import EnquirySection from "../components/EnquirySection";
 
 import BannerSection from "../components/BannerSection";
+import SponserSection from "../components/SponserSection";
 
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,30 +80,7 @@ export default function () {
             </Element>
 
             <Element name="sponsers" className="part part-white">
-                <div className="wrapper badges">
-                    <h2 className="sub-heading">SPONSORS</h2>
-                    <h2 className="sub-sub-heading">GOLD</h2>
-                    <div className="badge-collection">
-                        <div className="badge-image">
-                            <img src="/images/sponsers/beaufort.jpg" />
-                        </div>
-                        <div className="badge-image">
-                            <img src="/images/sponsers/hpright-1.jpg" />
-                        </div>
-                        <div className="badge-image">
-                            <img src="/images/sponsers/signhere-logo.jpg" />
-                        </div>
-                    </div>
-                    <h2 className="sub-sub-heading">SILVER</h2>
-                    <div className="silver-collection">
-                        <img src="/images/sponsers/thai-orchid-logo.jpg" />
-                        <img src="/images/sponsers/cullen-co-logo.jpg" />
-                        <img src="/images/sponsers/perthwellness.jpg" />
-                        <img src="/images/sponsers/logo-pegasus.jpg" />
-                        <img src="/images/sponsers/lyan.jpg" />
-                    </div>
-
-                </div>
+                <SponserSection />
             </Element>
 
             <Element name="shop" className="part part-sky">
