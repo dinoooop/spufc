@@ -3,7 +3,9 @@ import "./styles/responsive.css";
 import "./styles/admin.css";
 import "./styles/front.scss";
 import "./styles/navigation.scss";
+import "./styles/modal.scss";
 import "./styles/front-responsive.scss";
+import "./styles/mp.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomeScreen from "./front/pages/HomeScreen";
 import ModuleIndexScreen from "./admin/module/ModuleIndexScreen";
@@ -28,6 +30,9 @@ import AuthWelcomeScreen from "./admin/auth/AuthWelcomeScreen";
 import BannerIndexScreen from "./admin/banner/BannerIndexScreen";
 import BannerCreateScreen from "./admin/banner/BannerCreateScreen";
 import BannerEditScreen from "./admin/banner/BannerEditScreen";
+import SponsorIndexScreen from "./admin/sponsor/SponsorIndexScreen";
+import SponsorCreateScreen from "./admin/sponsor/SponsorCreateScreen";
+import SponsorEditScreen from "./admin/sponsor/SponsorEditScreen";
 
 function App() {
   return (
@@ -51,6 +56,10 @@ function App() {
           <Route path='/admin/banners' element={<BannerIndexScreen />} />
           <Route path='/admin/banners/create' element={<BannerCreateScreen />} />
           <Route path='/admin/banners/:id' element={<BannerEditScreen />} />
+
+          <Route path='/admin/sponsors' element={<SponsorIndexScreen />} />
+          <Route path='/admin/sponsors/create' element={<SponsorCreateScreen />} />
+          <Route path='/admin/sponsors/:id' element={<SponsorEditScreen />} />
 
         </Routes>
       </Router>

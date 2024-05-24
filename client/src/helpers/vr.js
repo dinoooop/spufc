@@ -9,8 +9,9 @@ export class vr {
 
 		const { name, value, type, checked, files, options, multiple } = e.target;
 
-		if (multiple) {
+		if (type === 'select' && multiple) {
 			// Handle multi-select change
+			
 			const selectedValues = [];
 			for (let i = 0; i < options.length; i++) {
 				if (options[i].selected) {
@@ -21,6 +22,14 @@ export class vr {
 			return {
 				formValues: { [name]: selectedValues },
 				error: { [name]: validateForm(name, selectedValues) }
+			}
+		}
+
+		if (type === 'file' && multiple) {
+			const filesArray = Array.from(files)
+			return {
+				formValues: { [name]: filesArray },
+				error: { [name]: validateForm(name, filesArray) }
 			}
 		}
 
