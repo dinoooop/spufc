@@ -27,31 +27,23 @@ export default function () {
             <div className="wrapper badges">
                 <h2 className="sub-heading">SPONSORS</h2>
                 <h2 className="sub-sub-heading">GOLD</h2>
-                <div className="badge-collection">
+                <div className="badge-collection mb-4">
                     {
-                        items.map(item => {
-                            if (item.type == "gold" && item.status == "active"  ) {
-                                return (
-                                    <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
-                                        <img src={item.logo} alt={item.name} />
-                                    </div>
-                                )
-                            }
-                        })
+                        items.filter(item => item.type == "gold" && item.status == "active").map(item => (
+                            <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
+                                <img src={item.logo} alt={item.name} />
+                            </div>
+                        ))
                     }
                 </div>
                 <h2 className="sub-sub-heading">Silver</h2>
-                <div className="badge-collection">
+                <div className="silver-collection">
                     {
-                        items.map(item => {
-                            if (item.type == "silver" && item.status == "active") {
-                                return (
-                                    <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
-                                        <img src={item.logo} alt={item.name} />
-                                    </div>
-                                )
-                            }
-                        })
+                        items.filter(item => item.type == "silver" && item.status == "active").map(item => (
+                            <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
+                                <img src={item.logo} alt={item.name} />
+                            </div>
+                        ))
                     }
                 </div>
             </div>
