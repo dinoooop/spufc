@@ -1,8 +1,6 @@
 // models/Sponsor.js
 const mongoose = require('mongoose');
-const connectDb = require('../connect');
 
-connectDb();
 const SponsorSchema = new mongoose.Schema({
    name: {
         type: String,
@@ -11,28 +9,28 @@ const SponsorSchema = new mongoose.Schema({
     
     description: {
         type: String,
-        required: true
+     
     },
     logo: {
         type: String,
         required: true
     },
    photos: {
-        type: [String], // Assuming the logo will be stored as a Buffer
+        type: [String], 
         required: true
     },
     type: {
         type: String,
-        required: true
+        required: false
     },
     
 website: {
     type: String,
-    required: true
+    required: false
 },
 phone: {
     type: String,
-    required: true
+    required: false
 },
 status: {
     type: String,
@@ -40,7 +38,7 @@ status: {
 },
 address: {
     type: String,
-    required: true
+    required: false
 },
 email: {
     type: String,
@@ -48,7 +46,7 @@ email: {
 },
 offers: {
     type: String,
-    required: true
+    required: false
 },
     
     

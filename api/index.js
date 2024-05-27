@@ -6,7 +6,9 @@ const UserRouter = require('./routes/userRouter');
 const ImageRouter = require('./routes/ImgDataRouter');
 const AuthRouter = require('./routes/AuthenticateUserRouter');
 const SponsorsRouter = require('./routes/sponsorRouter')
+const connectDb = require('./connect');
 
+connectDb();
 
 require('dotenv').config();
 var cors = require('cors');
@@ -29,65 +31,6 @@ app.use('/api',RegisterRouter);
 app.use('/api/banners', ImageRouter);
 app.use('/api', AuthRouter);
 app.use('/api/sponsors',SponsorsRouter)
-
-
-
-
-app.get('/Allusers', async (req, res) => {
-    try {
-      const users = await User.find();
-      res.status(200).send(users);
-    } catch (error) {
-      res.status(500).send(error);
-    }
-  });
-
-
-  app.post('/users', async (req, res) => {
-    try {
-      const { name, email, password } = req.body;
-      const newUser = new User({ name, email, password });
-      await newUser.save();
-      res.status(201).send(newUser);
-    } catch (error) {
-      if (error.name === 'MongoError' && error.code === 11000) {
-        return res.status(400).send({ error: 'Email already exists' });
-      }
-      res.status(500).send(error);
-    }
-  });
-
-  app.get('/users/:id', async (req, res) => {
-    try {
-      const user = await User.findById(req.params.id);
-      if (!user) {
-        return res.status(404).send({ error: 'User not found' });
-      }
-      res.status(200).send(user);
-    } catch (error) {
-      res.status(500).send(error);
-    }
-  });
-  
-  // Update a user by ID
-  app.put('/users/:id', async (req, res) => {
-    try {
-      const { name, email, password } = req.body;
-      const user = await User.findByIdAndUpdate(
-        req.params.id,
-        { name, email, password },
-        { new: true, runValidators: true }
-      );
-      if (!user) {
-        return res.status(404).send({ error: 'User not found' });
-      }
-      res.status(200).send(user);
-    } catch (error) {
-      res.status(500).send(error);
-    }
-  });
-  
-  
 
 
 // Start the server

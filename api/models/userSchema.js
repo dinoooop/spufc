@@ -1,7 +1,5 @@
  const mongoose = require('mongoose');
- const connectDb = require('../connect');
 
-connectDb();
 const userSchema = new mongoose.Schema({
 name: {
     type:String,
