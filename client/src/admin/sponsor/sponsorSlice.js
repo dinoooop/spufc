@@ -35,7 +35,7 @@ export const show = createAsyncThunk('sponsor/show', async (id) => {
 
 export const store = createAsyncThunk('sponsor/store', async (data) => {
     try {
-        const response = await axios.post(`${config.api}/sponsors/`, data, config.formdataheader())
+        const response = await axios.post(`${config.api}/sponsors`, data, config.formdataheader())
         return response.data
     } catch (error) {
         throw error.response.data.message
@@ -79,9 +79,7 @@ export const sponsorSlice = createSlice({
                 state.loading = true
             })
             .addCase(index.fulfilled, (state, action) => {
-                state.items = action.payload.data
-                state.perPage = action.payload.per_page
-                state.total = action.payload.total
+                state.items = action.payload
                 state.loading = false
             })
             .addCase(index.rejected, (state, action) => {

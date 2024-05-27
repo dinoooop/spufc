@@ -8,32 +8,39 @@ import ProtectedLayout from '../layouts/ProtectedLayout';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { bc } from '../../helpers/bc';
 import { sv } from '../../helpers/sv';
+import config from '../../config';
 
 export default function () {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const params = useParams()
-    
+
 
     const { item, error } = useSelector(state => state.sponsor)
-    const { stock } = useSelector(state => state.general)
     const [formValues, setFormValues] = useState({})
     const [errors, setErrors] = useState({})
 
     useEffect(() => {
-        dispatch(show(params.id))
+        dispatch(show('66507ebf74d40bc60abfdc69'))
+        
     }, [dispatch, params.id])
 
     useEffect(() => {
         setFormValues({
-            id: item.id,
             name: item.name,
-            email: item.email,
-            roles: bc.pluckIds(item.roles),
-            password: "",
+            description: item.description,
+            logo: item.logo,
+            photos: item.photos,
+            type: item.photos,
+            website: item.website,
             status: item.status,
+            phone: item.phone,
+            address: item.address,
+            email: item.email,
+            offers: item.offers,
         })
+        setFormValues(prev => ({ ...prev, logo_url:  config.uploads + '/hpright-1.jpg'}))
     }, [item])
 
     const onChangeForm = (e) => {
@@ -71,72 +78,7 @@ export default function () {
 
                         {error && <p className='red-alert'>{error}</p>}
 
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="name"
-                                value={formValues.name || ''}
-                                name="name"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.name}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="email"
-                                value={formValues.email || ''}
-                                name="email"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.email}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password"
-                                className="form-control input-field"
-                                id="password"
-                                value={formValues.password}
-                                name="password"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.password}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="role">Role</label>
-                            {
-                                stock.roles?.map(role => (
-                                    <label className='checkbox-control' key={role.key}>
-                                        <input type="checkbox"
-                                            value={role.id}
-                                            name="roles"
-                                            onChange={onChangeForm}
-                                            checked={formValues.roles?.includes(role.id) || false}
-                                        /> {role.name}
-                                    </label>
-                                ))
-                            }
-                            <div className="color-red">{errors.role}</div>
-                        </div>
 
-                        <div className="form-group">
-                            <label htmlFor="status">Status</label>
-                            {
-                                sv.status().map(mapitem => (
-                                    <label className='radio-control' key={mapitem.key}>
-                                        <input type="radio"
-                                            value={mapitem.id}
-                                            name="status"
-                                            onChange={onChangeForm}
-                                            checked={formValues.status == mapitem.id || ''}
-                                        /> {mapitem.name}
-                                    </label>
-                                ))
-                            }
-                            <div className="color-red">{errors.status}</div>
-                        </div>
 
                         <button type='submit' className="btn submit">Submit</button>
                         <Link to="/admin/sponsors" className="btn">Cancel</Link>
