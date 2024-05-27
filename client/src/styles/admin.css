@@ -111,6 +111,10 @@ a {
     color: var(--vibrant);
     transition: all 200ms ease;
 }
+td a {
+    color: var(--color-1);
+    transition: all 200ms ease;
+}
 
 a:hover {
     color: var(--white);
@@ -1126,8 +1130,9 @@ i.help {
 
 .uploaded-images {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 .uploaded-images img {

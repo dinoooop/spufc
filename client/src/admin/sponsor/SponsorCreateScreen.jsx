@@ -10,7 +10,7 @@ import { bc } from '../../helpers/bc'
 import { sv } from '../../helpers/sv'
 import { sponserStatus, sponserType } from '../../helpers/dummyData'
 import config from '../../config'
-import { Input } from '../../forms/fields'
+
 
 export default function () {
 
@@ -121,7 +121,17 @@ export default function () {
 
                         {error && <p className='red-alert'>{error}</p>}
 
-                        <Input label="Name" key="name" value={formValues.name} error={errors.name} onChange={onChangeForm} />
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input type="text"
+                                className="form-control input-field"
+                                id="name"
+                                value={formValues.name || ''}
+                                name="name"
+                                onChange={onChangeForm}
+                            />
+                            <div className="color-red">{errors.name}</div>
+                        </div>
 
                         <div className="form-group">
                             <label htmlFor="description">Description</label>
@@ -144,7 +154,7 @@ export default function () {
                                             value={mapitem.key}
                                             name="type"
                                             onChange={onChangeForm}
-                                            checked={formValues.type == mapitem.key || ''}
+                                            checked={formValues.type === mapitem.key || ''}
                                         /> {mapitem.name}
                                     </label>
                                 ))

@@ -35,7 +35,7 @@ export default function () {
             description: item.description,
             logo: item.logo,
             photos: item.photos,
-            type: item.photos,
+            type: item.type,
             website: item.website,
             status: item.status,
             phone: item.phone,
@@ -67,6 +67,7 @@ export default function () {
             }
         }
     }
+
 
     return (
 
