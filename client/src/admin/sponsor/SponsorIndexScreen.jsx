@@ -79,12 +79,12 @@ export default function () {
                             <tbody>
                                 {
                                     items.map((item) => (
-                                        <tr key={item.id}>
-                                            <td>{item.id}</td>
-                                            <td><Link to={`/admin/sponsors/${item.id}`}>{item.name}</Link></td>
+                                        <tr key={item._id}>
+                                            <td>{item._id}</td>
+                                            <td><Link to={`/admin/sponsors/${item._id}`}>{item.name}</Link></td>
                                             <td className='action'>
                                                 <AppIcon onClick={handleDelete} item={item} icon="trash" />
-                                                <AppIcon to={`/admin/sponsors/${item.id}`} icon="edit" />
+                                                <AppIcon to={`/admin/sponsors/${item._id}`} icon="edit" />
                                                 <StatusIcon onClick={handleStatus} item={item} />
                                             </td>
                                         </tr>
