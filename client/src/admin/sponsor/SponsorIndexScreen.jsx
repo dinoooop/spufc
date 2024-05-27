@@ -11,18 +11,14 @@ import StatusIcon from '../components/StatusIcon'
 export default function () {
 
     const dispatch = useDispatch()
-    const { items, perPage, total } = useSelector(state => state.sponsor)
-    const [formValues, setFormValues] = useState({ search: "", so: "", sb: "", page: 1 })
+    const { items } = useSelector(state => state.sponsor)
+    const [formValues, setFormValues] = useState({})
 
     
 
     useEffect(() => {
-        const data = Object.fromEntries(
-            Object.entries(formValues)
-                .filter(([key, value]) => value !== "")
-                .map(([key, value]) => [key, value])
-        );
-        dispatch(index(data))
+        
+        dispatch(index())
 
     }, [dispatch, formValues])
 
@@ -51,15 +47,6 @@ export default function () {
                 <h1>Sponsors</h1>
                 <div className="other-actions">
                     <AppIcon to="create" icon="add" />
-                    <div className="search">
-                        <input type="text"
-                            className="form-control input-field"
-                            id="search"
-                            value={formValues.search}
-                            name="search"
-                            onChange={handleSearch}
-                        />
-                    </div>
                 </div>
             </div>
 
@@ -91,13 +78,7 @@ export default function () {
                         </table>
 
                     </div>
-                    <Pagination
-                        activePage={formValues.page}
-                        itemsCountPerPage={perPage}
-                        totalItemsCount={total}
-                        pageRangeDisplayed={5}
-                        onChange={handlePagination}
-                    />
+                    
                 </div>
             </div>
 

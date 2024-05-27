@@ -11,8 +11,6 @@ export default function () {
 
     const { items } = useSelector(state => state.sponsor)
 
-
-
     // const items = sponsersData;
 
     useEffect(() => {
@@ -31,11 +29,29 @@ export default function () {
                 <h2 className="sub-sub-heading">GOLD</h2>
                 <div className="badge-collection">
                     {
-                        items.map(item => (
-                            <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
-                                <img src={item.logo} alt={item.name} />
-                            </div>
-                        ))
+                        items.map(item => {
+                            if (item.type == "gold" && item.status == "active"  ) {
+                                return (
+                                    <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
+                                        <img src={item.logo} alt={item.name} />
+                                    </div>
+                                )
+                            }
+                        })
+                    }
+                </div>
+                <h2 className="sub-sub-heading">Silver</h2>
+                <div className="badge-collection">
+                    {
+                        items.map(item => {
+                            if (item.type == "silver" && item.status == "active") {
+                                return (
+                                    <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
+                                        <img src={item.logo} alt={item.name} />
+                                    </div>
+                                )
+                            }
+                        })
                     }
                 </div>
             </div>

@@ -31,6 +31,7 @@ export default function () {
 
     useEffect(() => {
         setFormValues({
+            _id: item._id,
             name: item.name,
             description: item.description,
             logo: item.logo,
@@ -54,7 +55,7 @@ export default function () {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const newFormData = vr.submit(formValues, validateForm)
+        const newFormData = vr.submitFile(formValues, validateForm)
         if (typeof newFormData.errors != 'undefined') {
             setErrors(newFormData.errors)
         } else {

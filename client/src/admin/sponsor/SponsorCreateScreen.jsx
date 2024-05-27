@@ -57,7 +57,7 @@ export default function () {
             try {
                 const resultAction = await dispatch(store(newFormData))
                 unwrapResult(resultAction)
-                // navigate('/admin/sponsors')
+                navigate('/admin/sponsors')
             } catch (error) {
                 console.error(error)
             }

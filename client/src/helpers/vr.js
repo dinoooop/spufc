@@ -101,6 +101,7 @@ export class vr {
 		const updatedErrors = Object.fromEntries(
 			Object.entries(formValues).map(([key, value]) => [key, validateField(key, value)])
 		)
+		
 
 		const allErrorsFalse = Object.values(updatedErrors).every((error) => error === false)
 
