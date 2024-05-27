@@ -1,6 +1,7 @@
 const multer = require('multer');
 const Image = require('../../models/imageSchema');
 
+require('dotenv').config();
 
 function generateRandomNumber() {
     return Math.floor(Math.random() * 1000000000);
@@ -26,14 +27,13 @@ const addFile =  upload.single('file');
     if (!req.file) {
         return res.status(400).send('No file uploaded');
     }
-    // console.log('req.file', req.file);
-
+    
     const newImage = new Image({
         name: req.body.name,
-        image: req.file.filename
+        image: process.env.uploaded_path + req.file.filename
          
     });
-    console.log('req.file', req.file);
+   
     newImage.save()
         .then(() => res.json({ message: 'Successfully uploaded' }))
         .catch(err => console.log(err));
