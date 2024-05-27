@@ -26,6 +26,9 @@ const cpUpload = upload.fields([{ name: 'logo', maxCount: 1 }, { name: 'photos',
 
 const uploadSponsors = async (req, res) => {
     const { name, description, type, website, phone, status, address, email, offers } = req.body;
+
+    
+    
     
     // Check if photos are present in the payload
     if (!req.files['photos'] || req.files['photos'].length === 0) {

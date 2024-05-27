@@ -25,7 +25,7 @@ export class vr {
 			}
 		}
 
-		
+
 
 		if (type === 'checkbox') {
 
@@ -48,13 +48,10 @@ export class vr {
 
 			if (multiple) {
 				const filesArray = Array.from(files)
-				const fileUrls = []
-				filesArray.map(file => {
-					fileUrls.push(URL.createObjectURL(file))
-				})
+				const fileUrls = filesArray.map(file => URL.createObjectURL(file))
 				return {
 					formValues: { [name]: filesArray, [name + '_urls']: fileUrls },
-					error: { [name]: validateForm(name, filesArray) }
+					error: { [name]: validateForm(name, files) }
 				}
 			}
 
@@ -110,7 +107,15 @@ export class vr {
 		if (allErrorsFalse) {
 			const newFormData = new FormData()
 			Object.entries(formValues).forEach(([key, value]) => {
-				newFormData.append(key, value)
+				if (Array.isArray(value)) {
+					value.forEach(val => {
+						newFormData.append(key, val);
+					});
+				} else {
+					newFormData.append(key, value)
+				}
+
+
 			});
 
 			return newFormData

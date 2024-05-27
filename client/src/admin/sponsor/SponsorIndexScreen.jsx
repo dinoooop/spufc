@@ -31,10 +31,7 @@ export default function () {
         dispatch(destroy(sponsor))
     }
 
-    const handleStatus = (id, status) => {
-        const data = { id, status }
-        dispatch(update(data))
-    }
+    
 
     const handleSearch = e => {
         setFormValues({ search: e.target.value })
@@ -86,7 +83,6 @@ export default function () {
                                             <td className='action'>
                                                 <AppIcon onClick={handleDelete} item={item} icon="trash" />
                                                 <AppIcon to={`/admin/sponsors/${item._id}`} icon="edit" />
-                                                <StatusIcon onClick={handleStatus} item={item} />
                                             </td>
                                         </tr>
                                     ))

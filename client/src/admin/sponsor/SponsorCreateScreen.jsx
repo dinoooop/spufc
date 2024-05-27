@@ -10,6 +10,7 @@ import { bc } from '../../helpers/bc'
 import { sv } from '../../helpers/sv'
 import { sponserStatus, sponserType } from '../../helpers/dummyData'
 import config from '../../config'
+import { Input } from '../../forms/fields'
 
 export default function () {
 
@@ -21,8 +22,10 @@ export default function () {
     const [formValues, setFormValues] = useState({
         name: "Beaufort 2",
         description: "lorem 2",
-        logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
-        photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
+        logo: "",
+        photos: [],
+        // logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
+        // photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
         type: "gold",
         website: "www.hpright2.com",
         status: "active",
@@ -35,7 +38,7 @@ export default function () {
 
     useEffect(() => {
         dispatch(reset())
-        setFormValues(prev => ({ ...prev, logo_url: 'http://127.0.0.1:8800/uploads/hpright-1.jpg' }))
+        setFormValues(prev => ({ ...prev, logo_url: formValues.logo }))
         setFormValues(prev => ({ ...prev, photos_urls: formValues.photos }))
     }, [dispatch])
 
@@ -61,7 +64,7 @@ export default function () {
         }
     }
 
-    console.log(formValues.photos);
+
 
     return (
         <ProtectedLayout roles="admin">
@@ -118,17 +121,7 @@ export default function () {
 
                         {error && <p className='red-alert'>{error}</p>}
 
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="name"
-                                value={formValues.name || ''}
-                                name="name"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.name}</div>
-                        </div>
+                        <Input label="Name" key="name" value={formValues.name} error={errors.name} onChange={onChangeForm} />
 
                         <div className="form-group">
                             <label htmlFor="description">Description</label>
