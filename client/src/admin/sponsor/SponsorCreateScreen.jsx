@@ -9,6 +9,7 @@ import { reset, store } from './sponsorSlice'
 import { bc } from '../../helpers/bc'
 import { sv } from '../../helpers/sv'
 import { sponserStatus, sponserType } from '../../helpers/dummyData'
+import config from '../../config'
 
 export default function () {
 
@@ -20,19 +21,23 @@ export default function () {
     const [formValues, setFormValues] = useState({
         name: "Beaufort 2",
         description: "lorem 2",
-        logo: "/images/sponsers/hpright-1.jpg",
-        photos: [],
+        logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
+        photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
         type: "gold",
         website: "www.hpright2.com",
         status: "active",
         phone: "+123 45562",
         address: "test addres22s",
         email: "test@hprigh22t.com",
-        offer: null
+        offers: "test offer"
     })
     const { error } = useSelector(state => state.sponsor)
 
-    useEffect(() => { dispatch(reset()) }, [dispatch])
+    useEffect(() => {
+        dispatch(reset())
+        setFormValues(prev => ({ ...prev, logo_url: 'http://127.0.0.1:8800/uploads/hpright-1.jpg' }))
+        setFormValues(prev => ({ ...prev, photos_urls: formValues.photos }))
+    }, [dispatch])
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)
@@ -42,14 +47,14 @@ export default function () {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const newFormData = vr.submit(formValues, validateForm)
+        const newFormData = vr.submitFile(formValues, validateForm)
         if (typeof newFormData.errors != 'undefined') {
             setErrors(newFormData.errors)
         } else {
             try {
                 const resultAction = await dispatch(store(newFormData))
                 unwrapResult(resultAction)
-                navigate('/admin/sponsors')
+                // navigate('/admin/sponsors')
             } catch (error) {
                 console.error(error)
             }
@@ -68,6 +73,48 @@ export default function () {
             <div className="row">
                 <div className='cardbody col-lg-6'>
                     <form onSubmit={handleSubmit}>
+
+                        <div className="form-group">
+                            <label>Logo</label>
+                            <label htmlFor="logo"><i className="fas fa-file icon"></i></label>
+
+                            <input
+                                type="file"
+                                ref={fileInputRef}
+                                id="logo"
+                                name="logo"
+                                onChange={onChangeForm}
+                                placeholder="test"
+                            />
+                            <div className="uploaded-images">
+                                {formValues.logo_url && <img src={formValues.logo_url} alt="logo Preview" />}
+                            </div>
+                            <div className="color-red">{errors?.logo}</div>
+                        </div>
+
+                        <div className="form-group">
+                            <label>Other Photos</label>
+                            <label htmlFor="photos"><i className="fas fa-file icon"></i></label>
+
+                            <input
+                                type="file"
+                                ref={fileInputRef}
+                                id="photos"
+                                name="photos"
+                                onChange={onChangeForm}
+                                placeholder="test"
+                                multiple={true}
+                            />
+                            <div className="uploaded-images">
+                                {
+                                    formValues.photos_urls &&
+                                    formValues.photos_urls.map((photos_url, index) => (
+                                        <img key={index} src={photos_url} alt="photos Preview" />
+                                    ))
+                                }
+                            </div>
+                            <div className="color-red">{errors?.photos}</div>
+                        </div>
 
                         {error && <p className='red-alert'>{error}</p>}
 
@@ -135,6 +182,17 @@ export default function () {
                             <div className="color-red">{errors.phone}</div>
                         </div>
                         <div className="form-group">
+                            <label htmlFor="offers">offers</label>
+                            <input type="text"
+                                className="form-control input-field"
+                                id="offers"
+                                value={formValues.offers || ''}
+                                name="offers"
+                                onChange={onChangeForm}
+                            />
+                            <div className="color-red">{errors.offers}</div>
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="address">address</label>
                             <input type="text"
                                 className="form-control input-field"
@@ -157,11 +215,6 @@ export default function () {
                             <div className="color-red">{errors.email}</div>
                         </div>
 
-                        
-                        
-
-                        
-
                         <div className="form-group">
                             <label htmlFor="status">Display</label>
                             {
@@ -179,37 +232,10 @@ export default function () {
                             <div className="color-red">{errors.status}</div>
                         </div>
 
-                        <div className="form-group">
-                            <label>Sponsor Logo</label>
-                            <label htmlFor="logo"><i className="fas fa-file icon"></i></label>
+                        {/* logo here */}
 
-                            <input
-                                type="file"
-                                ref={fileInputRef}
-                                id="logo"
-                                name="logo"
-                                onChange={onChangeForm}
-                                placeholder="test"
-                            />
-                            <div>{formValues.logo?.name || ''}</div>
-                            <div className="color-red">{errors.logo}</div>
-                        </div>
-                        <div className="form-group">
-                            <label>Other Photos</label>
-                            <label htmlFor="photos"><i className="fas fa-file icon"></i></label>
 
-                            <input
-                                type="file"
-                                ref={fileInputRef}
-                                id="photos"
-                                name="photos"
-                                onChange={onChangeForm}
-                                placeholder="test"
-                                multiple={true}
-                            />
-                            <div>{formValues.photos && formValues.photos.map((file, index) => (<p key={index}>{file.name}</p>))}</div>
-                            <div className="color-red">{errors.photos}</div>
-                        </div>
+
 
                         <button type='submit' className="btn submit">Submit</button>
                         <Link to="/admin/sponsors" className="btn">Cancel</Link>

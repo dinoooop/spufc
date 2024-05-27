@@ -14,6 +14,8 @@ export default function () {
     const { items, perPage, total } = useSelector(state => state.sponsor)
     const [formValues, setFormValues] = useState({ search: "", so: "", sb: "", page: 1 })
 
+    
+
     useEffect(() => {
         const data = Object.fromEntries(
             Object.entries(formValues)
@@ -71,16 +73,15 @@ export default function () {
                         <table className="index-table">
                             <thead>
                                 <tr>
-                                    <th># <SortArrow onClick={handleSort} column="id" /></th>
                                     <th>Name <SortArrow onClick={handleSort} column="title" /></th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
+                                    items &&
                                     items.map((item) => (
                                         <tr key={item._id}>
-                                            <td>{item._id}</td>
                                             <td><Link to={`/admin/sponsors/${item._id}`}>{item.name}</Link></td>
                                             <td className='action'>
                                                 <AppIcon onClick={handleDelete} item={item} icon="trash" />

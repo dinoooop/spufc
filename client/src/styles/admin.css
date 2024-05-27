@@ -1123,6 +1123,19 @@ i.help {
     animation: l7 1s infinite linear alternate;
 }
 
+
+.uploaded-images {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.uploaded-images img {
+    height: 100px;
+    width: auto;
+}
+
+
 @keyframes l7 {
     0% {
         background-size: 20% 50%, 20% 50%, 20% 50%
