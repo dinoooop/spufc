@@ -16,7 +16,7 @@ export default function ProtectedLayout({ roles, children, error = false }) {
 
 
     useEffect(() => {
-        // dispatch(check())
+        dispatch(check())
         if (!user) {
             navigate('/login')
         }

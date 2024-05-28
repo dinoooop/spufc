@@ -1,6 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
 import AppIcon from '../components/AppIcon'
-import { destroy, index, remove, update } from './sponsorSlice'
 import { useEffect, useState } from 'react'
 import SortArrow from '../components/SortArrow'
 import Pagination from "react-js-pagination"
@@ -12,6 +10,7 @@ import useSponsorStore from './useSponsorStore'
 export default function () {
 
     const store = useSponsorStore()
+
     useEffect(() => {
         store.index()
     }, [])
