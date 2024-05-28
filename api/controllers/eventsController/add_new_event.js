@@ -38,7 +38,6 @@ const cpUpload = upload.fields([{
 }]);
 
 const uploadSponsors = async (req, res) => {
-
     const {
         name,
         description,
@@ -51,6 +50,7 @@ const uploadSponsors = async (req, res) => {
         offers
     } = req.body;
 
+    // 
     // Check if photos are present in the payload
     if (!req.files['photos'] || req.files['photos'].length === 0) {
         return res.status(400).json({
