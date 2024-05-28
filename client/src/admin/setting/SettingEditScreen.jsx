@@ -58,7 +58,7 @@ export default function () {
 
         <ProtectedLayout roles="admin">
             <div className="page-header">
-                <h1>Edit Setting</h1>
+                <h1>Setting</h1>
             </div>
 
             <div className="row">

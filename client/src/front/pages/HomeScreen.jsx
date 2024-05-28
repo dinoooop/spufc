@@ -9,12 +9,20 @@ import BannerSection from "../components/BannerSection";
 import SponserSection from "../components/SponserSection";
 import SocialSection from "../components/SocialSection";
 import AboutSection from "../components/AboutSection";
+import useSettingStore from "../../admin/setting/useSettingStore";
 
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user } = useSelector(state => state.auth)
 
+    const { show, item, store, error } = useSettingStore()
+
+    
     const year = new Date().getFullYear();
+
+    useEffect(() => {
+        show()
+    }, [])
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);

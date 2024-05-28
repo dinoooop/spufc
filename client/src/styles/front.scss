@@ -24,6 +24,13 @@
 
     }
 
+    a {
+        color: var(--black);
+        &:hover{
+            color: var(--vibrant);
+        }
+    }
+
     .sub-heading {
         font-size: 5rem;
         line-height: 5rem;
@@ -316,6 +323,11 @@
         text-align: center;
     }
 
-
+    .banner-container {
+        display:flex; 
+        align-items:center; 
+        justify-content:center;
+        width: 100%;
+    }
 
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { sponsersData } from "../../helpers/dummyData"
 import useSponsorStore from "../../admin/sponsor/useSponsorStore";
+import { Link } from "react-router-dom";
 
 export default function () {
 
@@ -67,9 +68,9 @@ export default function () {
                         <h3 className="modal-sub-heading">Contact</h3>
                         <ul className="modal-contact">
                             <li><i class="fa-solid fa-phone"></i> {modal.phone}</li>
-                            <li><i class="fa-solid fa-envelope"></i> {modal.email}</li>
+                            <li><i class="fa-solid fa-envelope"></i> <Link to={`mailto:${modal.email}`}>{modal.email}</Link></li>
                             <li><i class="fa-solid fa-location-dot"></i> {modal.address}</li>
-                            <li><i class="fa-solid fa-link"></i> {modal.website}</li>
+                            <li><i class="fa-solid fa-link"></i> <Link to={modal.website} target="_blank">{modal.website}</Link></li>
                         </ul>
                     </div>
 

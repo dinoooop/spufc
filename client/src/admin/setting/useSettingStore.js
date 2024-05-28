@@ -18,7 +18,7 @@ const useSettingStore = create((set) => ({
             const response = await axios.get(`${config.api}/settings`, config.header());
             set({
                 loading: false,
-                item: response.data,
+                item: response.data[0],
             });
         } catch (error) {
             set({

@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
+import useSettingStore from "../../admin/setting/useSettingStore";
 
 export default function ({ showPhone = false }) {
 
-    const item = {
-        facebook: 'https://www.facebook.com/southperthfc/',
-        instagram: "https://www.instagram.com/spufc/",
-        email: 'juniors@southperthunitedfc.com.au',
-        phone: "+22 456 899",
-        // title: item.title,
-        // description: item.description,
-        // image: item.image,
-        // side: item.side,
-    };
+    const {item } = useSettingStore();
+    
     return (
 
         <ul>

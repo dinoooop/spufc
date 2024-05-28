@@ -5,13 +5,7 @@ import useSettingStore from "../../admin/setting/useSettingStore";
 import { useEffect } from "react";
 
 export default function () {
-    const {item, show} = useSettingStore();
-
-    useEffect(() => {
-        show()
-    }, [])
-
-    console.log(item.title);
+    const { item } = useSettingStore();
 
     const clean_title = DOMPurify.sanitize(item.title)
     const clean_description = DOMPurify.sanitize(item.description)
@@ -21,11 +15,10 @@ export default function () {
             <div className="bridge-text">
                 <h2 className="sub-heading" dangerouslySetInnerHTML={{ __html: clean_title }}></h2>
                 <p dangerouslySetInnerHTML={{ __html: clean_description }}></p>
-                <Link className="fbtn" to="#">View More</Link>
             </div>
 
             <div className="bridge-image">
-                <img src={item.image} />
+                <img src={item.file} />
             </div>
         </div>
     )
