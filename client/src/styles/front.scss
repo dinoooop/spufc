@@ -21,7 +21,7 @@
         font-size: 1.5rem;
         font-weight: normal;
         margin-bottom: 2rem;
-        
+
     }
 
     .sub-heading {
@@ -92,7 +92,7 @@
         width: 100px;
     }
 
-    
+
 
     .bridge {
         display: flex;
@@ -102,7 +102,7 @@
     }
 
     .bridge-image {
-        img{
+        img {
             object-fit: cover;
             width: 500px;
             height: 500px;
@@ -110,7 +110,7 @@
             border: 2rem solid var(--color-3);
             overflow: hidden;
             box-shadow: 10px 10px 8px 3px var(--grey);
-            
+
         }
     }
 
@@ -176,6 +176,7 @@
         gap: 1rem;
 
         .badge-image {
+            
 
             img {
                 border: 0.5rem solid var(--color-3);
@@ -195,13 +196,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
         flex-wrap: wrap;
         gap: 1rem;
 
         img {
             width: 200px;
-            
+
         }
     }
 
@@ -218,13 +219,13 @@
     }
 
     .drone-image {
-        img{
+        img {
             width: 200px;
         }
     }
 
 
-    
+
 
     .scroll {
         position: relative;
@@ -309,6 +310,6 @@
         text-align: center;
     }
 
-    
+
 
 }

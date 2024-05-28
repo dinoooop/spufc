@@ -111,6 +111,10 @@ a {
     color: var(--vibrant);
     transition: all 200ms ease;
 }
+td a {
+    color: var(--color-1);
+    transition: all 200ms ease;
+}
 
 a:hover {
     color: var(--white);
@@ -1122,6 +1126,20 @@ i.help {
         var(--c) 100% 50%;
     animation: l7 1s infinite linear alternate;
 }
+
+
+.uploaded-images {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.uploaded-images img {
+    height: 100px;
+    width: auto;
+}
+
 
 @keyframes l7 {
     0% {

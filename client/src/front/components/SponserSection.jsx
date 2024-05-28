@@ -1,13 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { sponsersData } from "../../helpers/dummyData"
+import { index } from "../../admin/sponsor/sponsorSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function () {
 
     const [modal, setModal] = useState(null)
     const [showModal, setShowModal] = useState(false)
+    const dispatch = useDispatch()
 
+    const { items } = useSelector(state => state.sponsor)
 
-    const items = sponsersData;
+    // const items = sponsersData;
+
+    useEffect(() => {
+        dispatch(index())
+    }, [dispatch])
 
     const handleClick = (item) => {
         setShowModal(true)
@@ -19,9 +27,19 @@ export default function () {
             <div className="wrapper badges">
                 <h2 className="sub-heading">SPONSORS</h2>
                 <h2 className="sub-sub-heading">GOLD</h2>
-                <div className="badge-collection">
+                <div className="badge-collection mb-4">
                     {
-                        items.map(item => (
+                        items.filter(item => item.type == "gold" && item.status == "active").map(item => (
+                            <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
+                                <img src={item.logo} alt={item.name} />
+                            </div>
+                        ))
+                    }
+                </div>
+                <h2 className="sub-sub-heading">Silver</h2>
+                <div className="silver-collection">
+                    {
+                        items.filter(item => item.type == "silver" && item.status == "active").map(item => (
                             <div className="badge-image" key={item._id} onClick={() => handleClick(item)}>
                                 <img src={item.logo} alt={item.name} />
                             </div>
@@ -58,6 +76,7 @@ export default function () {
                             <li><i class="fa-solid fa-phone"></i> {modal.phone}</li>
                             <li><i class="fa-solid fa-envelope"></i> {modal.email}</li>
                             <li><i class="fa-solid fa-location-dot"></i> {modal.address}</li>
+                            <li><i class="fa-solid fa-link"></i> {modal.website}</li>
                         </ul>
                     </div>
 

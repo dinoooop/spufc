@@ -10,6 +10,7 @@ import SponserSection from "../components/SponserSection";
 
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user } = useSelector(state => state.auth)
 
     const year = new Date().getFullYear();
 
@@ -17,7 +18,7 @@ export default function () {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    
+
 
     return (
         <HomeLayout>
@@ -48,7 +49,11 @@ export default function () {
                         <li className="nav-item"><ScrollLink to="sponsers" smooth={true} duration={500} onClick={toggleMenu}>Sponsers</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="shop" smooth={true} duration={500} onClick={toggleMenu}>Shop</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="events" smooth={true} duration={500} onClick={toggleMenu}>Events</ScrollLink></li>
-                        <li className="nav-item"><Link to="/login">Login</Link></li>
+                        {
+                            user
+                                ? <li className="nav-item"><Link to="/admin/sponsors">Dashboard</Link></li>
+                                : <li className="nav-item"><Link to="/login">Login</Link></li>
+                        }
                     </ul>
                     <div className="menu-icon" onClick={toggleMenu}>
                         {

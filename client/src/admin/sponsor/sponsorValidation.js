@@ -4,9 +4,7 @@ export const validateForm = (key, value) => {
         case "name":
             if (value.length === 0) {
                 return "Name equired"
-            } else {
-                return (value.length >= 20) ? "Maximum charecters cannot exceed 20" : false
-            }
+            } 
         case "status":
             if (value.length === 0) {
                 return "Status required"

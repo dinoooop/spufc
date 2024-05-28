@@ -11,16 +11,14 @@ import StatusIcon from '../components/StatusIcon'
 export default function () {
 
     const dispatch = useDispatch()
-    const { items, perPage, total } = useSelector(state => state.sponsor)
-    const [formValues, setFormValues] = useState({ search: "", so: "", sb: "", page: 1 })
+    const { items } = useSelector(state => state.sponsor)
+    const [formValues, setFormValues] = useState({})
+
+    
 
     useEffect(() => {
-        const data = Object.fromEntries(
-            Object.entries(formValues)
-                .filter(([key, value]) => value !== "")
-                .map(([key, value]) => [key, value])
-        );
-        dispatch(index(data))
+        
+        dispatch(index())
 
     }, [dispatch, formValues])
 
@@ -29,10 +27,7 @@ export default function () {
         dispatch(destroy(sponsor))
     }
 
-    const handleStatus = (id, status) => {
-        const data = { id, status }
-        dispatch(update(data))
-    }
+    
 
     const handleSearch = e => {
         setFormValues({ search: e.target.value })
@@ -52,15 +47,6 @@ export default function () {
                 <h1>Sponsors</h1>
                 <div className="other-actions">
                     <AppIcon to="create" icon="add" />
-                    <div className="search">
-                        <input type="text"
-                            className="form-control input-field"
-                            id="search"
-                            value={formValues.search}
-                            name="search"
-                            onChange={handleSearch}
-                        />
-                    </div>
                 </div>
             </div>
 
@@ -71,21 +57,19 @@ export default function () {
                         <table className="index-table">
                             <thead>
                                 <tr>
-                                    <th># <SortArrow onClick={handleSort} column="id" /></th>
                                     <th>Name <SortArrow onClick={handleSort} column="title" /></th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
+                                    items &&
                                     items.map((item) => (
-                                        <tr key={item.id}>
-                                            <td>{item.id}</td>
-                                            <td><Link to={`/admin/sponsors/${item.id}`}>{item.name}</Link></td>
+                                        <tr key={item._id}>
+                                            <td><Link to={`/admin/sponsors/${item._id}`}>{item.name}</Link></td>
                                             <td className='action'>
                                                 <AppIcon onClick={handleDelete} item={item} icon="trash" />
-                                                <AppIcon to={`/admin/sponsors/${item.id}`} icon="edit" />
-                                                <StatusIcon onClick={handleStatus} item={item} />
+                                                <AppIcon to={`/admin/sponsors/${item._id}`} icon="edit" />
                                             </td>
                                         </tr>
                                     ))
@@ -94,13 +78,7 @@ export default function () {
                         </table>
 
                     </div>
-                    <Pagination
-                        activePage={formValues.page}
-                        itemsCountPerPage={perPage}
-                        totalItemsCount={total}
-                        pageRangeDisplayed={5}
-                        onChange={handlePagination}
-                    />
+                    
                 </div>
             </div>
 

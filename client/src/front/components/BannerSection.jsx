@@ -52,7 +52,7 @@ export default function () {
                 {items && items.map((slideImage, index) => (
                     <div key={index}>
                         <div style={{ ...divStyle }}>
-                            <img src={`http://127.0.0.1:8800/uploads/${slideImage.image}`} />
+                            <img src={slideImage.image} />
                         </div>
                     </div>
                 ))}

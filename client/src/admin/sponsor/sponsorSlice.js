@@ -42,18 +42,32 @@ export const store = createAsyncThunk('sponsor/store', async (data) => {
     }
 })
 
-export const update = createAsyncThunk('sponsor/update', async (data) => {
-    try {
-        const response = await axios.put(`${config.api}/sponsors/${data.id}`, data, config.header())
-        return response.data
-    } catch (error) {
-        throw error.response.data.message
+export const update = createAsyncThunk('sponsor/update', async (formData) => {
+    if (typeof formData._id === 'undefined') {
+        // a file upload // use POST
+        const id = formData.get('_id')
+        try {
+            const response = await axios.put(`${config.api}/sponsors/${id}`, formData, config.formdataheader())
+            return response.data
+        } catch (error) {
+            throw error.response.data.message
+        }
+
+    } else {
+        // Normal data update using PUT
+        const id = formData._id
+        try {
+            const response = await axios.put(`${config.api}/sponsors/${id}`, formData, config.header())
+            return response.data
+        } catch (error) {
+            throw error.response.data.message
+        }
     }
 })
 
 export const destroy = createAsyncThunk('sponsor/destroy', async (data) => {
     try {
-        const response = await axios.delete(`${config.api}/sponsors/${data.id}`, config.header())
+        const response = await axios.delete(`${config.api}/sponsors/${data._id}`, config.header())
         return response.data
     } catch (error) {
         throw error.response.data.message
@@ -65,7 +79,7 @@ export const sponsorSlice = createSlice({
     initialState,
     reducers: {
         remove: (state, action) => {
-            state.items = state.items.filter(item => item.id !== action.payload.id)
+            state.items = state.items.filter(item => item._id !== action.payload._id)
         },
         reset: (state, action) => {
             state.error = ''
@@ -79,9 +93,7 @@ export const sponsorSlice = createSlice({
                 state.loading = true
             })
             .addCase(index.fulfilled, (state, action) => {
-                state.items = action.payload.data
-                state.perPage = action.payload.per_page
-                state.total = action.payload.total
+                state.items = action.payload
                 state.loading = false
             })
             .addCase(index.rejected, (state, action) => {
