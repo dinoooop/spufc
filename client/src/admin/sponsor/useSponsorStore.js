@@ -10,7 +10,6 @@ const useSponsorStore = create((set) => ({
     loading: false,
     success: '',
     error: '',
-
     index: async (data = {}) => {
         set({ loading: true });
         try {
@@ -18,11 +17,7 @@ const useSponsorStore = create((set) => ({
                 params: data,
                 headers: config.header().headers,
             });
-            const payload = response.data;
-            set({
-                items: payload.data,
-                loading: false,
-            });
+            set({ items: response.data, loading: false });
         } catch (error) {
             set({
                 loading: false,
@@ -67,7 +62,7 @@ const useSponsorStore = create((set) => ({
     update: async (data) => {
         set({ loading: true, success: '', error: '' });
         try {
-            const response = await axios.put(`${config.api}/sponsors/${data.id}`, data, config.header())
+            const response = await axios.put(`${config.api}/sponsors/${data._id}`, data, config.header())
             set({
                 loading: false,
                 item: response.data,
@@ -78,16 +73,15 @@ const useSponsorStore = create((set) => ({
                 error: error.response ? error.response.data.message : 'An error occurred',
                 success: '',
             });
+            throw error;
         }
     },
     destroy: async (data) => {
+        console.log('data');
+        console.log(data);
         set({ loading: true, success: '', error: '' });
         try {
-            const response = await axios.delete(`${config.api}/sponsors/${data.id}`, config.header())
-            set({
-                loading: false,
-                item: response.data,
-            });
+            const response = await axios.delete(`${config.api}/sponsors/${data._id}`, config.header())
         } catch (error) {
             set({
                 loading: false,
@@ -97,7 +91,7 @@ const useSponsorStore = create((set) => ({
         }
     },
     remove: (data) => set((state) => ({
-        items: state.items.filter(item => item.id !== data.id)
+        items: state.items.filter(item => item._id !== data._id)
     })),
     reset: () => set({
         error: '',

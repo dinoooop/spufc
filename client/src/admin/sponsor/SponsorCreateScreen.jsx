@@ -10,6 +10,7 @@ import { bc } from '../../helpers/bc'
 import { sv } from '../../helpers/sv'
 import { sponserStatus, sponserType } from '../../helpers/dummyData'
 import config from '../../config'
+import useSponsorStore from './useSponsorStore'
 
 
 export default function () {
@@ -34,10 +35,11 @@ export default function () {
         email: "test@hprigh22t.com",
         offers: "test offer"
     })
-    const { error } = useSelector(state => state.sponsor)
+
+    const store = useSponsorStore()
 
     useEffect(() => {
-        dispatch(reset())
+        store.reset()
         setFormValues(prev => ({ ...prev, logo_url: formValues.logo }))
         setFormValues(prev => ({ ...prev, photos_urls: formValues.photos }))
     }, [dispatch])
@@ -55,8 +57,8 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                const resultAction = await dispatch(store(newFormData))
-                unwrapResult(resultAction)
+                const resultAction = await store.store(newFormData)
+                // unwrapResult(resultAction)
                 navigate('/admin/sponsors')
             } catch (error) {
                 console.error(error)
@@ -76,6 +78,8 @@ export default function () {
             <div className="row">
                 <div className='cardbody col-lg-6'>
                     <form onSubmit={handleSubmit}>
+
+                        {store.error && <p className='red-alert'>{store.error}</p>}
 
                         <div className="form-group">
                             <label>Logo</label>
@@ -119,7 +123,7 @@ export default function () {
                             <div className="color-red">{errors?.photos}</div>
                         </div>
 
-                        {error && <p className='red-alert'>{error}</p>}
+
 
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
