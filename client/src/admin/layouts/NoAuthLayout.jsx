@@ -3,20 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { check, reset } from '../auth/authSlice';
 import { getStock } from '../general/generalSlice';
 import { useNavigate } from 'react-router-dom';
+import useAuthStore from '../auth/useAuthStore';
 
 // Authenticated user not allowed to visit this page
 export default function (props) {
 
-    const dispatch = useDispatch()
+
     const navigate = useNavigate()
-    const { user } = useSelector(state => state.auth)
+    const { user, reset } = useAuthStore()
 
     useEffect(() => {
-        dispatch(reset())
+        reset()
         if (user) {
             navigate('/admin/banners')
         }
-    }, [dispatch, user])
+    }, [user])
 
     return (
         <div>

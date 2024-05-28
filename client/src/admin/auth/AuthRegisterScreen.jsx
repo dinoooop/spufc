@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux"
-import BlankLayout from '../layouts/BlankLayout'
 import { vr } from '../../helpers/vr'
-import { unwrapResult } from '@reduxjs/toolkit'
-import { register, reset } from './authSlice'
 import { validateForm } from './authValidation'
 import NoAuthLayout from '../layouts/NoAuthLayout'
+import useAuthStore from './useAuthStore'
 
 export default function () {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
-    
 
     const [formValues, setFormValues] = useState({
         name: "John", email: "john@mail.com", password: "welcome", password_confirmation: "welcome"
     })
     const [errors, setErrors] = useState({})
-    const { user, error, loading } = useSelector(state => state.auth)
+    const { error, loading, register } = useAuthStore()
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)
@@ -33,10 +28,8 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                const resultAction = await dispatch(register(newFormData))
-                unwrapResult(resultAction)
-                const { user } = resultAction.payload
-                navigate('/verify/' + user.process_link)
+                const resultAction = await register(newFormData)
+                navigate('/admin/sponsors')
             } catch (error) {
                 console.error(error)
             }
@@ -102,11 +95,11 @@ export default function () {
                         />
                         <div className="color-red">{errors.password_confirmation}</div>
                     </div>
-                    
+
                     {
-                        loading 
-                        ? <div className='loader'></div> 
-                        : <button className="btnmid">SIGN UP</button>
+                        loading
+                            ? <div className='loader'></div>
+                            : <button className="btnmid">SIGN UP</button>
                     }
                 </form>
             </div>

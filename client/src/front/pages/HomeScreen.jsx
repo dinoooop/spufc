@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
-import { useSelector } from "react-redux";
 import { Link as ScrollLink, Element } from 'react-scroll';
 import { useEffect, useState } from "react";
 import EnquirySection from "../components/EnquirySection";
@@ -10,14 +9,13 @@ import SponserSection from "../components/SponserSection";
 import SocialSection from "../components/SocialSection";
 import AboutSection from "../components/AboutSection";
 import useSettingStore from "../../admin/setting/useSettingStore";
+import useAuthStore from "../../admin/auth/useAuthStore";
 
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { user } = useSelector(state => state.auth)
+    const { user } = useAuthStore()
 
-    const { show, item, store, error } = useSettingStore()
-
-    
+    const { show, item, store, error } = useSettingStore()    
     const year = new Date().getFullYear();
 
     useEffect(() => {
