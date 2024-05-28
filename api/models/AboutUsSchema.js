@@ -2,19 +2,19 @@
 const mongoose = require('mongoose');
 
 const AboutUsSchema = new mongoose.Schema({
-    facebookLink: {
+    facebook: {
     type: String,
     required: false
   },
-  instagramLink: {
+  instagram: {
     type: String,
     required: false
   },
-  mailId: {
+  email: {
     type: String,
     required: false
   },
-  phoneNumber: {
+  phone: {
     type: String,
     required: false      
   },
@@ -22,7 +22,7 @@ const AboutUsSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  heading: {
+  title: {
     type: String,
     required: false
   },

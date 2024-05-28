@@ -29,21 +29,21 @@ const addFileforAboutUS = upload.single('file');
 
 const upload_aboutpage = async (req, res) => {
     try {
-        const { facebookLink, instagramLink, mailId, phoneNumber, heading, description, address } = req.body;
-        const image = req.file ? process.env.UPLOADED_PATH + req.file.filename : null;
-
+        const { facebook, instagram, email, phone, title, description, address } = req.body;
+        const image = req.file ? process.env.uploaded_path + req.file.filename : null;
+        
         // Check if an AboutUs document already exists
         const existingAboutUs = await AboutUs.findOne();
         //console.log("existingAboutUs", existingAboutUs);
 
         if (existingAboutUs) {
             // Update only the provided fields
-            if (facebookLink !== undefined) existingAboutUs.facebookLink = facebookLink;
-            if (instagramLink !== undefined) existingAboutUs.instagramLink = instagramLink;
-            if (mailId !== undefined) existingAboutUs.mailId = mailId;
-            if (phoneNumber !== undefined) existingAboutUs.phoneNumber = phoneNumber;
+            if (facebook !== undefined) existingAboutUs.facebook = facebook;
+            if (instagram !== undefined) existingAboutUs.instagram = instagram;
+            if (email !== undefined) existingAboutUs.email = email;
+            if (phone !== undefined) existingAboutUs.phone = phone;
             if (image !== null) existingAboutUs.image = image;
-            if (heading !== undefined) existingAboutUs.heading = heading;
+            if (title !== undefined) existingAboutUs.title = title;
             if (description !== undefined) existingAboutUs.description = description;
             if (address !== undefined) existingAboutUs.address = address;
 
@@ -53,12 +53,12 @@ const upload_aboutpage = async (req, res) => {
 
         // Create a new document if none exists
         const newAboutUs = new AboutUs({
-            facebookLink,
-            instagramLink,
-            mailId,
-            phoneNumber,
+            facebook,
+            instagram,
+            email,
+            phone,
             image,
-            heading,
+            title,
             description,
             address
         });
