@@ -1,5 +1,3 @@
-
-
 const multer = require('multer');
 const path = require('path');
 const AboutUs = require('../../models/AboutUsSchema');
@@ -21,20 +19,39 @@ const storage = multer.diskStorage({
 });
 
 // Initialize upload
-const upload = multer({ storage: storage });
+const upload = multer({
+    storage: storage
+});
 
 const addFileforAboutUS = upload.single('file');
-
+// Email validation function
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
 
 
 const upload_aboutpage = async (req, res) => {
     try {
-        const { facebook, instagram, email, phone, title, description, address } = req.body;
+        const {
+            facebook,
+            instagram,
+            email,
+            phone,
+            title,
+            description,
+            address
+        } = req.body;
         const file = req.file ? process.env.uploaded_path + req.file.filename : null;
-        
-        // Check if an AboutUs document already exists
+
+        // Validate email
+        if (email && !isValidEmail(email)) {
+            return res.status(400).json({
+                msg: 'Invalid email address'
+            });
+        }
         const existingAboutUs = await AboutUs.findOne();
-        //console.log("existingAboutUs", existingAboutUs);
+
 
         if (existingAboutUs) {
             // Update only the provided fields
@@ -48,7 +65,9 @@ const upload_aboutpage = async (req, res) => {
             if (address !== undefined) existingAboutUs.address = address;
 
             const updatedAboutUs = await existingAboutUs.save();
-            return res.status(200).json(updatedAboutUs);
+            return res.status(200).json({
+                message: "Data updated Succesfully"
+            });
         }
 
         // Create a new document if none exists
@@ -64,11 +83,16 @@ const upload_aboutpage = async (req, res) => {
         });
 
         const aboutUs = await newAboutUs.save();
-        res.status(201).json(aboutUs);
+        res.status(201).json({
+            message: "Data created Succesfully"
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 };
 
-module.exports = { addFileforAboutUS, upload_aboutpage };
+module.exports = {
+    addFileforAboutUS,
+    upload_aboutpage
+};
