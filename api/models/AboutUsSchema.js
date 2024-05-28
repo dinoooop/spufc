@@ -18,7 +18,7 @@ const AboutUsSchema = new mongoose.Schema({
     type: String,
     required: false      
   },
-  image: {
+  file: {
     type: String,
     required: false
   },
@@ -35,16 +35,5 @@ const AboutUsSchema = new mongoose.Schema({
     required: false
   }
 });
-
-// Middleware to enforce single document rule
-// AboutUsSchema.pre('save', async function(next) {
-//     const docCount = await this.model('AboutUs').countDocuments();
-//     if (docCount > 0) {
-//       const err = new Error('There can only be one AboutUs document');
-//       next(err);
-//     } else {
-//       next();
-//     }
-//   });
 
 module.exports = mongoose.model('AboutUs', AboutUsSchema);

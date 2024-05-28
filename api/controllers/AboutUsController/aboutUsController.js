@@ -30,7 +30,7 @@ const addFileforAboutUS = upload.single('file');
 const upload_aboutpage = async (req, res) => {
     try {
         const { facebook, instagram, email, phone, title, description, address } = req.body;
-        const image = req.file ? process.env.uploaded_path + req.file.filename : null;
+        const file = req.file ? process.env.uploaded_path + req.file.filename : null;
         
         // Check if an AboutUs document already exists
         const existingAboutUs = await AboutUs.findOne();
@@ -42,7 +42,7 @@ const upload_aboutpage = async (req, res) => {
             if (instagram !== undefined) existingAboutUs.instagram = instagram;
             if (email !== undefined) existingAboutUs.email = email;
             if (phone !== undefined) existingAboutUs.phone = phone;
-            if (image !== null) existingAboutUs.image = image;
+            if (file !== null) existingAboutUs.file = file;
             if (title !== undefined) existingAboutUs.title = title;
             if (description !== undefined) existingAboutUs.description = description;
             if (address !== undefined) existingAboutUs.address = address;
@@ -57,7 +57,7 @@ const upload_aboutpage = async (req, res) => {
             instagram,
             email,
             phone,
-            image,
+            file: req.file ? process.env.uploaded_path + req.file.filename : null,
             title,
             description,
             address
