@@ -48,8 +48,8 @@ export const dummySettings = {
     instagram: "https://www.instagram.com/spufc/",
     email: 'juniors@southperthunitedfc.com.au',
     phone: "+61 456 899",
-    title: '<strong>SOUTH PERTH UNITED</strong> FOOTBALL CLUB',
+    title: 'SOUTH PERTH UNITED FOOTBALL CLUB',
     description: 'The South Perth United Football Club was formed in 1981 with an initial membership of just 20 members. From our humble beginnings, we have grown in line with the phenomenal growth in the popularity of the sport of soccer itself in Australia. In fact, the growth in the club’s player membership has even accelerated over the last five years, where membership approaches 250 including seniors and juniors.',
     image: '/images/sven-kucinic-Z0KjmjxUsKs-unsplash.jpg',
-    side: 'right',
+    // title: '<strong>SOUTH PERTH UNITED</strong> FOOTBALL CLUB',
 }

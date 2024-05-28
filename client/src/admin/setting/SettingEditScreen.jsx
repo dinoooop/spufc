@@ -12,12 +12,12 @@ export default function () {
     const navigate = useNavigate()
     const fileInputRef = useRef()
 
-    const { show, item, update, error } = useSettingStore()
+    const { show, item, store, error } = useSettingStore()
     const [formValues, setFormValues] = useState({})
     const [errors, setErrors] = useState({})
 
     useEffect(() => {
-        show()
+        // show()
     }, [])
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                const resultAction = await update(newFormData)
+                const resultAction = await store(newFormData)
             } catch (error) {
                 console.error(error)
             }
