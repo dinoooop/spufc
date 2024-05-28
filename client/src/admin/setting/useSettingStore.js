@@ -31,10 +31,10 @@ const useSettingStore = create((set) => ({
     store: async (data) => {
         set({ loading: true, success: '', error: '' });
         try {
-            const response = await axios.post(`${config.api}/settings`, data, config.header())
+            const response = await axios.post(`${config.api}/settings`, data, config.formdataheader())
             set({
                 loading: false,
-                item: response.data,
+                // item: response.data,
             });
         } catch (error) {
             set({

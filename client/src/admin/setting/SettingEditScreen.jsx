@@ -17,7 +17,7 @@ export default function () {
     const [errors, setErrors] = useState({})
 
     useEffect(() => {
-        // show()
+        show()
     }, [])
 
     useEffect(() => {
@@ -28,10 +28,9 @@ export default function () {
             phone: item.phone,
             title: item.title,
             description: item.description,
-            image: item.image,
-            side: item.side,
+            file: item.file
         })
-        setFormValues(prev => ({ ...prev, image_url: item.image }))
+        setFormValues(prev => ({ ...prev, file_url: item.file }))
     }, [item])
 
     const onChangeForm = (e) => {
@@ -70,20 +69,20 @@ export default function () {
 
                         <div className="form-group">
                             <label>Image</label>
-                            <label htmlFor="image"><i className="fas fa-file icon"></i></label>
+                            <label htmlFor="file"><i className="fas fa-file icon"></i></label>
 
                             <input
                                 type="file"
                                 ref={fileInputRef}
-                                id="image"
-                                name="image"
+                                id="file"
+                                name="file"
                                 onChange={onChangeForm}
                                 placeholder="test"
                             />
                             <div className="uploaded-images">
-                                {formValues.image_url && <img src={formValues.image_url} alt="image Preview" />}
+                                {formValues.file_url && <img src={formValues.file_url} alt="file Preview" />}
                             </div>
-                            <div className="color-red">{errors?.image}</div>
+                            <div className="color-red">{errors?.file}</div>
                         </div>
 
 
