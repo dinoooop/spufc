@@ -56,6 +56,35 @@ const useAuthStore = create((set) => ({
             throw error;
         }
     },
+    show: async () => {
+        set({ loading: true, success: '', error: '' });
+        try {
+            const response = await axios.get(`${config.api}/auth`, config.header())
+            set({ loading: false, user: response.data.user });
+        } catch (error) {
+            set({
+                loading: false,
+                error: error.response ? error.response.data.message : 'An error occurred',
+                success: '',
+            });
+            throw error;
+        }
+    },
+    update: async (data) => {
+        set({ loading: true, success: '', error: '' });
+        try {
+            const response = await axios.post(`${config.api}/auth`, data, config.header())
+            set({ loading: false, user: response.data.user });
+            localStorage.setItem('authUser', JSON.stringify(response.data.user))
+        } catch (error) {
+            set({
+                loading: false,
+                error: error.response ? error.response.data.message : 'An error occurred',
+                success: '',
+            });
+            throw error;
+        }
+    },
     reset: () => set({
         error: '',
         success: '',

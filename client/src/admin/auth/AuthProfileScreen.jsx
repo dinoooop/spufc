@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
@@ -7,8 +6,6 @@ import { validateForm } from './authValidation'
 import useAuthStore from './useAuthStore'
 
 export default function () {
-
-    const dispatch = useDispatch()
 
     const { user, error, success, reset, show, update } = useAuthStore()
     const [formValues, setFormValues] = useState(user)
@@ -28,7 +25,7 @@ export default function () {
         if (typeof newFormData.errors != 'undefined') {
             setErrors(newFormData.errors)
         } else {
-            dispatch(update(newFormData))
+            update(newFormData)
         }
     }
 
