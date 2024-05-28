@@ -5,7 +5,8 @@ const RegisterRouter = require('./routes/RegisterRouter');
 const UserRouter = require('./routes/userRouter');
 const ImageRouter = require('./routes/ImgDataRouter');
 const AuthRouter = require('./routes/AuthenticateUserRouter');
-const SponsorsRouter = require('./routes/sponsorRouter')
+const SponsorsRouter = require('./routes/sponsorRouter');
+const aboutUsRoutes = require('./routes/AboutUsRouter');
 const connectDb = require('./connect');
 
 connectDb();
@@ -30,7 +31,8 @@ app.use('/api',loginRouter);
 app.use('/api',RegisterRouter);
 app.use('/api/banners', ImageRouter);
 app.use('/api', AuthRouter);
-app.use('/api/sponsors',SponsorsRouter)
+app.use('/api/sponsors',SponsorsRouter);
+app.use('/api/settings',aboutUsRoutes);
 
 
 // Start the server

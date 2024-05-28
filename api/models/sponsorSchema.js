@@ -48,13 +48,8 @@ offers: {
     type: String,
     required: false
 },
-    
-    
-   
+ 
 });
-
-
-
 
 
 module.exports = mongoose.model('Sponsors', SponsorSchema);
