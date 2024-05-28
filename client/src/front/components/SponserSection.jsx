@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react"
 import { sponsersData } from "../../helpers/dummyData"
-import { index } from "../../admin/sponsor/sponsorSlice";
-import { useDispatch, useSelector } from "react-redux";
+import useSponsorStore from "../../admin/sponsor/useSponsorStore";
 
 export default function () {
 
     const [modal, setModal] = useState(null)
     const [showModal, setShowModal] = useState(false)
-    const dispatch = useDispatch()
-
-    const { items } = useSelector(state => state.sponsor)
-
+    const { items, index } = useSponsorStore()
     // const items = sponsersData;
-
-    useEffect(() => {
-        dispatch(index())
-    }, [dispatch])
+    useEffect(() => { index() }, [])
 
     const handleClick = (item) => {
         setShowModal(true)

@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import axios from 'axios';
 import config from '../../config';  // Assuming you have a config file for API endpoints and headers
 
-const useSponsorStore = create((set) => ({
+const useSettingStore = create((set) => ({
     items: [],
     item: {},
     perPage: 0,
@@ -13,7 +13,7 @@ const useSponsorStore = create((set) => ({
     index: async (data = {}) => {
         set({ loading: true });
         try {
-            const response = await axios.get(`${config.api}/sponsors`, {
+            const response = await axios.get(`${config.api}/settings`, {
                 params: data,
                 headers: config.header().headers,
             });
@@ -29,7 +29,7 @@ const useSponsorStore = create((set) => ({
     show: async (id) => {
         set({ loading: true, success: '', error: '' });
         try {
-            const response = await axios.get(`${config.api}/sponsors/${id}`, config.header());
+            const response = await axios.get(`${config.api}/settings/${id}`, config.header());
             set({
                 loading: false,
                 item: response.data,
@@ -45,7 +45,7 @@ const useSponsorStore = create((set) => ({
     store: async (data) => {
         set({ loading: true, success: '', error: '' });
         try {
-            const response = await axios.post(`${config.api}/sponsors`, data, config.header())
+            const response = await axios.post(`${config.api}/settings`, data, config.header())
             set({
                 loading: false,
                 item: response.data,
@@ -64,7 +64,7 @@ const useSponsorStore = create((set) => ({
 
         try {
             set({ loading: true, success: '', error: '' });
-            const response = await axios.put(`${config.api}/sponsors/${id}`, data, config.header())
+            const response = await axios.put(`${config.api}/settings/${id}`, data, config.header())
             set({ loading: false, item: response.data })
         } catch (error) {
             set({
@@ -81,7 +81,7 @@ const useSponsorStore = create((set) => ({
         console.log(data);
         set({ loading: true, success: '', error: '' });
         try {
-            const response = await axios.delete(`${config.api}/sponsors/${data._id}`, config.header())
+            const response = await axios.delete(`${config.api}/settings/${data._id}`, config.header())
         } catch (error) {
             set({
                 loading: false,
@@ -100,4 +100,4 @@ const useSponsorStore = create((set) => ({
     })
 }));
 
-export default useSponsorStore;
+export default useSettingStore;

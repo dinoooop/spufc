@@ -58,7 +58,7 @@ export class vr {
 			const file = files[0]
 			const error = validateForm(name, file)
 
-			if (name === 'logo') {
+			if (name === 'logo' || name === 'image') {
 				const fileUrl = URL.createObjectURL(file);
 
 				return {

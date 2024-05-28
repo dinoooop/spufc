@@ -7,6 +7,8 @@ import EnquirySection from "../components/EnquirySection";
 
 import BannerSection from "../components/BannerSection";
 import SponserSection from "../components/SponserSection";
+import SocialSection from "../components/SocialSection";
+import AboutSection from "../components/AboutSection";
 
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,11 +26,7 @@ export default function () {
         <HomeLayout>
             <section className="social-media">
                 <div className="wrapper">
-                    <ul>
-                        <li><Link to="https://www.facebook.com/southperthfc/" target="_blank"><i className="fa-brands fa-square-facebook"></i></Link></li>
-                        <li><Link to="https://www.instagram.com/spufc/" target="_blank"><i className="fa-brands fa-square-instagram"></i></Link></li>
-                        <li><Link to="mailto:juniors@southperthunitedfc.com.au"><i className="fa-solid fa-envelope"></i></Link></li>
-                    </ul>
+                    <SocialSection showPhone={true} />
                 </div>
             </section>
 
@@ -71,17 +69,7 @@ export default function () {
             </section>
 
             <Element name="about" className="part part-sky">
-                <div className="wrapper bridge">
-                    <div className="bridge-text">
-                        <h2 className="sub-heading"><strong>SOUTH PERTH UNITED</strong> FOOTBALL CLUB</h2>
-                        <p>The South Perth United Football Club was formed in 1981 with an initial membership of just 20 members. From our humble beginnings, we have grown in line with the phenomenal growth in the popularity of the sport of soccer itself in Australia. In fact, the growth in the club’s player membership has even accelerated over the last five years, where membership approaches 250 including seniors and juniors.</p>
-                        <Link className="fbtn" to="#">View More</Link>
-                    </div>
-
-                    <div className="bridge-image">
-                        <img src="/images/sven-kucinic-Z0KjmjxUsKs-unsplash.jpg" />
-                    </div>
-                </div>
+                <AboutSection />
             </Element>
 
             <Element name="sponsers" className="part part-white">
@@ -119,7 +107,7 @@ export default function () {
                 <EnquirySection />
             </Element>
 
-            <Element name="enquiry" className="part part-black">
+            <div className="part part-black">
                 <div className="wrapper footer">
                     <div className="pockets">
                         <div className="pocket">
@@ -155,15 +143,11 @@ export default function () {
                         </div>
                     </div>
                     <div className="footer-social">
-                        <ul>
-                            <li><Link to="https://www.facebook.com/southperthfc/" target="_blank"><i className="fa-brands fa-square-facebook"></i></Link></li>
-                            <li><Link to="https://www.instagram.com/spufc/" target="_blank"><i className="fa-brands fa-square-instagram"></i></Link></li>
-                            <li><Link to="mailto:juniors@southperthunitedfc.com.au"><i className="fa-solid fa-envelope"></i></Link></li>
-                        </ul>
+                        <SocialSection />
                     </div>
                     <p className="copyright">&copy; {year} South Perth United Football Club. All Rights Reserved. Powered By <Link target="_blank" to="https://www.hellopeople.com.au">Hello People</Link></p>
                 </div>
-            </Element>
+            </div>
         </HomeLayout>
     )
 }
