@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
+    --admin-color-1: #141B2D;
+    --admin-color-2: #1F2940;
+    --admin-color-3: #3f4e70;
+    --admin-color-4: #e2ecff;
+    --admin-vibrant: #00eeff;
+    
     --color-1: #37497B;
     --color-2: #6c96e6;
     --color-3: #89a8e2;
@@ -30,11 +36,11 @@ body {
     overflow-x: hidden;
     background-color: var(--white);
     font-family: 'Poppins';
-    color: var(--color-4);
+    color: var(--admin-color-4);
 }
 
 .back {
-    background-color: var(--color-1);
+    background-color: var(--admin-color-1);
     
 }
 
@@ -46,7 +52,7 @@ body {
     width: 100vw;
     min-height: 100vh;
     padding: 1rem;
-    background-color: var(--color-1);
+    background-color: var(--admin-color-1);
 }
 
 .container {
@@ -57,7 +63,7 @@ body {
 }
 
 aside {
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     height: 100vh;
     font-size: 0.7rem;
     overflow-y: auto;
@@ -73,7 +79,7 @@ aside {
     left: 0px;
     z-index: 2;
     width: 250px;
-    box-shadow: 0 0 2px var(--color-3);
+    box-shadow: 0 0 2px var(--admin-color-3);
 }
 
 main {
@@ -86,7 +92,7 @@ main {
 
 i {
     font-size: 1rem;
-    color: var(--color-4);
+    color: var(--admin-color-4);
 }
 
 h1 {
@@ -108,13 +114,11 @@ p {
 }
 
 a {
-    color: var(--vibrant);
+    color: var(--admin-vibrant);
+    font-weight: bolder;
     transition: all 200ms ease;
 }
-td a {
-    color: var(--color-1);
-    transition: all 200ms ease;
-}
+
 
 a:hover {
     color: var(--white);
@@ -132,9 +136,9 @@ li {
     padding: 0.5rem;
     position: sticky;
     top: 0;
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     z-index: 1;
-    box-shadow: 0 0 2rem var(--color-1);
+    box-shadow: 0 0 2rem var(--admin-color-1);
 }
 
 .content {
@@ -154,7 +158,7 @@ li {
     height: 2rem;
     border-radius: 50%;
     overflow: hidden;
-    background-color: var(--vibrant);
+    background-color: var(--admin-vibrant);
 }
 
 .dropdown-item {
@@ -162,13 +166,13 @@ li {
 }
 
 .dropdown {
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     border-radius: 0.2rem;
     position: absolute;
     top: 3rem;
     right: 0rem;
     min-width: 10rem;
-    box-shadow: 0 0 2px var(--color-3);
+    box-shadow: 0 0 2px var(--admin-color-3);
     z-index: 2;
 }
 
@@ -181,7 +185,7 @@ li {
 .dropdown-arrow {
     width: 1rem;
     height: 1rem;
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     transform: rotate(45deg);
     position: absolute;
     top: -0.4rem;
@@ -200,9 +204,9 @@ li {
 .link {
     display: block;
     padding: 1rem;
-    border-bottom: 1px solid var(--color-4);
+    border-bottom: 1px solid var(--admin-color-4);
     transition: all 200ms ease;
-    color: var(--vibrant);
+    color: var(--admin-vibrant);
     cursor: pointer;
 }
 
@@ -236,17 +240,17 @@ li {
     font-size: 0.7rem;
     font-weight: normal;
     font-weight: bolder;
-    color: var(--vibrant);
+    color: var(--admin-vibrant);
 }
 
 aside li a {
     padding: 0.8rem 1rem;
-    border-bottom: 1px solid var(--color-1);
+    border-bottom: 1px solid var(--admin-color-1);
     transition: all 200ms ease;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: var(--color-4);
+    color: var(--admin-color-4);
 }
 
 aside li i {
@@ -255,15 +259,15 @@ aside li i {
 }
 
 aside li:first-child {
-    border-top: 1px solid var(--color-1);
+    border-top: 1px solid var(--admin-color-1);
 }
 
 aside li.active a {
-    background-color: var(--color-1);
+    background-color: var(--admin-color-1);
 }
 
 aside .subnav {
-    background-color: var(--color-1);
+    background-color: var(--admin-color-1);
     padding-left: 1.5rem;
 }
 
@@ -276,8 +280,8 @@ aside .subnav i {
 }
 
 .btn {
-    background-color: var(--color-3);
-    color: var(--color-4);
+    background-color: var(--admin-color-3);
+    color: var(--admin-color-4);
     padding: 0.5rem 1.5rem;
     border-radius: 0.2rem;
     cursor: pointer;
@@ -288,7 +292,7 @@ aside .subnav i {
 
 .btn.btn-border {
     background-color: transparent;
-    border: 1px solid var(--color-4);
+    border: 1px solid var(--admin-color-4);
     width: 100%;
 }
 
@@ -297,13 +301,13 @@ aside .subnav i {
 }
 
 .btn:hover {
-    background-color: var(--vibrant);
+    background-color: var(--admin-vibrant);
     color: var(--black);
 }
 
 i.icon {
-    background-color: var(--color-4);
-    color: var(--color-1);
+    background-color: var(--admin-color-4);
+    color: var(--admin-color-1);
     padding: 0.5rem;
     border-radius: 0.2rem;
     cursor: pointer;
@@ -315,7 +319,7 @@ i.icon:hover {
 }
 
 i.icon.vibrant {
-    background-color: var(--vibrant);
+    background-color: var(--admin-vibrant);
 }
 
 .analytics-row {
@@ -328,7 +332,7 @@ i.icon.vibrant {
 .analytics {
     padding: 1rem;
     border-radius: 0.2rem;
-    border: 2px solid var(--color-1);
+    border: 2px solid var(--admin-color-1);
     display: flex;
     justify-content: space-between;
 }
@@ -359,11 +363,11 @@ i.icon.vibrant {
 }
 
 .index-table tbody tr {
-    border-bottom: 1px solid var(--color-1);
+    border-bottom: 1px solid var(--admin-color-1);
 }
 
 .index-table tbody tr:first-child {
-    border-top: 2px solid var(--color-1);
+    border-top: 2px solid var(--admin-color-1);
 }
 
 .index-table tbody tr:last-child {
@@ -470,7 +474,7 @@ i.icon.vibrant {
 }
 
 .cardbody {
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     padding: 1rem;
     overflow-x: scroll;
     border-radius: 0.5rem;
@@ -478,7 +482,7 @@ i.icon.vibrant {
 }
 
 .cardbody-50 {
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     padding: 1rem;
     margin-top: 1rem;
     width: 50%;
@@ -502,19 +506,19 @@ ul.pagination {
 
 .pagination li a {
     padding: 0.2rem 0.5rem;
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     cursor: pointer;
     transition: all 200ms ease;
     border-radius: 0.2rem;
-    border: 1px solid var(--color-1);
+    border: 1px solid var(--admin-color-1);
 }
 
 .pagination li a:hover {
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
 }
 
 .pagination li.active a {
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
 }
 
 .pagination .prev-next-disabled {
@@ -527,15 +531,15 @@ ul.pagination {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--color-1);
+    background: var(--admin-color-1);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-4);
+    background: var(--admin-color-4);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-4);
+    background: var(--admin-color-4);
 }
 
 .avatar {
@@ -553,19 +557,19 @@ ul.pagination {
 
 .selected-items .selected {
     padding: 1rem;
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
     margin-top: 0.5rem;
 }
 
 .option-items .checked {
     padding: 1rem;
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
     margin-top: 0.5rem;
 }
 
 .option-items>div {
     padding: 1rem;
-    background-color: var(--color-2);
+    background-color: var(--admin-color-2);
     margin-top: 0.5rem;
 }
 
@@ -576,7 +580,7 @@ ul.pagination {
     gap: 0.5rem;
     padding: 0.8rem;
     margin-top: 0.5rem;
-    border: 1px solid var(--color-3);
+    border: 1px solid var(--admin-color-3);
 }
 
 .assign-item-list .info {
@@ -593,7 +597,7 @@ ul.pagination {
 }
 
 .assign-item-list.checked {
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
 }
 
 .user-list-item {
@@ -618,11 +622,11 @@ ul.pagination {
 }
 
 .user-list-item.checked {
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
 }
 
 .user-list-item.selected {
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
 }
 
 .display-box {
@@ -672,7 +676,7 @@ ul.pagination {
     min-height: 100vh;
     min-width: 100vw;
     z-index: 1;
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
     text-align: center;
     vertical-align: middle;
     padding-top: 20%;
@@ -681,7 +685,7 @@ ul.pagination {
 .nav-list-input {
     padding: 1rem;
     margin-top: 0.5rem;
-    background-color: var(--color-3);
+    background-color: var(--admin-color-3);
     display: block;
 }
 
@@ -700,7 +704,7 @@ ul.pagination {
 
 .clickable {
     cursor: pointer;
-    color: var(--vibrant);
+    color: var(--admin-vibrant);
     transition: all 200ms ease;
 }
 
@@ -710,7 +714,7 @@ ul.pagination {
 
 .clickabletxt {
     cursor: pointer;
-    color: var(--vibrant);
+    color: var(--admin-vibrant);
     transition: all 200ms ease;
     text-decoration: underline;
 }
@@ -782,9 +786,9 @@ p.green-alert {
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     width: 100%;
-    background-color: var(--color-1);
-    border: 1px solid var(--color-2);
-    color: var(--color-4);
+    background-color: var(--admin-color-1);
+    border: 1px solid var(--admin-color-2);
+    color: var(--admin-color-4);
 }
 
 .input-field:disabled {
@@ -797,9 +801,9 @@ p.green-alert {
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     width: 100%;
-    background-color: var(--color-1);
+    background-color: var(--admin-color-1);
     border: 0;
-    color: var(--color-4);
+    color: var(--admin-color-4);
 }
 
 .display-uploaded-img {
@@ -807,8 +811,8 @@ p.green-alert {
 }
 
 /* input[type="file"]::file-selector-button {
-    background-color: var(--color-3);
-    color: var(--color-4);
+    background-color: var(--admin-color-3);
+    color: var(--admin-color-4);
     padding: 0.5rem 1.5rem;
     border-radius: 0.2rem;
     cursor: pointer;
@@ -828,7 +832,7 @@ input[type="file"] {
 }
 
 input[type="file"]::file-selector-button:hover {
-    background-color: var(--color-4);
+    background-color: var(--admin-color-4);
 }
 
 input[type='text'] {
@@ -841,7 +845,7 @@ input[type='text'] {
 }
 
 .search input {
-    border: 1px solid var(--color-4);
+    border: 1px solid var(--admin-color-4);
 }
 
 .checkbox-control {
@@ -857,7 +861,7 @@ input[type="checkbox"] {
     margin: 0;
     width: 1.15em;
     height: 1.15em;
-    border: 0.15em solid var(--color-4);
+    border: 0.15em solid var(--admin-color-4);
     border-radius: 0.15em;
     transform: translateY(-0.075em);
     display: grid;
@@ -873,7 +877,7 @@ input[type="checkbox"]::before {
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
     /* Windows High Contrast Mode */
-    background-color: var(--color-4);
+    background-color: var(--admin-color-4);
 }
 
 input[type="checkbox"]:checked::before {
@@ -893,7 +897,7 @@ input[type="radio"] {
     margin: 0;
     width: 1.15em;
     height: 1.15em;
-    border: 0.15em solid var(--color-4);
+    border: 0.15em solid var(--admin-color-4);
     border-radius: 50%;
     transform: translateY(-0.075em);
     display: grid;
@@ -909,7 +913,7 @@ input[type="radio"]::before {
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
     /* Windows High Contrast Mode */
-    background-color: var(--color-4);
+    background-color: var(--admin-color-4);
 }
 
 input[type="radio"]:checked::before {
@@ -922,9 +926,9 @@ input[type='date'] {
     margin-top: 1rem;
     padding: 0.5rem;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--color-1);
-    border: 1px solid var(--color-4);
-    color: var(--color-4);
+    background-color: var(--admin-color-1);
+    border: 1px solid var(--admin-color-4);
+    color: var(--admin-color-4);
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -939,9 +943,9 @@ textarea {
     width: 100%;
     height: 8rem;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--color-1);
+    background-color: var(--admin-color-1);
     border: 0;
-    color: var(--color-4);
+    color: var(--admin-color-4);
 }
 
 select {
@@ -958,8 +962,8 @@ input[type="button"] {
 }
 
 select {
-    background-color: var(--color-1);
-    color: var(--color-4);
+    background-color: var(--admin-color-1);
+    color: var(--admin-color-4);
 }
 
 .select-auto {
@@ -985,14 +989,14 @@ select {
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     width: 100%;
-    background-color: var(--color-1);
+    background-color: var(--admin-color-1);
     border: 0;
-    color: var(--color-4);
+    color: var(--admin-color-4);
 }
 
 .react-autosuggest__suggestions-list {
-    border: 1px solid var(--color-4);
-    background-color: var(--color-3);
+    border: 1px solid var(--admin-color-4);
+    background-color: var(--admin-color-3);
 }
 
 .react-autosuggest__suggestion {
@@ -1000,8 +1004,8 @@ select {
 }
 
 .react-autosuggest__suggestion--highlighted {
-    background-color: var(--color-4);
-    color: var(--color-1);
+    background-color: var(--admin-color-4);
+    color: var(--admin-color-1);
 }
 
 .field-description {
@@ -1092,8 +1096,8 @@ i.help {
 }
 
 .btnmid {
-    background-color: var(--color-3);
-    color: var(--color-4);
+    background-color: var(--admin-color-3);
+    color: var(--admin-color-4);
     padding: 0.5rem 1.5rem;
     border-radius: 0.2rem;
     cursor: pointer;
@@ -1104,12 +1108,12 @@ i.help {
 }
 
 .btnmid:hover {
-    background-color: var(--vibrant);
+    background-color: var(--admin-vibrant);
     color: var(--black);
 }
 
 .btnreg {
-    color: var(--vibrant);
+    color: var(--admin-vibrant);
     text-decoration: underline;   
     cursor: pointer;
 }
@@ -1119,7 +1123,7 @@ i.help {
     margin: 0 auto ;
     width: 45px;
     aspect-ratio: .75;
-    --c: no-repeat linear-gradient(var(--vibrant) 0 0);
+    --c: no-repeat linear-gradient(var(--admin-vibrant) 0 0);
     background:
         var(--c) 0% 50%,
         var(--c) 50% 50%,

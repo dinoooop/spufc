@@ -1,33 +1,26 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { show, update } from './sponsorSlice';
 import { validateForm } from './sponsorValidation';
 import { vr } from '../../helpers/vr';
 import ProtectedLayout from '../layouts/ProtectedLayout';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { bc } from '../../helpers/bc';
-import { sv } from '../../helpers/sv';
-import config from '../../config';
 import { useRef } from 'react';
-import { sponserStatus, sponserType } from '../../helpers/dummyData';
+import useSponsorStore from './useSponsorStore';
+import processData from '../../helpers/processData';
 
 export default function () {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const fileInputRef = useRef()
     const params = useParams()
 
-
-    const { item, error } = useSelector(state => state.sponsor)
+    const { show, item, update, error } = useSponsorStore()
     const [formValues, setFormValues] = useState({})
     const [errors, setErrors] = useState({})
 
     useEffect(() => {
-        dispatch(show(params.id))
-        
-    }, [dispatch, params.id])
+        show(params.id)
+    }, [params.id])
 
     useEffect(() => {
         setFormValues({
@@ -44,7 +37,7 @@ export default function () {
             email: item.email,
             offers: item.offers,
         })
-        setFormValues(prev => ({ ...prev, logo_url:  item.logo, photos_urls: item.photos}))
+        setFormValues(prev => ({ ...prev, logo_url: item.logo, photos_urls: item.photos }))
     }, [item])
 
     const onChangeForm = (e) => {
@@ -60,7 +53,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                const resultAction = await dispatch(update(newFormData))
+                const resultAction = await update(newFormData)
                 unwrapResult(resultAction)
                 navigate('/admin/sponsors')
             } catch (error) {
@@ -154,7 +147,7 @@ export default function () {
                         <div className="form-group">
                             <label htmlFor="type">Type</label>
                             {
-                                sponserType.map(mapitem => (
+                                processData.sponsorTypes.map(mapitem => (
                                     <label className='radio-control' key={mapitem.key}>
                                         <input type="radio"
                                             value={mapitem.key}
@@ -180,7 +173,7 @@ export default function () {
                             <div className="color-red">{errors.website}</div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="phone">phone</label>
+                            <label htmlFor="phone">Phone</label>
                             <input type="text"
                                 className="form-control input-field"
                                 id="phone"
@@ -191,7 +184,7 @@ export default function () {
                             <div className="color-red">{errors.phone}</div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="offers">offers</label>
+                            <label htmlFor="offers">Offers</label>
                             <input type="text"
                                 className="form-control input-field"
                                 id="offers"
@@ -202,7 +195,7 @@ export default function () {
                             <div className="color-red">{errors.offers}</div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="address">address</label>
+                            <label htmlFor="address">Address</label>
                             <input type="text"
                                 className="form-control input-field"
                                 id="address"
@@ -213,7 +206,7 @@ export default function () {
                             <div className="color-red">{errors.address}</div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="email">email</label>
+                            <label htmlFor="email">Email</label>
                             <input type="text"
                                 className="form-control input-field"
                                 id="email"
@@ -227,7 +220,7 @@ export default function () {
                         <div className="form-group">
                             <label htmlFor="status">Display</label>
                             {
-                                sponserStatus.map(mapitem => (
+                                processData.sponsorStatus.map(mapitem => (
                                     <label className='radio-control' key={mapitem.key}>
                                         <input type="radio"
                                             value={mapitem.key}

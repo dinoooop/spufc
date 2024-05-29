@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
+    "dompurify": "^3.1.4",
     "downloadjs": "^1.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -18,7 +19,8 @@
     "react-scroll": "^1.9.0",
     "react-slideshow-image": "^4.3.1",
     "sass": "^1.77.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.5.2"
   },
   "scripts": {
     "start": "react-scripts start",

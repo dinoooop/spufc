@@ -1,44 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
 import AppIcon from '../components/AppIcon'
-import { destroy, index, remove, update } from './sponsorSlice'
 import { useEffect, useState } from 'react'
 import SortArrow from '../components/SortArrow'
 import Pagination from "react-js-pagination"
 import { Link } from 'react-router-dom'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import StatusIcon from '../components/StatusIcon'
+import useSponsorStore from './useSponsorStore'
 
 export default function () {
 
-    const dispatch = useDispatch()
-    const { items } = useSelector(state => state.sponsor)
-    const [formValues, setFormValues] = useState({})
-
-    
+    const store = useSponsorStore()
 
     useEffect(() => {
-        
-        dispatch(index())
-
-    }, [dispatch, formValues])
+        store.index()
+    }, [])
 
     const handleDelete = (sponsor) => {
-        dispatch(remove(sponsor))
-        dispatch(destroy(sponsor))
-    }
-
-    
-
-    const handleSearch = e => {
-        setFormValues({ search: e.target.value })
-    }
-
-    const handleSort = (order, name) => {
-        setFormValues(prev => ({ ...prev, so: order, sb: name }))
-    }
-
-    const handlePagination = number => {
-        setFormValues(prev => ({ ...prev, page: number }))
+        store.remove(sponsor)
+        store.destroy(sponsor)
     }
 
     return (
@@ -57,14 +36,14 @@ export default function () {
                         <table className="index-table">
                             <thead>
                                 <tr>
-                                    <th>Name <SortArrow onClick={handleSort} column="title" /></th>
+                                    <th>Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    items &&
-                                    items.map((item) => (
+
+                                    store.items.map((item) => (
                                         <tr key={item._id}>
                                             <td><Link to={`/admin/sponsors/${item._id}`}>{item.name}</Link></td>
                                             <td className='action'>
@@ -78,7 +57,7 @@ export default function () {
                         </table>
 
                     </div>
-                    
+
                 </div>
             </div>
 

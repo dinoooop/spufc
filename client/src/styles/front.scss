@@ -24,6 +24,13 @@
 
     }
 
+    a {
+        color: var(--black);
+        &:hover{
+            color: var(--vibrant);
+        }
+    }
+
     .sub-heading {
         font-size: 5rem;
         line-height: 5rem;
@@ -64,6 +71,7 @@
 
     .social-media {
         background-color: var(--color-1);
+        padding: 0.3rem 0;
 
         ul {
             display: flex;
@@ -73,13 +81,16 @@
 
             li {
 
+                color: var(--white);
                 a {
                     color: var(--color-3);
-                    font-size: 1.5rem;
-
                     :hover {
                         color: var(--white);
                     }
+                }
+
+                i {
+                    font-size: 1rem;
                 }
             }
 
@@ -176,7 +187,7 @@
         gap: 1rem;
 
         .badge-image {
-            
+
 
             img {
                 border: 0.5rem solid var(--color-3);
@@ -281,6 +292,8 @@
         justify-content: space-evenly;
     }
 
+
+
     .footer {
 
         color: var(--grey);
@@ -310,6 +323,11 @@
         text-align: center;
     }
 
-
+    .banner-container {
+        display:flex; 
+        align-items:center; 
+        justify-content:center;
+        width: 100%;
+    }
 
 }

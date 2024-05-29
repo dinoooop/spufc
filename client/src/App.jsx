@@ -1,10 +1,10 @@
-import "./styles/grid.css";
-import "./styles/responsive.css";
 import "./styles/admin.css";
+import "./styles/admin-responsive.css";
 import "./styles/front.scss";
+import "./styles/front-responsive.scss";
 import "./styles/navigation.scss";
 import "./styles/modal.scss";
-import "./styles/front-responsive.scss";
+import "./styles/grid.css";
 import "./styles/mp.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomeScreen from "./front/pages/HomeScreen";
@@ -33,6 +33,7 @@ import BannerEditScreen from "./admin/banner/BannerEditScreen";
 import SponsorIndexScreen from "./admin/sponsor/SponsorIndexScreen";
 import SponsorCreateScreen from "./admin/sponsor/SponsorCreateScreen";
 import SponsorEditScreen from "./admin/sponsor/SponsorEditScreen";
+import SettingEditScreen from "./admin/setting/SettingEditScreen";
 
 function App() {
   return (
@@ -60,6 +61,8 @@ function App() {
           <Route path='/admin/sponsors' element={<SponsorIndexScreen />} />
           <Route path='/admin/sponsors/create' element={<SponsorCreateScreen />} />
           <Route path='/admin/sponsors/:id' element={<SponsorEditScreen />} />
+
+          <Route path='/admin/settings' element={<SettingEditScreen />} />
 
         </Routes>
       </Router>

@@ -1,23 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { validateForm } from './sponsorValidation'
 import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
-import { unwrapResult } from '@reduxjs/toolkit'
-import { reset, store } from './sponsorSlice'
-import { bc } from '../../helpers/bc'
-import { sv } from '../../helpers/sv'
-import { sponserStatus, sponserType } from '../../helpers/dummyData'
-import config from '../../config'
-
+import useSponsorStore from './useSponsorStore'
+import processData from '../../helpers/processData'
 
 export default function () {
-
-    const dispatch = useDispatch()
+    
     const navigate = useNavigate()
     const fileInputRef = useRef(null)
-
+    
+    const store = useSponsorStore()
     const [errors, setErrors] = useState({})
     const [formValues, setFormValues] = useState({
         name: "Beaufort 2",
@@ -34,13 +28,12 @@ export default function () {
         email: "test@hprigh22t.com",
         offers: "test offer"
     })
-    const { error } = useSelector(state => state.sponsor)
 
     useEffect(() => {
-        dispatch(reset())
+        store.reset()
         setFormValues(prev => ({ ...prev, logo_url: formValues.logo }))
         setFormValues(prev => ({ ...prev, photos_urls: formValues.photos }))
-    }, [dispatch])
+    }, [])
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)
@@ -55,8 +48,8 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                const resultAction = await dispatch(store(newFormData))
-                unwrapResult(resultAction)
+                const resultAction = await store.store(newFormData)
+                // unwrapResult(resultAction)
                 navigate('/admin/sponsors')
             } catch (error) {
                 console.error(error)
@@ -76,6 +69,8 @@ export default function () {
             <div className="row">
                 <div className='cardbody col-lg-6'>
                     <form onSubmit={handleSubmit}>
+
+                        {store.error && <p className='red-alert'>{store.error}</p>}
 
                         <div className="form-group">
                             <label>Logo</label>
@@ -119,7 +114,7 @@ export default function () {
                             <div className="color-red">{errors?.photos}</div>
                         </div>
 
-                        {error && <p className='red-alert'>{error}</p>}
+
 
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
@@ -148,7 +143,7 @@ export default function () {
                         <div className="form-group">
                             <label htmlFor="type">Type</label>
                             {
-                                sponserType.map(mapitem => (
+                                processData.sponsorTypes.map(mapitem => (
                                     <label className='radio-control' key={mapitem.key}>
                                         <input type="radio"
                                             value={mapitem.key}
@@ -221,7 +216,7 @@ export default function () {
                         <div className="form-group">
                             <label htmlFor="status">Display</label>
                             {
-                                sponserStatus.map(mapitem => (
+                                processData.sponsorStatus.map(mapitem => (
                                     <label className='radio-control' key={mapitem.key}>
                                         <input type="radio"
                                             value={mapitem.key}
