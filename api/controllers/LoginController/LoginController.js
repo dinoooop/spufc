@@ -13,7 +13,7 @@ const User = require('../../models/userSchema');
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
         
-        if(!isPasswordValid) return res.status.json({ message: 'invalid credentials'});
+        if(!isPasswordValid) return res.json({ message: 'invalid credentials'});
       
         const token = jwt.sign({userId: user._id}, 'secretkey') ; 
       

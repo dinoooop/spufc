@@ -1,9 +1,7 @@
 const multer = require('multer');
 const path = require('path');
-const Sponsor = require('../../models/sponsorSchema');
+const Events = require('../../models/eventsSchema');
 require('dotenv').config();
-
-
 
 function generateRandomNumber() {
     return Math.floor(Math.random() * 1000000000);
@@ -37,17 +35,20 @@ const cpUpload = upload.fields([{
     maxCount: 8
 }]);
 
-const uploadSponsors = async (req, res) => {
+const uploadEvents = async (req, res) => {
     const {
         name,
         description,
+        start_at,
         type,
         website,
         phone,
-        status,
-        address,
         email,
-        offers
+        address,
+        longitude, 
+        latitude,
+        offers,
+        payment_link
     } = req.body;
 
     // 
@@ -65,12 +66,7 @@ const uploadSponsors = async (req, res) => {
         });
     }
 
-    // Check if email is present in the payload
-    if (!email) {
-        return res.status(400).json({
-            message: 'Email is required'
-        });
-    }
+   
 
     // Check if name is present in the payload
     if (!name) {
@@ -85,22 +81,25 @@ const uploadSponsors = async (req, res) => {
 
 
     try {
-        const newSponsor = new Sponsor({
+        const newEvents = new Events({
             name,
             description,
+            start_at,
             logo: newLogo,
             photos,
             type,
             website,
             phone,
-            status,
-            address,
             email,
-            offers
+            address,
+            longitude, 
+            latitude,
+            offers,
+            payment_link
         });
 
-        const savedSponsor = await newSponsor.save();
-        res.status(201).json(savedSponsor);
+        const savedEvents = await newEvents.save();
+        res.status(201).json(savedEvents);
     } catch (error) {
         res.status(400).json({
             message: error.message
@@ -114,5 +113,11 @@ const uploadSponsors = async (req, res) => {
 
 module.exports = {
     cpUpload,
-    uploadSponsors
-}
+    uploadEvents
+};
+
+
+// map : {
+//     type: 'Point',
+//     coordinates: [longitude, latitude]
+// },

@@ -1,4 +1,4 @@
-const AboutUs = require('../../models/AboutUsSchema');
+const AboutUs = require('../../models/AboutUsPage/AboutUsSchema');
 
 const get_All_AboutUs =  async (req, res) => {
     try {
