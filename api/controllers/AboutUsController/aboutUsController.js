@@ -1,6 +1,6 @@
 const multer = require('multer');
 const path = require('path');
-const AboutUs = require('../../models/AboutUsSchema');
+const AboutUs = require('../../models/AboutUsPage/AboutUsSchema');
 require('dotenv').config();
 
 function generateRandomNumber() {
@@ -17,20 +17,16 @@ const storage = multer.diskStorage({
         cb(null, uniqueSuffix + '-' + file.originalname);
     }
 });
-
 // Initialize upload
 const upload = multer({
     storage: storage
 });
-
 const addFileforAboutUS = upload.single('file');
 // Email validation function
 function isValidEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
-}
-
-
+};
 const upload_aboutpage = async (req, res) => {
     try {
         const {
@@ -39,6 +35,7 @@ const upload_aboutpage = async (req, res) => {
             email,
             phone,
             title,
+            more,
             description,
             address
         } = req.body;
@@ -61,6 +58,7 @@ const upload_aboutpage = async (req, res) => {
             if (phone !== undefined) existingAboutUs.phone = phone;
             if (file !== null) existingAboutUs.file = file;
             if (title !== undefined) existingAboutUs.title = title;
+            if (more !== undefined) existingAboutUs.more = more;
             if (description !== undefined) existingAboutUs.description = description;
             if (address !== undefined) existingAboutUs.address = address;
 
@@ -78,6 +76,7 @@ const upload_aboutpage = async (req, res) => {
             phone,
             file: req.file ? process.env.uploaded_path + req.file.filename : null,
             title,
+            more,
             description,
             address
         });

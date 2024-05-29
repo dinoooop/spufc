@@ -1,4 +1,4 @@
-const Sponsor = require('../../models/sponsorSchema');
+const Events = require('../../models/eventsSchema');
 const mongoose = require('mongoose');
 
 const validateObjectId = (req, res, next) => {
@@ -17,15 +17,16 @@ const validateObjectId = (req, res, next) => {
     next();
 };
 
-const get_single_sponsor =  async (req, res) => {
+const get_single_event =  async (req, res) => {
+    console.log("id",req.params.id);
     try {
-        const sponsor = await Sponsor.findById(req.params.id);
-        if (!sponsor) {
-            return res.status(404).json({ message: 'sponsor not found' });
+        const event = await Events.findById(req.params.id);
+        if (!event) {
+            return res.status(404).json({ message: 'event not found' });
         }
-        res.status(200).json(sponsor);
+        res.status(200).json(event);
     } catch (err) {
         res.status(500).json({ message: 'Server error' });
     }
 }
-module.exports = { get_single_sponsor,validateObjectId };
+module.exports = { get_single_event,validateObjectId };
