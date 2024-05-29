@@ -1,0 +1,7 @@
+import SponsorIndexScreen from "./admin/sponsor/SponsorIndexScreen";
+import SponsorCreateScreen from "./admin/sponsor/SponsorCreateScreen";
+import SponsorEditScreen from "./admin/sponsor/SponsorEditScreen";
+
+<Route path='/admin/sponsors' element={<SponsorIndexScreen />} />
+<Route path='/admin/sponsors/create' element={<SponsorCreateScreen />} />
+<Route path='/admin/sponsors/:id' element={<SponsorEditScreen />} />

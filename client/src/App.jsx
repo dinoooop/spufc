@@ -34,6 +34,9 @@ import SponsorIndexScreen from "./admin/sponsor/SponsorIndexScreen";
 import SponsorCreateScreen from "./admin/sponsor/SponsorCreateScreen";
 import SponsorEditScreen from "./admin/sponsor/SponsorEditScreen";
 import SettingEditScreen from "./admin/setting/SettingEditScreen";
+import EventIndexScreen from "./admin/event/EventIndexScreen";
+import EventCreateScreen from "./admin/event/EventCreateScreen";
+import EventEditScreen from "./admin/event/EventEditScreen";
 
 function App() {
   return (
@@ -63,6 +66,10 @@ function App() {
           <Route path='/admin/sponsors/:id' element={<SponsorEditScreen />} />
 
           <Route path='/admin/settings' element={<SettingEditScreen />} />
+
+          <Route path='/admin/events' element={<EventIndexScreen />} />
+          <Route path='/admin/events/create' element={<EventCreateScreen />} />
+          <Route path='/admin/events/:id' element={<EventEditScreen />} />
 
         </Routes>
       </Router>

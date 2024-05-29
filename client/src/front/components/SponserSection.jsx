@@ -45,6 +45,7 @@ export default function () {
                 showModal &&
                 <div className="modal">
 
+                    <div className="modal-close-screen" onClick={() => setShowModal(false)}></div>
                     <div className="modal-content scroll">
                         <div className="modal-header">
                             <h2>{modal.name}</h2>

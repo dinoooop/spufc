@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 import { vr } from "../../helpers/vr";
 import { enquiryValidation } from "../validations/homeValidation";
-import { contact } from "../slices/homeSlice";
-import { unwrapResult } from "@reduxjs/toolkit";
+import useGeneralStore from "../pages/useGeneralStore";
 
 export default function () {
 
-    const dispatch = useDispatch()
+    
 
     const [errors, setErrors] = useState({})
     const [showModal, setShowModal] = useState(false)
@@ -19,10 +16,9 @@ export default function () {
         enquiries: "Hello",
     })
 
-    const {error} = useSelector(state => state.home)
+    const {error, success, contact} = useGeneralStore()
 
-
-    useEffect(() => { }, [dispatch])
+    useEffect(() => { }, [])
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, enquiryValidation, formValues)
@@ -37,8 +33,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                // const resultAction = await dispatch(contact(newFormData))
-                // unwrapResult(resultAction)
+                // const resultAction = await contact(newFormData)
                 setShowModal(false)
             } catch (error) {
                 console.error(error)

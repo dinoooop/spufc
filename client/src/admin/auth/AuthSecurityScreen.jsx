@@ -1,24 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
-import { reset, security } from './authSlice'
 import { validateForm } from './authValidation'
+import useAuthStore from './useAuthStore'
 
 export default function () {
 
-    const dispatch = useDispatch()
-    
-
     const fields = { old_password: '', password: '', password_confirmation: '' }
-    const { success, error } = useSelector(state => state.auth)
+    const { success, error, reset, security } = useAuthStore()
     const [formValues, setFormValues] = useState(fields)
     const [errors, setErrors] = useState({})
 
-    useEffect(() => {
-        dispatch(reset())
-    }, [dispatch]);
+    useEffect(() => { reset() }, [])
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)
@@ -33,7 +27,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             setFormValues(fields)
-            dispatch(security(newFormData))
+            security(newFormData)
         }
     }
 

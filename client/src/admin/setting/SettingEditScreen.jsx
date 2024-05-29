@@ -6,7 +6,7 @@ import ProtectedLayout from '../layouts/ProtectedLayout';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useRef } from 'react';
 import useSettingStore from './useSettingStore';
-
+import Editor from 'react-simple-wysiwyg';
 export default function () {
 
     const navigate = useNavigate()
@@ -28,6 +28,7 @@ export default function () {
             phone: item.phone,
             title: item.title,
             description: item.description,
+            more: item.more,
             file: item.file
         })
         setFormValues(prev => ({ ...prev, file_url: item.file }))
@@ -99,7 +100,7 @@ export default function () {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="description">Description</label>
+                            <label htmlFor="description">Short Description</label>
                             <textarea
                                 className="form-control input-field"
                                 id="description"
@@ -108,6 +109,12 @@ export default function () {
                                 onChange={onChangeForm}
                             />
                             <div className="color-red">{errors.description}</div>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="more">Detailed Description</label>
+                            <Editor value={formValues.more} name="more" onChange={onChangeForm} />
+                            <div className="color-red">{errors.more}</div>
                         </div>
 
                         <div className="form-group">

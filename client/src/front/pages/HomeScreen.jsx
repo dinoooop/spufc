@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
-import { useSelector } from "react-redux";
 import { Link as ScrollLink, Element } from 'react-scroll';
 import { useEffect, useState } from "react";
 import EnquirySection from "../components/EnquirySection";
@@ -10,14 +9,14 @@ import SponserSection from "../components/SponserSection";
 import SocialSection from "../components/SocialSection";
 import AboutSection from "../components/AboutSection";
 import useSettingStore from "../../admin/setting/useSettingStore";
+import useAuthStore from "../../admin/auth/useAuthStore";
+import EventSection from "../components/EventSection";
 
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { user } = useSelector(state => state.auth)
+    const { user } = useAuthStore()
 
-    const { show, item, store, error } = useSettingStore()
-
-    
+    const { show, item, store, error } = useSettingStore()    
     const year = new Date().getFullYear();
 
     useEffect(() => {
@@ -27,8 +26,6 @@ export default function () {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-
 
     return (
         <HomeLayout>
@@ -97,18 +94,7 @@ export default function () {
             </Element>
 
             <Element name="events" className="part part-white">
-                <div className="wrapper gallery">
-                    <h2 className="sub-heading">EVENTS</h2>
-                    <div className="gallery-images">
-                        <div className="gallery-image"><img src="/images/gallery/257452641_3161556570731867_2662264097425203818_n.jpg" /></div>
-                        <div className="gallery-image"><img src="/images/gallery/257420091_3161553517398839_553132077215824615_n.jpg" /></div>
-                        <div className="gallery-image"><img src="/images/gallery/257368378_3161556647398526_1757375925250370273_n.jpg" /></div>
-                        <div className="gallery-image"><img src="/images/gallery/245093245_3134035143484010_5080014933652872975_n.jpg" /></div>
-                        <div className="gallery-image"><img src="/images/gallery/244724497_3134034420150749_878775198806294466_n-1.jpg" /></div>
-                        <div className="gallery-image"><img src="/images/gallery/244660721_3134035120150679_6969282931110061514_n.jpg" /></div>
-                    </div>
-                    <Link className="fbtn fbtn-big" to="#">BOOK NOW</Link>
-                </div>
+                <EventSection />
             </Element>
 
             <Element name="enquiry" className="part part-sky">

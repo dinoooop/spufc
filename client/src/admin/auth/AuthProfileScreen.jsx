@@ -1,23 +1,20 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
-import { reset, show, update } from './authSlice'
 import { validateForm } from './authValidation'
+import useAuthStore from './useAuthStore'
 
 export default function () {
 
-    const dispatch = useDispatch()
-    
-    const { user, error, success } = useSelector(state => state.auth)
+    const { user, error, success, reset, show, update } = useAuthStore()
     const [formValues, setFormValues] = useState(user)
     const [errors, setErrors] = useState({})
 
-    useEffect(() => {
-        dispatch(reset())
-        dispatch(show())
-    }, [dispatch]);
+    useEffect(() => { 
+        reset(); 
+        // show(); 
+    }, []);
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)
@@ -27,13 +24,11 @@ export default function () {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formValues);
-
         const newFormData = vr.submit(formValues, validateForm)
         if (typeof newFormData.errors != 'undefined') {
             setErrors(newFormData.errors)
         } else {
-            dispatch(update(newFormData))
+            update(newFormData)
         }
     }
 
