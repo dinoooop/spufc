@@ -35,7 +35,6 @@ const upload_aboutpage = async (req, res) => {
             email,
             phone,
             title,
-            more,
             description,
             more,
             address
@@ -59,7 +58,6 @@ const upload_aboutpage = async (req, res) => {
             if (phone !== undefined) existingAboutUs.phone = phone;
             if (file !== null) existingAboutUs.file = file;
             if (title !== undefined) existingAboutUs.title = title;
-            if (more !== undefined) existingAboutUs.more = more;
             if (description !== undefined) existingAboutUs.description = description;
             if (more !== undefined) existingAboutUs.more = more;
             if (address !== undefined) existingAboutUs.address = address;
@@ -80,7 +78,6 @@ const upload_aboutpage = async (req, res) => {
             title,
             more,
             description,
-            more,
             address
         });
 
