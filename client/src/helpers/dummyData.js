@@ -53,3 +53,40 @@ export const dummySettings = {
     file: '/images/sven-kucinic-Z0KjmjxUsKs-unsplash.jpg',
     // title: '<strong>SOUTH PERTH UNITED</strong> FOOTBALL CLUB',
 }
+
+export const dummyEvent = [
+    {
+        _id: 12,
+        name: "Beaufort 2",
+        description: "lorem 2",
+        logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
+        photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
+        start_at: "",
+        type: "",
+        website: "www.hpright2.com",
+        phone: "+123 45562",
+        address: "test addres22s",
+        email: "test@hprigh22t.com",
+        longitude: "",
+        latitude: "",
+        offers: "",
+        payment_link: "",
+    },
+    {
+        _id: 13,
+        name: "Beaufort 2",
+        description: "lorem 2",
+        logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
+        photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
+        start_at: "",
+        type: "",
+        website: "www.hpright2.com",
+        phone: "+123 45562",
+        address: "test addres22s",
+        email: "test@hprigh22t.com",
+        longitude: "",
+        latitude: "",
+        offers: "",
+        payment_link: "",
+    }
+]

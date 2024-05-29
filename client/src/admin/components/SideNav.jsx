@@ -9,6 +9,7 @@ export default function () {
             <ul className="sidenav">
                 <SideNavButton title="Banners" icon="fa-solid fa-image" href="/admin/banners" />
                 <SideNavButton title="Sponsers" icon="fa-solid fa-hand-holding-heart" href="/admin/sponsors" />
+                <SideNavButton title="Events" icon="fa-solid fa-calendar-days" href="/admin/events" />
                 <SideNavButton title="Settings" icon="fa-solid fa-gears" href="/admin/settings" />
             </ul>
         </div >

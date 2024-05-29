@@ -11,7 +11,10 @@ export default function () {
     const [formValues, setFormValues] = useState(user)
     const [errors, setErrors] = useState({})
 
-    useEffect(() => { reset(); show(); }, []);
+    useEffect(() => { 
+        reset(); 
+        // show(); 
+    }, []);
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)

@@ -40,6 +40,7 @@ const upload_aboutpage = async (req, res) => {
             phone,
             title,
             description,
+            more,
             address
         } = req.body;
         const file = req.file ? process.env.uploaded_path + req.file.filename : null;
@@ -62,6 +63,7 @@ const upload_aboutpage = async (req, res) => {
             if (file !== null) existingAboutUs.file = file;
             if (title !== undefined) existingAboutUs.title = title;
             if (description !== undefined) existingAboutUs.description = description;
+            if (more !== undefined) existingAboutUs.more = more;
             if (address !== undefined) existingAboutUs.address = address;
 
             const updatedAboutUs = await existingAboutUs.save();
@@ -79,6 +81,7 @@ const upload_aboutpage = async (req, res) => {
             file: req.file ? process.env.uploaded_path + req.file.filename : null,
             title,
             description,
+            more,
             address
         });
 

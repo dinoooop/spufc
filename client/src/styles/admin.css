@@ -455,6 +455,9 @@ i.icon.vibrant {
     box-shadow: 0 0 2px var(--grey);
 }
 
+.submit {
+    margin: 1rem 1rem 1rem 0;
+}
 
 .submit-container {
     padding: 1rem 0;
@@ -1169,4 +1172,10 @@ i.help {
     100% {
         background-size: 20% 50%, 20% 50%, 20% 50%
     }
+}
+
+
+.rsw-ce {
+    height: 300px;
+    overflow: scroll;
 }
