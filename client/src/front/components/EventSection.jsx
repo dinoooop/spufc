@@ -4,6 +4,7 @@ import useSponsorStore from "../../admin/sponsor/useSponsorStore";
 import { Link } from "react-router-dom";
 import useEventStore from "../../admin/event/useEventStore";
 import "leaflet/dist/leaflet.css";
+import { bc } from "../../helpers/bc";
 export default function () {
 
     const [modal, setModal] = useState(null)
@@ -64,7 +65,7 @@ export default function () {
                             
                             {
                                 modal.start_at &&
-                                <li><i class="fa-solid fa-clock"></i> {modal.start_at}</li>
+                                <li><i class="fa-solid fa-clock"></i> {bc.ddtif(modal.start_at)}</li>
                                 
                             }
                             {

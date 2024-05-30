@@ -54,6 +54,24 @@ export class bc {
     const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
 
     return formattedDateTime;
-}
+  }
+
+  // Display date time in front end
+  static ddtif(isoDateString) {
+    const date = new Date(isoDateString);
+    const day = date.getUTCDate(); // Get day of the month
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[date.getUTCMonth()]; // Get month name
+    const year = date.getUTCFullYear(); // Get full year
+
+    // Get hours, minutes, and determine AM/PM
+    let hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes().toString().padStart(2, '0'); // Add leading zero if needed
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // The hour '0' should be '12'
+
+    return `${day} ${month}, ${year} at ${hours}:${minutes} ${ampm}`;
+  }
 
 }
