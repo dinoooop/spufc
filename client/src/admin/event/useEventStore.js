@@ -13,8 +13,11 @@ const useEventStore = create((set) => ({
     index: async (data = {}) => {
         set({ loading: true });
         try {
-            const response = await axios.get(`${config.api}/events`);
-            set({ items: response.data, loading: false });
+            const response = await axios.get(`${config.api}/events`, {
+                params: data,
+                headers: config.header().headers,
+            })
+            set({ items: response.data, loading: false })
         } catch (error) {
             set({
                 loading: false,

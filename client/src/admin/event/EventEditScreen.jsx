@@ -5,6 +5,7 @@ import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import useEventStore from './useEventStore'
 import processData from '../../helpers/processData'
+import { bc } from '../../helpers/bc'
 
 export default function () {
 
@@ -15,6 +16,8 @@ export default function () {
     const { reset, show, item, update, error } = useEventStore()
     const [formValues, setFormValues] = useState({})
     const [errors, setErrors] = useState({})
+
+    
 
     useEffect(() => {
         reset();
@@ -28,7 +31,7 @@ export default function () {
             description: item.description,
             logo: item.logo,
             photos: item.photos,
-            start_at: item.start_at,
+            start_at: bc.convertToISO8601ShortFormat(item.start_at),
             type: item.type,
             website: item.website,
             phone: item.phone,

@@ -8,9 +8,9 @@ export default function () {
 
     const [modal, setModal] = useState(null)
     const [showModal, setShowModal] = useState(false)
-    // const { items, index } = useEventStore()
-    // useEffect(() => { index() }, [])
-    const items = dummyEvent;
+    const { items, index } = useEventStore()
+    useEffect(() => { index() }, [])
+    
 
     const handleClick = (item) => {
         setShowModal(true)
@@ -59,10 +59,14 @@ export default function () {
                             }
                         </div>
 
-                        <h3 className="modal-sub-heading">Event Info</h3>
+                        <h3 className="modal-sub-heading">Event Info:</h3>
                         <ul className="modal-contact">
-                            <li>Time: {modal.start_at}</li>
-                            <li>Event Type: {modal.type}</li>
+                            
+                            {
+                                modal.start_at &&
+                                <li><i class="fa-solid fa-clock"></i> {modal.start_at}</li>
+                                
+                            }
                             {
                                 modal.phone &&
                                 <li><i class="fa-solid fa-phone"></i> {modal.phone}</li>
@@ -70,8 +74,7 @@ export default function () {
                             {
                                 modal.email &&
                                 <li>
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <Link to={`mailto:${modal.email}`}>{modal.email}</Link>
+                                    <i class="fa-solid fa-envelope"></i> <Link to={`mailto:${modal.email}`}>{modal.email}</Link>
                                 </li>
                             }
                             {
@@ -81,8 +84,13 @@ export default function () {
                             {
                                 modal.website &&
                                 <li>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <Link to={modal.website} target="_blank">{modal.website}</Link>
+                                    <i class="fa-solid fa-link"></i> <Link to={modal.website} target="_blank">{modal.website}</Link>
+                                </li>
+                            }
+                            {
+                                modal.payment_link &&
+                                <li className="mt-2">
+                                   <Link className="fbtn" to={modal.payment_link} target="_blank">Payment</Link>
                                 </li>
                             }
                         </ul>

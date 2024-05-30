@@ -5,6 +5,7 @@ export const validateForm = (key, value) => {
             if (value.length === 0) {
                 return "Name equired"
             }
+            return false;
         case "email":
             if (value.length === 0) {
                 return "Email required";

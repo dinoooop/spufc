@@ -191,6 +191,8 @@
 
         .badge-image {
 
+            cursor: pointer;
+
 
             img {
                 border: 0.5rem solid var(--color-3);
@@ -278,7 +280,8 @@
     }
 
     .gallery-image {
-        flex: 1 1 300px;
+        cursor: pointer;
+        
         overflow: hidden;
     }
 

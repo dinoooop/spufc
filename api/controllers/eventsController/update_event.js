@@ -43,7 +43,6 @@ const updatevent = async (req, res) => {
     const {
         name,
         description,
-        start_at,
         type,
         website,
         phone,
@@ -54,6 +53,14 @@ const updatevent = async (req, res) => {
         offers,
         payment_link
     } = req.body;
+
+    let start_at = '';
+    if(req.body.start_at){
+        start_at = new Date(req.body.start_at)
+    } else {
+        const now = new Date()
+        start_at = now.now 
+    }
 
     const eventId = req.params.id; // Extract event ID from request parameters
 
@@ -71,7 +78,7 @@ const updatevent = async (req, res) => {
         // Update event fields with new data from request body
         if (name) event.name = name;
         if (description) event.description = description;
-        if (start_at) event.start_at = start_at;
+        if (start_at) event.start_at = new Date(start_at);
         if (type) event.type = type;
         if (website) event.website = website
         //if (website) event.website = website || "";
