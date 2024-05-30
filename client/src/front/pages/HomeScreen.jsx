@@ -97,6 +97,8 @@ export default function () {
                 <EventSection />
             </Element>
 
+            
+
             <Element name="enquiry" className="part part-sky">
                 <EnquirySection />
             </Element>
