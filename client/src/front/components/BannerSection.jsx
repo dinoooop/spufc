@@ -7,16 +7,15 @@ import { contact } from "../slices/homeSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import { index } from "../../admin/banner/bannerSlice";
+import useBannerStore from "../../admin/banner/useBannerStore";
 
 export default function () {
 
-    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(index())
-    }, [dispatch])
+        index()
+    }, [])
 
-    const { items, loading, total } = useSelector(state => state.banner)
+    const { items, loading, total, index } = useBannerStore()
 
     if (loading) {
         return <div>Loading...</div>;

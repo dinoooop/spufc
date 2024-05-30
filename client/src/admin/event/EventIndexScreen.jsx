@@ -1,12 +1,10 @@
 import AppIcon from '../components/AppIcon'
 import { useEffect, useState } from 'react'
-import SortArrow from '../components/SortArrow'
-import Pagination from "react-js-pagination"
 import { Link } from 'react-router-dom'
 import ProtectedLayout from '../layouts/ProtectedLayout'
-import StatusIcon from '../components/StatusIcon'
 import useEventStore from './useEventStore'
 import processData from '../../helpers/processData'
+import { bc } from '../../helpers/bc'
 
 export default function () {
 
@@ -47,6 +45,7 @@ export default function () {
                             value={formValues.type}
                             className="form-control"
                         >
+                            <option value="">None</option>
                             {
                                 processData.eventTypes.map(mapitem => (
                                     <option key={mapitem.key} value={mapitem.key}>
@@ -67,6 +66,7 @@ export default function () {
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Time</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -76,6 +76,7 @@ export default function () {
                                     store.items.map((item) => (
                                         <tr key={item._id}>
                                             <td><Link to={`/admin/events/${item._id}`}>{item.name}</Link></td>
+                                            <td>{bc.ddtif(item.start_at)}</td>
                                             <td className='action'>
                                                 <AppIcon onClick={handleDelete} item={item} icon="trash" />
                                                 <AppIcon to={`/admin/events/${item._id}`} icon="edit" />
@@ -92,7 +93,5 @@ export default function () {
             </div>
 
         </ProtectedLayout>
-
-
     )
 }

@@ -57,9 +57,6 @@ const updatevent = async (req, res) => {
     let start_at = '';
     if(req.body.start_at){
         start_at = new Date(req.body.start_at)
-    } else {
-        const now = new Date()
-        start_at = now.now 
     }
 
     const eventId = req.params.id; // Extract event ID from request parameters

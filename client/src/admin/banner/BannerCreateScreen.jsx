@@ -1,29 +1,23 @@
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { validateForm } from './bannerValidation'
 import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
-import { unwrapResult } from '@reduxjs/toolkit'
-import { reset, store } from './bannerSlice'
-import { bc } from '../../helpers/bc'
-import { sv } from '../../helpers/sv'
+import useBannerStore from './useBannerStore'
 
 export default function () {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const fileInputRef = useRef(null)
-
 
     const [errors, setErrors] = useState({})
     const [formValues, setFormValues] = useState({
         title: "test",
-        upload_banner: "",
+        file: "",
     })
-    const { error } = useSelector(state => state.banner)
+    const { error, reset, store } = useBannerStore()
 
-    useEffect(() => { dispatch(reset()) }, [dispatch])
+    useEffect(() => { reset() }, [])
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)
@@ -37,7 +31,7 @@ export default function () {
         if (typeof newFormData.errors != 'undefined') {
             setErrors(newFormData.errors)
         } else {
-            dispatch(store(newFormData))
+            const resultAction = await store(newFormData)
             navigate('/admin/banners')
         }
     }

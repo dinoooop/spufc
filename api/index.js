@@ -9,7 +9,9 @@ const SponsorsRouter = require('./routes/sponsorRouter');
 const aboutUsRoutes = require('./routes/AboutUsRouter');
 const eventRoutes = require('./routes/eventsRouter');
 const connectDb = require('./connect');
+
 const galleryRoutes = require('./routes/galleryRouter');
+
 connectDb();
 
 require('dotenv').config();

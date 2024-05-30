@@ -8,7 +8,7 @@ const get_All_events =  async (req, res) => {
         if (req.query.type) {
             query.type = req.query.type;
         }
-        const Events = await events.find(query).sort({ start_at: 1 });;
+        const Events = await events.find(query).sort({ start_at: -1 });;
         res.status(200).json(Events);
     } catch (err) {
         console.log(err.message);

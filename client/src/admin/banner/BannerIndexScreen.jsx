@@ -1,49 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux'
 import AppIcon from '../components/AppIcon'
-import { destroy, index, remove, update } from './bannerSlice'
-import { useEffect, useState } from 'react'
-import SortArrow from '../components/SortArrow'
-import Pagination from "react-js-pagination"
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import ProtectedLayout from '../layouts/ProtectedLayout'
-import StatusIcon from '../components/StatusIcon'
+import useBannerStore from './useBannerStore'
 
 export default function () {
-
-    const dispatch = useDispatch()
-    const { items, perPage, total } = useSelector(state => state.banner)
-    const [formValues, setFormValues] = useState({ search: "", so: "", sb: "", page: 1 })
-
+    const { items, index, remove, destroy } = useBannerStore()
     useEffect(() => {
-        const data = Object.fromEntries(
-            Object.entries(formValues)
-                .filter(([key, value]) => value !== "")
-                .map(([key, value]) => [key, value])
-        );
-        dispatch(index(data))
-
-    }, [dispatch, formValues])
+        index()
+    }, [])
 
     const handleDelete = (banner) => {
-        dispatch(remove(banner))
-        dispatch(destroy(banner))
-    }
-
-    const handleStatus = (id, status) => {
-        const data = { id, status }
-        dispatch(update(data))
-    }
-
-    const handleSearch = e => {
-        setFormValues({ search: e.target.value })
-    }
-
-    const handleSort = (order, name) => {
-        setFormValues(prev => ({ ...prev, so: order, sb: name }))
-    }
-
-    const handlePagination = number => {
-        setFormValues(prev => ({ ...prev, page: number }))
+        remove(banner)
+        destroy(banner)
     }
 
     return (
@@ -63,7 +31,7 @@ export default function () {
                         <table className="index-table">
                             <thead>
                                 <tr>
-                                    <th>Name <SortArrow onClick={handleSort} column="title" /></th>
+                                    <th>Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

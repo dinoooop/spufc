@@ -65,7 +65,6 @@ export default function () {
         } else {
             try {
                 const resultAction = await update(newFormData)
-                // unwrapResult(resultAction)
                 navigate('/admin/events')
             } catch (error) {
                 console.error(error)
