@@ -5,17 +5,33 @@ import { Link } from "react-router-dom";
 import useEventStore from "../../admin/event/useEventStore";
 import "leaflet/dist/leaflet.css";
 import { bc } from "../../helpers/bc";
+import processData from "../../helpers/processData";
 export default function () {
 
     const [modal, setModal] = useState(null)
     const [showModal, setShowModal] = useState(false)
     const { items, index } = useEventStore()
-    useEffect(() => { index() }, [])
-    
+    const [formValues, setFormValues] = useState({
+        type: ""
+    });
+
+    useEffect(() => {
+        const data = Object.fromEntries(
+            Object.entries(formValues)
+                .filter(([key, value]) => value !== "")
+                .map(([key, value]) => [key, value])
+        )
+        index(data)
+    }, [formValues])
+
 
     const handleClick = (item) => {
         setShowModal(true)
         setModal(item)
+    }
+
+    const handleFilter = e => {
+        setFormValues(prev => ({ ...prev, type: e.target.value }))
     }
 
 
@@ -23,16 +39,45 @@ export default function () {
         <>
             <div className="wrapper gallery">
                 <h2 className="sub-heading">EVENTS</h2>
-                <div className="gallery-images">
-                    {
-                        items.map(item => (
-                            <div className="gallery-image" key={item._id} onClick={() => handleClick(item)}>
-                                <img src={item.logo} alt={item.name} />
-                            </div>
-                        ))
-                    }
+                <div className="front-form-group">
+                    <select
+                        id="type"
+                        name="type"
+                        onChange={handleFilter}
+                        value={formValues.type}
+                        className="form-control"
+                    >
+                        <option value="">None</option>
+                        {
+                            processData.eventTypes.map(mapitem => (
+                                <option key={mapitem.key} value={mapitem.key}>
+                                    {mapitem.name}
+                                </option>
+                            ))
+                        }
+                    </select>
                 </div>
-                <Link className="fbtn fbtn-big" to="#">BOOK NOW</Link>
+                <div className="gallery-images">
+
+
+                    <table className="event">
+                        <tbody>
+
+                            {items.map(item => (
+                                <tr key={item._id}>
+                                    <td className="event-image"><img src={item.logo} alt={item.name} onClick={() => handleClick(item)} /></td>
+                                    <td className="event-details">
+                                        <h3>{item.name}</h3>
+                                        <p>{bc.ddtif(item.start_at)}</p>
+                                        
+                                    </td>
+                                </tr>
+                            ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
             {
                 showModal &&
@@ -62,11 +107,11 @@ export default function () {
 
                         <h3 className="modal-sub-heading">Event Info:</h3>
                         <ul className="modal-contact">
-                            
+
                             {
                                 modal.start_at &&
                                 <li><i class="fa-solid fa-clock"></i> {bc.ddtif(modal.start_at)}</li>
-                                
+
                             }
                             {
                                 modal.phone &&
@@ -91,7 +136,7 @@ export default function () {
                             {
                                 modal.payment_link &&
                                 <li className="mt-2">
-                                   <Link className="fbtn" to={modal.payment_link} target="_blank">Payment</Link>
+                                    <Link className="fbtn" to={modal.payment_link} target="_blank">Payment</Link>
                                 </li>
                             }
                         </ul>

@@ -964,14 +964,16 @@ select {
     font-family: 'Poppins', sans-serif;
 }
 
-input[type="button"] {
-    padding: 0.5rem;
-}
-
 select {
     background-color: var(--admin-color-1);
     color: var(--admin-color-4);
 }
+
+input[type="button"] {
+    padding: 0.5rem;
+}
+
+
 
 .select-auto {
     position: relative;
