@@ -29,7 +29,6 @@ import AuthSecurityScreen from "./admin/auth/AuthSecurityScreen";
 import AuthWelcomeScreen from "./admin/auth/AuthWelcomeScreen";
 import BannerIndexScreen from "./admin/banner/BannerIndexScreen";
 import BannerCreateScreen from "./admin/banner/BannerCreateScreen";
-import BannerEditScreen from "./admin/banner/BannerEditScreen";
 import SponsorIndexScreen from "./admin/sponsor/SponsorIndexScreen";
 import SponsorCreateScreen from "./admin/sponsor/SponsorCreateScreen";
 import SponsorEditScreen from "./admin/sponsor/SponsorEditScreen";
@@ -59,7 +58,6 @@ function App() {
 
           <Route path='/admin/banners' element={<BannerIndexScreen />} />
           <Route path='/admin/banners/create' element={<BannerCreateScreen />} />
-          <Route path='/admin/banners/:id' element={<BannerEditScreen />} />
 
           <Route path='/admin/sponsors' element={<SponsorIndexScreen />} />
           <Route path='/admin/sponsors/create' element={<SponsorCreateScreen />} />

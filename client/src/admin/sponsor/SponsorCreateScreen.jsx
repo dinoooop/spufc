@@ -49,7 +49,6 @@ export default function () {
         } else {
             try {
                 const resultAction = await store.store(newFormData)
-                // unwrapResult(resultAction)
                 navigate('/admin/sponsors')
             } catch (error) {
                 console.error(error)

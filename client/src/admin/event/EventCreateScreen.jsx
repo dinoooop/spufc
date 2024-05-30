@@ -38,8 +38,7 @@ export default function () {
         } else {
             try {
                 const resultAction = await store(newFormData)
-                // unwrapResult(resultAction)
-                // navigate('/admin/events')
+                navigate('/admin/events')
             } catch (error) {
                 console.error(error)
             }
