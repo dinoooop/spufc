@@ -39,7 +39,6 @@ const uploadEvents = async (req, res) => {
     const {
         name,
         description,
-        start_at,
         type,
         website,
         phone,
@@ -50,6 +49,15 @@ const uploadEvents = async (req, res) => {
         offers,
         payment_link
     } = req.body;
+
+    
+    let start_at = '';
+    if(req.body.start_at){
+        start_at = new Date(req.body.start_at)
+    } else {
+        const now = new Date()
+        start_at = now.now 
+    }
 
     // 
     // Check if photos are present in the payload

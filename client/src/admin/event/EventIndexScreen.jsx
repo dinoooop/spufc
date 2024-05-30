@@ -6,18 +6,31 @@ import { Link } from 'react-router-dom'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import StatusIcon from '../components/StatusIcon'
 import useEventStore from './useEventStore'
+import processData from '../../helpers/processData'
 
 export default function () {
 
     const store = useEventStore()
+    const [formValues, setFormValues] = useState({
+        type: ""
+    });
 
     useEffect(() => {
-        store.index()
-    }, [])
+        const data = Object.fromEntries(
+            Object.entries(formValues)
+                .filter(([key, value]) => value !== "")
+                .map(([key, value]) => [key, value])
+        );
+        store.index(data)
+    }, [formValues])
 
     const handleDelete = (event) => {
         store.remove(event)
         store.destroy(event)
+    }
+
+    const handleFilter = e => {
+        setFormValues(prev => ({ ...prev, type: e.target.value }))
     }
 
     return (
@@ -26,6 +39,23 @@ export default function () {
                 <h1>Events</h1>
                 <div className="other-actions">
                     <AppIcon to="create" icon="add" />
+                    <div className="form-group filter">
+                        <select
+                            id="type"
+                            name="type"
+                            onChange={handleFilter}
+                            value={formValues.type}
+                            className="form-control"
+                        >
+                            {
+                                processData.eventTypes.map(mapitem => (
+                                    <option key={mapitem.key} value={mapitem.key}>
+                                        {mapitem.name}
+                                    </option>
+                                ))
+                            }
+                        </select>
+                    </div>
                 </div>
             </div>
 
