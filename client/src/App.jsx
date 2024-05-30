@@ -36,6 +36,9 @@ import SettingEditScreen from "./admin/setting/SettingEditScreen";
 import EventIndexScreen from "./admin/event/EventIndexScreen";
 import EventCreateScreen from "./admin/event/EventCreateScreen";
 import EventEditScreen from "./admin/event/EventEditScreen";
+import GalleryIndexScreen from "./admin/gallery/GalleryIndexScreen";
+import GalleryCreateScreen from "./admin/gallery/GalleryCreateScreen";
+import GalleryEditScreen from "./admin/gallery/GalleryEditScreen";
 
 function App() {
   return (
@@ -68,6 +71,10 @@ function App() {
           <Route path='/admin/events' element={<EventIndexScreen />} />
           <Route path='/admin/events/create' element={<EventCreateScreen />} />
           <Route path='/admin/events/:id' element={<EventEditScreen />} />
+
+          <Route path='/admin/galleries' element={<GalleryIndexScreen />} />
+          <Route path='/admin/galleries/create' element={<GalleryCreateScreen />} />
+          <Route path='/admin/galleries/:id' element={<GalleryEditScreen />} />
 
         </Routes>
       </Router>
