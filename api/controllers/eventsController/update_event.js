@@ -43,7 +43,6 @@ const updatevent = async (req, res) => {
     const {
         name,
         description,
-        
         type,
         website,
         phone,
@@ -55,11 +54,9 @@ const updatevent = async (req, res) => {
         payment_link
     } = req.body;
 
-    console.log(req.body.start_at);
     let start_at = '';
     if(req.body.start_at){
         start_at = new Date(req.body.start_at)
-        console.log(start_at);
     } else {
         const now = new Date()
         start_at = now.now 

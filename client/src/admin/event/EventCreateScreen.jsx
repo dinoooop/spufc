@@ -5,6 +5,7 @@ import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import useEventStore from './useEventStore'
 import processData from '../../helpers/processData'
+import { dummyEvent } from '../../helpers/dummyData'
 
 export default function () {
 
@@ -13,22 +14,9 @@ export default function () {
 
     const {error, store, reset} = useEventStore()
     const [errors, setErrors] = useState({})
-    const [formValues, setFormValues] = useState({
-        name: "Beaufort 2",
-        description: "lorem 2",
-        logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
-        photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
-        start_at: "",
-        type: "",
-        website: "www.hpright2.com",
-        phone: "+123 45562",
-        address: "test addres22s",
-        email: "test@hprigh22t.com",
-        longitude: "",
-        latitude: "",
-        offers: "",
-        payment_link: "",
-    })
+    const [formValues, setFormValues] = useState(dummyEvent[0])
+
+    
 
     useEffect(() => {
         reset()
