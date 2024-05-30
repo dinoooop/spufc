@@ -9,7 +9,7 @@ const SponsorsRouter = require('./routes/sponsorRouter');
 const aboutUsRoutes = require('./routes/AboutUsRouter');
 const eventRoutes = require('./routes/eventsRouter');
 const connectDb = require('./connect');
-const axios = require('axios');
+const galleryRoutes = require('./routes/galleryRouter');
 connectDb();
 
 require('dotenv').config();
@@ -35,6 +35,7 @@ app.use('/api', AuthRouter);
 app.use('/api/sponsors',SponsorsRouter);
 app.use('/api/settings',aboutUsRoutes);
 app.use('/api/events',eventRoutes);
+app.use('/api/galleries',galleryRoutes)
 
 
 // Start the server
