@@ -39,7 +39,7 @@ const cpUpdate = upload.fields([{
 
 
 const updatevent = async (req, res) => {
-
+      console.log(req.body);
     const {
         name,
         description,
