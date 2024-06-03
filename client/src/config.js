@@ -1,6 +1,6 @@
 // src/config.js
 const api = process.env.REACT_APP_API || 'http://127.0.0.1:8800/api';
-const uploads = 'http://127.0.0.1:8800/uploads';
+const uploads = process.env.REACT_APP_UPLOADS || 'http://127.0.0.1:8800/uploads';
 
 
 const config = {
