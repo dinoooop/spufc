@@ -6,7 +6,7 @@ export default function (props) {
     let theme = useSelector(state => state.auth.theme);
 
     return (
-        <div className={theme}>
+        <div className="back">
             <div className="container-blank">
                 {props.children}
             </div>

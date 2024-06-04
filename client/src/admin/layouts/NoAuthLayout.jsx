@@ -20,7 +20,7 @@ export default function (props) {
     }, [user])
 
     return (
-        <div>
+        <div className="back">
             <div className="container-blank">
                 {props.children}
             </div>
