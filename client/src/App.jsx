@@ -1,24 +1,18 @@
-import "./styles/admin.css";
-import "./styles/admin-responsive.css";
+import "./styles/global.scss";
+import "./styles/admin.scss";
+import "./styles/admin-responsive.scss";
 import "./styles/front.scss";
 import "./styles/front-responsive.scss";
+import "./styles/form.scss";
 import "./styles/navigation.scss";
 import "./styles/modal.scss";
-import "./styles/grid.css";
+import "./styles/grid.scss";
 import "./styles/mp.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomeScreen from "./front/pages/HomeScreen";
-import ModuleIndexScreen from "./admin/module/ModuleIndexScreen";
-import ModuleCreateScreen from "./admin/module/ModuleCreateScreen";
-import ModuleEditScreen from "./admin/module/ModuleEditScreen";
-import ModuleGenerateScreen from "./admin/module/ModuleGenerateScreen";
-
-import FlushScreen from "./admin/general/FlushScreen";
-
 import UserIndexScreen from "./admin/user/UserIndexScreen";
 import UserCreateScreen from "./admin/user/UserCreateScreen";
 import UserEditScreen from "./admin/user/UserEditScreen";
-
 import AuthLoginScreen from "./admin/auth/AuthLoginScreen";
 import AuthRegisterScreen from "./admin/auth/AuthRegisterScreen";
 import AuthVerifyScreen from "./admin/auth/AuthVerifyScreen";
@@ -36,6 +30,9 @@ import SettingEditScreen from "./admin/setting/SettingEditScreen";
 import EventIndexScreen from "./admin/event/EventIndexScreen";
 import EventCreateScreen from "./admin/event/EventCreateScreen";
 import EventEditScreen from "./admin/event/EventEditScreen";
+import GalleryIndexScreen from "./admin/gallery/GalleryIndexScreen";
+import GalleryCreateScreen from "./admin/gallery/GalleryCreateScreen";
+import GalleryEditScreen from "./admin/gallery/GalleryEditScreen";
 
 function App() {
   return (
@@ -68,6 +65,10 @@ function App() {
           <Route path='/admin/events' element={<EventIndexScreen />} />
           <Route path='/admin/events/create' element={<EventCreateScreen />} />
           <Route path='/admin/events/:id' element={<EventEditScreen />} />
+
+          <Route path='/admin/galleries' element={<GalleryIndexScreen />} />
+          <Route path='/admin/galleries/create' element={<GalleryCreateScreen />} />
+          <Route path='/admin/galleries/:id' element={<GalleryEditScreen />} />
 
         </Routes>
       </Router>

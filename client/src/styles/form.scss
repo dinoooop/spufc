@@ -1,0 +1,213 @@
+
+/* input[type="file"]::file-selector-button {
+    background-color: var(--admin-color-3);
+    color: var(--admin-color-4);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: all 200ms ease;
+    margin-right: 0.5rem;
+    border: none;
+
+} */
+
+
+input[type="file"] {
+    color: transparent;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    display: none;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--admin-color-4);
+}
+
+input[type='text'] {
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+}
+
+.search .form-group {
+    margin: 0;
+}
+
+.filter.form-group select {
+    border: 1px solid var(--color-4);
+}
+
+.filter.form-group {
+    margin: 0;
+}
+
+.search input {
+    border: 1px solid var(--admin-color-4);
+}
+
+.checkbox-control {
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.8em;
+    margin-top: 0.5rem;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid var(--admin-color-4);
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    /* Windows High Contrast Mode */
+    background-color: var(--admin-color-4);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.radio-control {
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.8em;
+    margin-top: 1rem;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid var(--admin-color-4);
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: circle(20.2% at 50% 50%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    /* Windows High Contrast Mode */
+    background-color: var(--admin-color-4);
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+input[type='date'] {
+    display: inline-block;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--admin-color-1);
+    border: 1px solid var(--admin-color-4);
+    color: var(--admin-color-4);
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+textarea {
+    padding: 0.8rem;
+    border-radius: 0.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 100%;
+    height: 8rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--admin-color-1);
+    border: 0;
+    color: var(--admin-color-4);
+}
+
+select {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+select {
+    background-color: var(--admin-color-1);
+    color: var(--admin-color-4);
+}
+
+input[type="button"] {
+    padding: 0.5rem;
+}
+
+
+
+.select-auto {
+    position: relative;
+    margin-bottom: 4.5rem !important;
+}
+
+.select-auto .color-red {
+    position: absolute;
+    top: 4.05rem;
+}
+
+.react-autosuggest__container {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.react-autosuggest__input {
+    padding: 0.9rem;
+    border-radius: 0.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 100%;
+    background-color: var(--admin-color-1);
+    border: 0;
+    color: var(--admin-color-4);
+}
+
+.react-autosuggest__suggestions-list {
+    border: 1px solid var(--admin-color-4);
+    background-color: var(--admin-color-3);
+}
+
+.react-autosuggest__suggestion {
+    padding: 0.5rem;
+}
+
+.react-autosuggest__suggestion--highlighted {
+    background-color: var(--admin-color-4);
+    color: var(--admin-color-1);
+}
+
+.field-description {
+    font-style: italic;
+}
