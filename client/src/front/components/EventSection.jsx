@@ -37,7 +37,7 @@ export default function () {
 
     return (
         <>
-            <div className="wrapper gallery">
+            <div className="wrapper gallery event">
                 <h2 className="sub-heading">EVENTS</h2>
                 <div className="front-form-group">
                     <select

@@ -5,7 +5,7 @@ import useGeneralStore from "../pages/useGeneralStore";
 
 export default function () {
 
-    
+
 
     const [errors, setErrors] = useState({})
     const [showModal, setShowModal] = useState(false)
@@ -16,7 +16,7 @@ export default function () {
         enquiries: "Hello",
     })
 
-    const {error, success, contact} = useGeneralStore()
+    const { error, success, contact } = useGeneralStore()
 
     useEffect(() => { }, [])
 
@@ -33,7 +33,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                // const resultAction = await contact(newFormData)
+                // const resultAction = await enquiry(newFormData)
                 setShowModal(false)
             } catch (error) {
                 console.error(error)
@@ -42,7 +42,7 @@ export default function () {
     }
 
     return (
-        <div className="wrapper gallery">
+        <div className="wrapper gallery enquiry">
             <h2 className="sub-heading">ENQUIRY</h2>
             <div className="gallery-images">
                 <div className="gallery-image"><img src="/images/players/117973167_2797692040451657_6387273032090062872_n.jpeg" /></div>
@@ -53,11 +53,13 @@ export default function () {
                 <div className="gallery-image"><img src="/images/players/IMG_2423.jpeg" /></div>
             </div>
 
-            <button onClick={() => setShowModal(!showModal) } className="fbtn fbtn-big">ENQUIRY</button>
+            <button onClick={() => setShowModal(!showModal)} className="fbtn fbtn-big">ENQUIRY</button>
 
             {
                 showModal &&
                 <div className="modal">
+
+                    <div className="modal-close-screen" onClick={() => setShowModal(false)}></div>
 
                     <div className="modal-content">
                         <div className="modal-header">

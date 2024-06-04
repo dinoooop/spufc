@@ -5,10 +5,17 @@ export const enquiryValidation = (key, value) => {
             if (value.length === 0) {
                 return "Name equired"
             } else {
-                return (value.length >= 20) ? "Maximum charecters cannot exceed 20" : false
+                return (value.length >= 30) ? "Maximum charecters cannot exceed 30" : false
             }
         case "enquiries":
-            return (value.length === 0) ? "Enquiries required" : false
+            if (value.length === 0) {
+                return "Name equired"
+            } else {
+                return (value.length >= 500) ? "Maximum charecters cannot exceed 500" : false
+            }
+
+        case "phone":
+            return (value.length === 0) ? "Phone required" : false
 
         case "email":
             if (value.length === 0) {

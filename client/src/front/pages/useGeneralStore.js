@@ -7,10 +7,10 @@ const useGeneralStore = create((set) => ({
     success: '',
     error: '',
     
-    contact: async () => {
+    enquiry: async () => {
         set({ loading: true, success: '', error: '' });
         try {
-            const response = await axios.get(`${config.api}/contact`, config.header());
+            const response = await axios.get(`${config.api}/enquiry`, config.header());
             set({ loading: false, success: response.data });
         } catch (error) {
             set({
@@ -20,7 +20,6 @@ const useGeneralStore = create((set) => ({
             });
         }
     },
-    
     
     reset: () => set({
         error: '',
