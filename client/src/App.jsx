@@ -1,3 +1,4 @@
+import "./styles/font.scss";
 import "./styles/global.scss";
 import "./styles/admin.scss";
 import "./styles/front.scss";

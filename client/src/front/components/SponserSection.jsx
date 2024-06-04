@@ -20,7 +20,7 @@ export default function () {
         <>
             <div className="wrapper badges">
                 <h2 className="sub-heading">SPONSORS</h2>
-                <h2 className="sub-sub-heading">GOLD</h2>
+                <h3>GOLD</h3>
                 <div className="badge-collection mb-4">
                     {
                         items.filter(item => item.type == "gold" && item.status == "active").map(item => (
@@ -30,7 +30,7 @@ export default function () {
                         ))
                     }
                 </div>
-                <h2 className="sub-sub-heading">Silver</h2>
+                <h3>Silver</h3>
                 <div className="silver-collection">
                     {
                         items.filter(item => item.type == "silver" && item.status == "active").map(item => (

@@ -68,7 +68,7 @@ export default function () {
                                         <img src={item.logo} alt={item.name} onClick={() => handleClick(item)} />
                                     </div>
                                     <div className="chair-det">
-                                        <h3 onClick={() => handleClick(item)}>{item.name}</h3>
+                                        <h3 onClick={() => handleClick(item)} className="sub-sub-heading">{item.name}</h3>
                                         <p>{bc.ddtif(item.start_at)}</p>
                                     </div>
                                 </div>

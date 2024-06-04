@@ -30,7 +30,7 @@ export default function () {
 
     return (
         <HomeLayout>
-            <section className="social-media">
+            <section className="social-media-band">
                 <div className="wrapper">
                     <SocialSection showPhone={true} />
                 </div>
