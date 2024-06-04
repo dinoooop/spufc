@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { dummyEvent, sponsersData } from "../../helpers/dummyData"
+import { dummyEvent, dummyGallery, sponsersData } from "../../helpers/dummyData"
 import useSponsorStore from "../../admin/sponsor/useSponsorStore";
 import { Link } from "react-router-dom";
 import useEventStore from "../../admin/event/useEventStore";
@@ -9,28 +9,9 @@ import processData from "../../helpers/processData";
 import useGalleryStore from "../../admin/gallery/useGalleryStore";
 export default function () {
 
-    const { index } = useGalleryStore()
+    
 
-    const items = [
-        {
-            name: "Juniors Awards Day",
-            logo: 'http://127.0.0.1:8800/uploads/1717044305969-571005642.jpg',
-            photos: [
-                'http://127.0.0.1:8800/uploads/1716983586205-845245176.jpg',
-                'http://127.0.0.1:8800/uploads/1717043338836-180953728.jpg',
-            ],
-        },
-        {
-            name: "Sponsors Event",
-            logo: 'http://127.0.0.1:8800/uploads/1717042995702-316224608.jpg',
-            photos: [
-                'http://127.0.0.1:8800/uploads/1717058296607-805663078.jpg',
-                'http://127.0.0.1:8800/uploads/1717042931797-934152875.jpg',
-                'http://127.0.0.1:8800/uploads/1717052091694-953704298-256793746_3161554944065363_3197786348402462677_n.jpg',
-            ],
-        },
-
-    ]
+    const {items, index} = useGalleryStore();
 
     const [showSubPage, setShowSubPage] = useState(false)
     const [showMainPage, setShowMainPage] = useState(true)

@@ -1,7 +1,8 @@
 import "./styles/global.scss";
 import "./styles/admin.scss";
-import "./styles/admin-responsive.scss";
 import "./styles/front.scss";
+import "./styles/split.scss";
+import "./styles/admin-responsive.scss";
 import "./styles/front-responsive.scss";
 import "./styles/form.scss";
 import "./styles/navigation.scss";
