@@ -59,6 +59,7 @@
     padding: 1rem;
     border-radius: 0.4rem;
     overflow: hidden;
+    box-shadow: 1px 1px 5px black;
     
     i {
         color: var(--color-1);
@@ -103,6 +104,22 @@
 
 }
 
+.modal-img-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.1rem;
+
+    i {
+        cursor: pointer;
+        font-size: 2rem;
+    }
+
+    img {
+        width: 95%;
+    }
+}
+
 /* medium screens (md) */
 @media (max-width: 992px) {
     
@@ -117,3 +134,4 @@
 @media (max-width: 576px) {
 
 }
+

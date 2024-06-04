@@ -11,6 +11,7 @@ import AboutSection from "../components/AboutSection";
 import useSettingStore from "../../admin/setting/useSettingStore";
 import useAuthStore from "../../admin/auth/useAuthStore";
 import EventSection from "../components/EventSection";
+import GallerySection from "../components/GallerySection";
 
 export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,6 +53,7 @@ export default function () {
                         <li className="nav-item"><ScrollLink to="sponsers" smooth={true} duration={500} onClick={toggleMenu}>Sponsers</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="shop" smooth={true} duration={500} onClick={toggleMenu}>Shop</ScrollLink></li>
                         <li className="nav-item"><ScrollLink to="events" smooth={true} duration={500} onClick={toggleMenu}>Events</ScrollLink></li>
+                        <li className="nav-item"><ScrollLink to="gallery" smooth={true} duration={500} onClick={toggleMenu}>Gallery</ScrollLink></li>
                         {
                             user
                                 ? <li className="nav-item"><Link to="/admin/sponsors">Dashboard</Link></li>
@@ -68,6 +70,8 @@ export default function () {
                 </div>
                 {isMenuOpen && <div className="overlay" onClick={toggleMenu}></div>}
             </section>
+
+            
 
             <section className="banner">
                 <BannerSection />
@@ -97,9 +101,11 @@ export default function () {
                 <EventSection />
             </Element>
 
-            
+            <section name="gallery" className="part part-sky">
+                <GallerySection />
+            </section>
 
-            <Element name="enquiry" className="part part-sky">
+            <Element name="enquiry" className="part part-white">
                 <EnquirySection />
             </Element>
 

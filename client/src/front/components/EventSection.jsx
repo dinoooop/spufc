@@ -57,27 +57,26 @@ export default function () {
                         }
                     </select>
                 </div>
-                <div className="gallery-images">
 
+                <div className="chair-images">
 
-                    <table className="event">
-                        <tbody>
-
-                            {items.map(item => (
-                                <tr key={item._id}>
-                                    <td className="event-image"><img src={item.logo} alt={item.name} onClick={() => handleClick(item)} /></td>
-                                    <td className="event-details">
-                                        <h3>{item.name}</h3>
+                    <div className="chairs">
+                        {
+                            items.map(item => (
+                                <div className="chair">
+                                    <div className="chair-thumb">
+                                        <img src={item.logo} alt={item.name} onClick={() => handleClick(item)} />
+                                    </div>
+                                    <div className="chair-det">
+                                        <h3 onClick={() => handleClick(item)}>{item.name}</h3>
                                         <p>{bc.ddtif(item.start_at)}</p>
-                                        
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
                             ))
-                            }
-                        </tbody>
-                    </table>
+                        }
+                    </div>
                 </div>
-                
+
             </div>
             {
                 showModal &&
@@ -89,7 +88,7 @@ export default function () {
                             <h2>{modal.name}</h2>
                             <i className="fa-solid fa-circle-xmark " onClick={() => setShowModal(!showModal)}></i>
                         </div>
-                        <div className="row ">
+                        <div className="row px-1">
                             <div className="col-md-6">
                                 <p>{modal.description}</p>
                             </div>

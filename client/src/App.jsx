@@ -1,24 +1,18 @@
-import "./styles/admin.css";
-import "./styles/admin-responsive.css";
+import "./styles/global.scss";
+import "./styles/admin.scss";
+import "./styles/admin-responsive.scss";
 import "./styles/front.scss";
 import "./styles/front-responsive.scss";
+import "./styles/form.scss";
 import "./styles/navigation.scss";
 import "./styles/modal.scss";
-import "./styles/grid.css";
+import "./styles/grid.scss";
 import "./styles/mp.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomeScreen from "./front/pages/HomeScreen";
-import ModuleIndexScreen from "./admin/module/ModuleIndexScreen";
-import ModuleCreateScreen from "./admin/module/ModuleCreateScreen";
-import ModuleEditScreen from "./admin/module/ModuleEditScreen";
-import ModuleGenerateScreen from "./admin/module/ModuleGenerateScreen";
-
-import FlushScreen from "./admin/general/FlushScreen";
-
 import UserIndexScreen from "./admin/user/UserIndexScreen";
 import UserCreateScreen from "./admin/user/UserCreateScreen";
 import UserEditScreen from "./admin/user/UserEditScreen";
-
 import AuthLoginScreen from "./admin/auth/AuthLoginScreen";
 import AuthRegisterScreen from "./admin/auth/AuthRegisterScreen";
 import AuthVerifyScreen from "./admin/auth/AuthVerifyScreen";

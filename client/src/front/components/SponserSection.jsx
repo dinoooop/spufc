@@ -51,7 +51,7 @@ export default function () {
                             <h2>{modal.name}</h2>
                             <i className="fa-solid fa-circle-xmark " onClick={() => setShowModal(!showModal)}></i>
                         </div>
-                        <div className="row ">
+                        <div className="row px-1">
                             <div className="col-md-6">
                                 <p>{modal.description}</p>
                             </div>
