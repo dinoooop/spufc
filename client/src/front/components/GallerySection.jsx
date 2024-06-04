@@ -68,7 +68,7 @@ export default function () {
     return (
         <>
             <div className="wrapper gallery">
-                <h2 className="sub-heading">Gallery</h2>
+                <h2>Gallery</h2>
                 <div className="gallery-breadcrumbs">
                     {
                         showMainPage
@@ -87,7 +87,7 @@ export default function () {
                                     <div className="gallery-image" key={item._id} onClick={() => goToSubPage(item)}>
                                         <img src={item.logo} />
                                     </div>
-                                    <h3>{item.name}</h3>
+                                    <p className="heading">{item.name}</p>
                                 </div>
                             ))
                         }

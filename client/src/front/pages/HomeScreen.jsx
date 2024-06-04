@@ -17,7 +17,7 @@ export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user } = useAuthStore()
 
-    const { show, item, store, error } = useSettingStore()    
+    const { show, item, store, error } = useSettingStore()
     const year = new Date().getFullYear();
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function () {
 
     return (
         <HomeLayout>
-            <section className="social-media">
+            <section className="social-media-band">
                 <div className="wrapper">
                     <SocialSection showPhone={true} />
                 </div>
@@ -71,7 +71,7 @@ export default function () {
                 {isMenuOpen && <div className="overlay" onClick={toggleMenu}></div>}
             </section>
 
-            
+
 
             <section className="banner">
                 <BannerSection />
@@ -91,7 +91,7 @@ export default function () {
                         <img src="/images/merchant.png" />
                     </div>
                     <div className="drone-text">
-                        <h2 className="sub-heading">BUY MERCHANDISE</h2>
+                        <h2>BUY MERCHANDISE</h2>
                         <Link className="fbtn fbtn-big" target="_blank" to="https://clubshop.macron.com/perth/south-perth-united/merchandising">SHOP</Link>
                     </div>
                 </div>

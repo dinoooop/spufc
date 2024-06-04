@@ -1,107 +1,66 @@
 /* medium screens (md) */
 @media (max-width: 992px) {
-    .front {
-        .sub-heading {
-            font-size: 4rem;
-            line-height: 4rem;
-            margin-bottom: 2rem;
-
-            span {
-                font-size: 3rem;
-            }
-        }
-
-        .super-heading {
-            font-size: 5rem;
-            line-height: 5rem;
-            margin-bottom: 3rem;
-        }
-
-        .part {
-            padding: 5rem 0;
-        }
+    .part {
+        padding: 5rem 0;
     }
 }
 
 /* small screens (sm) */
 @media (max-width: 768px) {
-    .front {
-        .bridge-image {
-            display: none;
-        }
 
-        h3 {
-            font-size: 3rem;
+    .drone {
+        
+        flex-direction: column;
+
+        .drone-text {
             text-align: center;
         }
+    }
 
-        p {
-            font-size: 1rem;
+    .bridge {
+        .content {
+            width: 80%;
         }
+    }
 
-        .hero-heading {
-            font-size: 5rem;
-            line-height: 5rem;
-            text-align: center;
-        }
+    .copyright {
+        font-size: 0.8rem;
+        
+    }
 
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .chair {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        .copyright {
-            font-size: 0.8rem;
-            margin-top: 10rem;
-        }
-
-        .bridge-text {
-            width: 100%;
-
-            p {
-                text-align: left;
-            }
-        }
-
-        .bridge-image {
-            display: none;
-        }
-
-
-        .chair {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-
-
-        }
-
-        .chair-det {
-            text-align: center;
-        }
+    .chair-det {
+        text-align: center;
     }
 }
 
 /* extra small screens (xs) */
 @media (max-width: 576px) {
-    .front {
-        .hero-heading {
-            font-size: 4rem;
-            line-height: 4rem;
+
+    .bridge {
+        text-align: center;
+        .content {
+            width: 100%;
         }
 
-        .sub-heading {
-            font-size: 2rem;
-            line-height: 2rem;
+        .thumb {
+            img {
+                display: none;
+            }
         }
+    }
 
-        .footer-heading {
-            font-size: 2rem;
-            line-height: 2rem;
+  
 
+    
 
-        }
+    .footer-heading {
+        font-size: 2rem;
+        line-height: 2rem;
     }
 }

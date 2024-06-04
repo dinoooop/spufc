@@ -37,8 +37,9 @@ export default function () {
 
     return (
         <>
-            <div className="wrapper gallery event">
-                <h2 className="sub-heading">EVENTS</h2>
+
+            <div className="wrapper gallery">
+                <h2>EVENTS</h2>
                 <div className="front-form-group">
                     <select
                         id="type"
@@ -68,7 +69,7 @@ export default function () {
                                         <img src={item.logo} alt={item.name} onClick={() => handleClick(item)} />
                                     </div>
                                     <div className="chair-det">
-                                        <h3 onClick={() => handleClick(item)}>{item.name}</h3>
+                                        <h3 onClick={() => handleClick(item)} className="sub-sub-heading">{item.name}</h3>
                                         <p>{bc.ddtif(item.start_at)}</p>
                                     </div>
                                 </div>
@@ -104,7 +105,7 @@ export default function () {
                             }
                         </div>
 
-                        <h3 className="modal-sub-heading">Event Info:</h3>
+                        <h3>Event Info:</h3>
                         <ul className="modal-contact">
 
                             {
