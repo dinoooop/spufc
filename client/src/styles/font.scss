@@ -4,14 +4,18 @@
         font-size: 5rem;
         line-height: 5rem;
         margin-bottom: 2rem;
-        color: red;
     }
     
     h3 {
         font-size: 2rem;
         line-height: 2rem;
         margin-bottom: 2rem;
-        color: green;
+    }
+
+    p {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin-bottom: 2rem;
     }
 }
 
@@ -19,47 +23,34 @@
 @media (max-width: 992px) {
 
     .front {
-
         h2 {
             font-size: 4rem;
             line-height: 4rem;
             margin-bottom: 2rem;
-            color: red;
         }
         
         h3 {
             font-size: 2rem;
             line-height: 2rem;
             margin-bottom: 2rem;
-            color: green;
         }
+
+
+        p {
+            font-size: 1rem;
+        }
+        
     }
 
 }
 
 /* small screens (sm) */
 @media (max-width: 768px) {
-
+   
   
 }
 
 /* extra small screens (xs) */
 @media (max-width: 576px) {
 
-    
-
-    .hero-heading {
-        font-size: 4rem;
-        line-height: 4rem;
-    }
-
-    .sub-heading {
-        font-size: 2rem;
-        line-height: 2rem;
-    }
-
-    .footer-heading {
-        font-size: 2rem;
-        line-height: 2rem;
-    }
 }

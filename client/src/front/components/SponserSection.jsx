@@ -19,7 +19,7 @@ export default function () {
     return (
         <>
             <div className="wrapper badges">
-                <h2 className="sub-heading">SPONSORS</h2>
+                <h2>SPONSORS</h2>
                 <h3>GOLD</h3>
                 <div className="badge-collection mb-4">
                     {
@@ -66,7 +66,7 @@ export default function () {
                                 ))
                             }
                         </div>
-                        <h3 className="modal-sub-heading">Contact</h3>
+                        <h3>Contact</h3>
                         <ul className="modal-contact">
                             <li><i class="fa-solid fa-phone"></i> {modal.phone}</li>
                             <li><i class="fa-solid fa-envelope"></i> <Link to={`mailto:${modal.email}`}>{modal.email}</Link></li>

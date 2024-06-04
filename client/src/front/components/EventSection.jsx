@@ -38,7 +38,7 @@ export default function () {
     return (
         <>
             <div className="wrapper gallery">
-                <h2 className="sub-heading">EVENTS</h2>
+                <h2>EVENTS</h2>
                 <div className="front-form-group">
                     <select
                         id="type"
@@ -104,7 +104,7 @@ export default function () {
                             }
                         </div>
 
-                        <h3 className="modal-sub-heading">Event Info:</h3>
+                        <h3>Event Info:</h3>
                         <ul className="modal-contact">
 
                             {

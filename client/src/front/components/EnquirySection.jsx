@@ -43,7 +43,7 @@ export default function () {
 
     return (
         <div className="wrapper gallery">
-            <h2 className="sub-heading">ENQUIRY</h2>
+            <h2>ENQUIRY</h2>
             <div className="gallery-images">
                 <div className="gallery-image"><img src="/images/players/117973167_2797692040451657_6387273032090062872_n.jpeg" /></div>
                 <div className="gallery-image"><img src="/images/players/118297062_2797691933785001_6027705447372122578_n.jpeg" /></div>

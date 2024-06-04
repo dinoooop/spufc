@@ -1,21 +1,5 @@
 /* medium screens (md) */
 @media (max-width: 992px) {
-    .sub-heading {
-        font-size: 4rem;
-        line-height: 4rem;
-        margin-bottom: 2rem;
-
-        span {
-            font-size: 3rem;
-        }
-    }
-
-    .super-heading {
-        font-size: 5rem;
-        line-height: 5rem;
-        margin-bottom: 3rem;
-    }
-
     .part {
         padding: 5rem 0;
     }
@@ -24,16 +8,12 @@
 /* small screens (sm) */
 @media (max-width: 768px) {
 
-    .front {
+    .drone {
+        
+        flex-direction: column;
 
-
-        h3 {
-            font-size: 3rem;
+        .drone-text {
             text-align: center;
-        }
-
-        p {
-            font-size: 1rem;
         }
     }
 
@@ -43,21 +23,9 @@
         }
     }
 
-    .hero-heading {
-        font-size: 5rem;
-        line-height: 5rem;
-        text-align: center;
-    }
-
-    .hero-text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
     .copyright {
         font-size: 0.8rem;
-        margin-top: 10rem;
+        
     }
 
     .chair {
@@ -87,15 +55,9 @@
         }
     }
 
-    .hero-heading {
-        font-size: 4rem;
-        line-height: 4rem;
-    }
+  
 
-    .sub-heading {
-        font-size: 2rem;
-        line-height: 2rem;
-    }
+    
 
     .footer-heading {
         font-size: 2rem;
