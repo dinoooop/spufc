@@ -4,8 +4,7 @@ import config from '../../config';  // Assuming you have a config file for API e
 import { dummySettings } from '../../helpers/dummyData';
 
 const useSettingStore = create((set) => ({
-    items: [],
-    item: dummySettings,
+    settings: dummySettings,
     perPage: 0,
     total: 0,
     loading: false,
@@ -18,7 +17,7 @@ const useSettingStore = create((set) => ({
             const response = await axios.get(`${config.api}/settings`, config.header());
             set({
                 loading: false,
-                item: response.data[0],
+                settings: response.data[0],
             });
         } catch (error) {
             set({
@@ -34,7 +33,7 @@ const useSettingStore = create((set) => ({
             const response = await axios.post(`${config.api}/settings`, data, config.formdataheader())
             set({
                 loading: false,
-                // item: response.data,
+                // settings: response.data,
             });
         } catch (error) {
             set({

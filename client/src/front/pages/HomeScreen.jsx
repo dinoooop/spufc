@@ -17,7 +17,7 @@ export default function () {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user } = useAuthStore()
 
-    const { show, item, store, error } = useSettingStore()
+    const { show, settings, store, error } = useSettingStore()
     const year = new Date().getFullYear();
 
     useEffect(() => {

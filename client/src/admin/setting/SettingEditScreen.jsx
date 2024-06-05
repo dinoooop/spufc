@@ -12,7 +12,7 @@ export default function () {
     const navigate = useNavigate()
     const fileInputRef = useRef()
 
-    const { show, item, store, error } = useSettingStore()
+    const { show, settings, store, error } = useSettingStore()
     const [formValues, setFormValues] = useState({})
     const [errors, setErrors] = useState({})
 
@@ -22,17 +22,17 @@ export default function () {
 
     useEffect(() => {
         setFormValues({
-            facebook: item.facebook,
-            instagram: item.instagram,
-            email: item.email,
-            phone: item.phone,
-            title: item.title,
-            description: item.description,
-            more: item.more,
-            file: item.file
+            facebook: settings.facebook,
+            instagram: settings.instagram,
+            email: settings.email,
+            phone: settings.phone,
+            title: settings.title,
+            description: settings.description,
+            more: settings.more,
+            file: settings.file
         })
-        setFormValues(prev => ({ ...prev, file_url: item.file }))
-    }, [item])
+        setFormValues(prev => ({ ...prev, file_url: settings.file }))
+    }, [settings])
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)

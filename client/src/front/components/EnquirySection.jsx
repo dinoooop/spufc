@@ -43,7 +43,7 @@ export default function () {
 
     return (
 
-        <div className="wrapper gallery">
+        <div className="wrapper fcc">
             <h2>ENQUIRY</h2>
             <div className="gallery-images">
                 <div className="gallery-image"><img src="/images/players/117973167_2797692040451657_6387273032090062872_n.jpeg" /></div>
@@ -62,7 +62,7 @@ export default function () {
 
                     <div className="modal-close-screen" onClick={() => setShowModal(false)}></div>
 
-                    <div className="modal-content">
+                    <div className="modal-content scroll">
                         <div className="modal-header">
                             <h2>General Contact</h2>
                             <i className="fa-solid fa-circle-xmark " onClick={() => setShowModal(!showModal)}></i>

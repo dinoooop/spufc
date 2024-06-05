@@ -38,7 +38,7 @@ export default function () {
     return (
         <>
 
-            <div className="wrapper gallery">
+            <div className="wrapper fcc">
                 <h2>EVENTS</h2>
                 <div className="front-form-group">
                     <select

@@ -1,0 +1,7 @@
+import EventIndexScreen from "./admin/event/EventIndexScreen";
+import EventCreateScreen from "./admin/event/EventCreateScreen";
+import EventEditScreen from "./admin/event/EventEditScreen";
+
+<Route path='/admin/events' element={<EventIndexScreen />} />
+<Route path='/admin/events/create' element={<EventCreateScreen />} />
+<Route path='/admin/events/:id' element={<EventEditScreen />} />

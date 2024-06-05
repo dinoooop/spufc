@@ -5,12 +5,12 @@ import useSettingStore from "../../admin/setting/useSettingStore";
 import { useEffect, useState } from "react";
 
 export default function ({heading}) {
-    const { item } = useSettingStore();
+    const { settings } = useSettingStore();
     const [showModal, setShowModal] = useState(false)
 
-    const clean_title = DOMPurify.sanitize(item.title)
-    const clean_description = DOMPurify.sanitize(item.description)
-    const clean_more = DOMPurify.sanitize(item.more)
+    const clean_title = DOMPurify.sanitize(settings.title)
+    const clean_description = DOMPurify.sanitize(settings.description)
+    const clean_more = DOMPurify.sanitize(settings.more)
 
     return (
 
