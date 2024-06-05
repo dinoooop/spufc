@@ -9,10 +9,12 @@ export default function ProtectedLayout({ roles, children, error = false }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        check()
+        // check()
         if (!user) {
-            navigate('/login')
+            // navigate('/login')
         }
+
+        console.log(user);
     }, [user])
 
 

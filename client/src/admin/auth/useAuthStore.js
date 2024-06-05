@@ -28,9 +28,10 @@ const useAuthStore = create((set) => ({
         set({ loading: true, success: '', error: '' });
         try {
             const response = await axios.post(`${config.api}/login`, data);
-            set({ loading: false, user: response.data.user });
             localStorage.setItem('authUser', JSON.stringify(response.data.user))
             localStorage.setItem('token', response.data.token)
+            set({ loading: false, user: response.data.user })
+            return response.data;
         } catch (error) {
             set({
                 loading: false,
@@ -44,9 +45,9 @@ const useAuthStore = create((set) => ({
         set({ loading: true, success: '', error: '' });
         try {
             const response = await axios.post(`${config.api}/register`, data);
-            set({ loading: false, user: response.data.user });
             localStorage.setItem('authUser', JSON.stringify(response.data.user))
             localStorage.setItem('token', response.data.token)
+            set({ loading: false, user: response.data.user });
         } catch (error) {
             set({
                 loading: false,

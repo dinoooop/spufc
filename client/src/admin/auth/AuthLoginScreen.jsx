@@ -28,8 +28,7 @@ export default function () {
         } else {
             try {
                 const resultAction = await login(newFormData)
-                unwrapResult(resultAction)
-                navigate("/admin/sponsors")
+                // navigate("/admin/sponsors")
 
             } catch (error) {
                 console.error(error)
@@ -41,7 +40,7 @@ export default function () {
         <NoAuthLayout>
 
             <div className='cardbody col-md-4 col-sm-8 '>
-                <h1>Login</h1>
+                <h1>Login.</h1>
                 <p className="my-1">Don't have an account? <Link to="/register">Sign Up</Link></p>
                 <p className="my-1">Go to <Link to="/">Home</Link></p>
 
