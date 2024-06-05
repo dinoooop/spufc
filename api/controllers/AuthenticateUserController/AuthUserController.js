@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const User = require('../../models/userSchema')
 const AuthUser =  async (req, res) => {
     try {
@@ -28,7 +28,7 @@ const authenticate = async (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, 'secretkey');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded; // Attach the decoded token to the request object
         next();
     } catch (err) {
