@@ -4,7 +4,6 @@ const gallarySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
     logo: {
         type: String,
         required: false
@@ -15,6 +14,7 @@ const gallarySchema = new mongoose.Schema({
     }
    
 })
-module.exports = mongoose.model('gallary', gallarySchema);
+
+module.exports = mongoose.model('gallery', gallarySchema);
 
 
