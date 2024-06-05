@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/spufc/static/css/main.48e0a727.css",
+    "main.js": "/spufc/static/js/main.44908a47.js",
+    "static/js/453.69997828.chunk.js": "/spufc/static/js/453.69997828.chunk.js",
+    "index.html": "/spufc/index.html",
+    "main.48e0a727.css.map": "/spufc/static/css/main.48e0a727.css.map",
+    "main.44908a47.js.map": "/spufc/static/js/main.44908a47.js.map",
+    "453.69997828.chunk.js.map": "/spufc/static/js/453.69997828.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48e0a727.css",
+    "static/js/main.44908a47.js"
+  ]
+}
