@@ -60,7 +60,7 @@ const uploadgallery = async (req, res) => {
             message: 'Name is required'
         });
     }
-
+console.log("qwerty",process.env.uploaded_path);
     const logo = req.files['logo'] ? req.files['logo'][0].filename : null;
     const photos = req.files['photos'].map(file => process.env.uploaded_path + file.filename);
     const newLogo = process.env.uploaded_path + logo;
