@@ -17,7 +17,7 @@ export default function () {
             <div className="content">
                 <h2 dangerouslySetInnerHTML={{ __html: clean_title }}></h2>
                 <p dangerouslySetInnerHTML={{ __html: clean_description }}></p>
-                <Link className="fbtn" onClick={() => setShowModal(true)}>View More</Link>
+                <Link className="fbtn" onClick={() => setShowModal(true)}>View More.</Link>
             </div>
 
             <div className="thumb">
