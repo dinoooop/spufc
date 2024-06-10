@@ -1,5 +1,6 @@
+const User = require('../../models/userSchema');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const User = require('../../models/userSchema')
 const AuthUser =  async (req, res) => {
     try {
         const tokenuser = await User.findById(req.user.userId); // Exclude the password field
@@ -28,7 +29,8 @@ const authenticate = async (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log(process.env.JWT_SECRET)
+        const decoded = jwt.verify(token,process.env.JWT_SECRET );
         req.user = decoded; // Attach the decoded token to the request object
         next();
     } catch (err) {
