@@ -16,7 +16,7 @@ export default function () {
         enquiries: "Hello",
     })
 
-    const { error, success, contact } = useGeneralStore()
+    const { error, enquiry, success, contact } = useGeneralStore()
 
     useEffect(() => { }, [])
 
@@ -33,8 +33,8 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                // const resultAction = await enquiry(newFormData)
-                setShowModal(false)
+                const resultAction = await enquiry(newFormData)
+                // setShowModal(false)
             } catch (error) {
                 console.error(error)
             }

@@ -1,4 +1,3 @@
-import "./styles/font.scss";
 import "./styles/global.scss";
 import "./styles/admin.scss";
 import "./styles/front.scss";
@@ -40,7 +39,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<HomeScreen />} />
+          <Route exact path='/' element={<HomeScreen />} />
           <Route path='/login' element={<AuthLoginScreen />} />
           <Route path='/register' element={<AuthRegisterScreen />} />
           <Route path="/forgot-password" element={<AuthForgotPasswordScreen />} />

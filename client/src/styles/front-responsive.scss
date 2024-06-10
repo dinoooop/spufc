@@ -3,6 +3,26 @@
     .part {
         padding: 5rem 0;
     }
+
+    .front {
+        h2 {
+            font-size: 4rem;
+            line-height: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            line-height: 2rem;
+            margin-bottom: 1rem;
+        }
+
+
+        p {
+            font-size: 1rem;
+        }
+        
+    }
 }
 
 /* small screens (sm) */

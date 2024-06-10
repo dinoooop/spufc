@@ -29,9 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r https://github.com/dinoooop/spufc.git"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
