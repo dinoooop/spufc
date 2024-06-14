@@ -13,6 +13,7 @@
     h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
+        hyphens: auto;
     }
 
     h3 {
@@ -98,7 +99,7 @@
 .modal-img-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 0.1rem;
 
     i {
@@ -118,7 +119,9 @@
 
 /* small screens (sm) */
 @media (max-width: 768px) {
-   
+    .modal-content {
+        width: 80vw;
+    }
 }
 
 /* extra small screens (xs) */

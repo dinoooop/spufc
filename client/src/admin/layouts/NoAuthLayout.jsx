@@ -15,7 +15,7 @@ export default function (props) {
     useEffect(() => {
         reset()
         if (user) {
-            // navigate('/admin/banners')
+            navigate('/admin/banners')
         }
     }, [user])
 

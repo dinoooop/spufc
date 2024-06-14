@@ -147,7 +147,7 @@ export default function () {
                     <div className="footer-social">
                         <SocialSection />
                     </div>
-                    <p className="copyright">&copy; {year} South Perth United Football Club. All Rights Reserved. Powered By <Link target="_blank" to="https://www.hellopeople.com.au">Hello People</Link></p>
+                    <p className="copyright">&copy; {year} South Perth United Football Club. All Rights Reserved. Technology Provider: <Link target="_blank" to="https://www.hellopeople.com.au">HELLO PEOPLE</Link></p>
                 </div>
             </div>
         </HomeLayout>

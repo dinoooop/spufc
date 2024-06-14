@@ -28,6 +28,26 @@
 /* small screens (sm) */
 @media (max-width: 768px) {
 
+    .front {
+        h2 {
+            font-size: 3rem;
+            line-height: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: 2.5rem;
+            line-height: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+
+        p {
+            font-size: 0.8rem;
+        }
+        
+    }
+
     .drone {
         
         flex-direction: column;
@@ -71,6 +91,25 @@
         .thumb {
             img {
                 display: none;
+            }
+        }
+    }
+
+    .pockets {
+        display: flex;
+        align-items: start;
+        justify-content: space-evenly;
+        flex-direction: column;
+    
+        .pocket {
+            h3 {
+                font-size: 1.3rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+        
+            p {
+                font-size: 0.8rem;
             }
         }
     }
