@@ -101,7 +101,7 @@ export class vr {
 		const updatedErrors = Object.fromEntries(
 			Object.entries(formValues).map(([key, value]) => [key, validateField(key, value)])
 		)
-		
+
 
 		const allErrorsFalse = Object.values(updatedErrors).every((error) => error === false)
 
@@ -123,6 +123,17 @@ export class vr {
 		}
 
 		return { errors: updatedErrors }
+	}
+
+	static regex(key) {
+		switch (key) {
+			case "email":
+				return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+			case "url":
+				return /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+			default:
+				return '';
+		}
 	}
 
 

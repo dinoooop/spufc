@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { validateForm } from './userValidation'
 import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import { unwrapResult } from '@reduxjs/toolkit'
-import { reset, store } from './userSlice'
-import { bc } from '../../helpers/bc'
 import { sv } from '../../helpers/sv'
+import useUserStore from './useUserStore'
+import Submit from '../../formc/Submit'
+import InputField from '../../formc/InputField'
 
 export default function () {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
-    
-
+    const { store, reset, error } = useUserStore();
     const [errors, setErrors] = useState({})
     const [formValues, setFormValues] = useState({
         name: "test",
@@ -23,9 +21,8 @@ export default function () {
         password: "welcome",
         status: sv.status("active"),
     })
-    const { error } = useSelector(state => state.user)
 
-    useEffect(() => { dispatch(reset()) }, [dispatch])
+    useEffect(() => { reset() }, [])
 
     const onChangeForm = (e) => {
         const validated = vr.validate(e, validateForm, formValues)
@@ -40,7 +37,7 @@ export default function () {
             setErrors(newFormData.errors)
         } else {
             try {
-                const resultAction = await dispatch(store(newFormData))
+                const resultAction = await store(newFormData)
                 unwrapResult(resultAction)
                 navigate('/admin/users')
             } catch (error) {
@@ -62,77 +59,11 @@ export default function () {
 
                         {error && <p className='red-alert'>{error}</p>}
 
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="name"
-                                value={formValues.name || ''}
-                                name="name"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.name}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="email"
-                                value={formValues.email || ''}
-                                name="email"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.email}</div>
-                        </div>
+                        <InputField name="name" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputField name="email" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputField name="password" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <Submit cto="/admin/users" />
 
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password"
-                                className="form-control input-field"
-                                id="password"
-                                value={formValues.password}
-                                name="password"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.password}</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="role">Role</label>
-                            {
-                                sv.role().map(role => (
-                                    <label className='checkbox-control' key={role.key}>
-                                        <input type="checkbox"
-                                            value={role.id}
-                                            name="roles"
-                                            onChange={onChangeForm}
-                                            checked={formValues.roles.includes(role.id)}
-                                        /> {role.name}
-                                    </label>
-                                ))
-                            }
-                            <div className="color-red">{errors.role}</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="status">Status</label>
-                            {
-                                sv.status().map(mapitem => (
-                                    <label className='radio-control' key={mapitem.key}>
-                                        <input type="radio"
-                                            value={mapitem.id}
-                                            name="status"
-                                            onChange={onChangeForm}
-                                            checked={formValues.status == mapitem.id || ''}
-                                        /> {mapitem.name}
-                                    </label>
-                                ))
-                            }
-                            <div className="color-red">{errors.status}</div>
-                        </div>
-
-                        <button type='submit' className="btn submit">Submit</button>
-                        <Link to="/admin/users" className="btn">Cancel</Link>
                     </form>
 
                 </div>

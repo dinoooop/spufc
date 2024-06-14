@@ -204,7 +204,13 @@ aside li a {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: var(--admin-color-4);
+    color: var(--admin-color-4) !important;
+    transition: all 200ms ease;
+
+    &:hover {
+
+        color: var(--white) !important;
+    }
 }
 
 aside li i {
@@ -242,6 +248,12 @@ aside .subnav i {
     transition: all 200ms ease;
     margin-right: 0.5rem;
     margin-top: 0.3rem;
+}
+
+.btn.normal {
+    color: var(--admin-color-4) !important;
+    font-weight: normal;
+
 }
 
 .btn.btn-border {

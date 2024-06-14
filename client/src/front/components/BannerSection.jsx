@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { vr } from "../../helpers/vr";
 import { enquiryValidation } from "../validations/homeValidation";
-import { contact } from "../slices/homeSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';

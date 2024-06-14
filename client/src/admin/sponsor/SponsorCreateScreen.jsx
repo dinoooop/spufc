@@ -5,29 +5,22 @@ import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import useSponsorStore from './useSponsorStore'
 import processData from '../../helpers/processData'
+import { pbc } from '../../helpers/pbc'
+import InputField from '../../formc/InputField'
+import InputFile from '../../formc/InputFile'
+import InputFileMulti from '../../formc/InputFileMulti'
+import TextArea from '../../formc/TextArea'
+import Radio from '../../formc/Radio'
+import Submit from '../../formc/Submit'
 
 export default function () {
-    
+
     const navigate = useNavigate()
     const fileInputRef = useRef(null)
-    
+
     const store = useSponsorStore()
     const [errors, setErrors] = useState({})
-    const [formValues, setFormValues] = useState({
-        name: "Beaufort 2",
-        description: "lorem 2",
-        logo: "",
-        photos: [],
-        // logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
-        // photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
-        type: "gold",
-        website: "www.hpright2.com",
-        status: "active",
-        phone: "+123 45562",
-        address: "test addres22s",
-        email: "test@hprigh22t.com",
-        offers: "test offer"
-    })
+    const [formValues, setFormValues] = useState(pbc.dummy("sponsor"))
 
     useEffect(() => {
         store.reset()
@@ -71,173 +64,20 @@ export default function () {
 
                         {store.error && <p className='red-alert'>{store.error}</p>}
 
-                        <div className="form-group">
-                            <label>Logo</label>
-                            <label htmlFor="logo"><i className="fas fa-file icon"></i></label>
+                        <InputFile name="logo" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputFileMulti name="photos" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputField name="name" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <TextArea name="description" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <Radio name="type" optionType="sponsor-type" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputField name="website" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputField name="phone" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputField name="offers" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <TextArea name="address" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputField name="email" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <Radio name="status" optionType="sponsor-status" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <Submit cto="/admin/sponsors" />
 
-                            <input
-                                type="file"
-                                ref={fileInputRef}
-                                id="logo"
-                                name="logo"
-                                onChange={onChangeForm}
-                                placeholder="test"
-                            />
-                            <div className="uploaded-images">
-                                {formValues.logo_url && <img src={formValues.logo_url} alt="logo Preview" />}
-                            </div>
-                            <div className="color-red">{errors?.logo}</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label>Other Photos</label>
-                            <label htmlFor="photos"><i className="fas fa-file icon"></i></label>
-
-                            <input
-                                type="file"
-                                ref={fileInputRef}
-                                id="photos"
-                                name="photos"
-                                onChange={onChangeForm}
-                                placeholder="test"
-                                multiple={true}
-                            />
-                            <div className="uploaded-images">
-                                {
-                                    formValues.photos_urls &&
-                                    formValues.photos_urls.map((photos_url, index) => (
-                                        <img key={index} src={photos_url} alt="photos Preview" />
-                                    ))
-                                }
-                            </div>
-                            <div className="color-red">{errors?.photos}</div>
-                        </div>
-
-
-
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="name"
-                                value={formValues.name || ''}
-                                name="name"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.name}</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="description">Description</label>
-                            <textarea
-                                className="form-control input-field"
-                                id="description"
-                                value={formValues.description || ''}
-                                name="description"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.description}</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="type">Type</label>
-                            {
-                                processData.sponsorTypes.map(mapitem => (
-                                    <label className='radio-control' key={mapitem.key}>
-                                        <input type="radio"
-                                            value={mapitem.key}
-                                            name="type"
-                                            onChange={onChangeForm}
-                                            checked={formValues.type === mapitem.key || ''}
-                                        /> {mapitem.name}
-                                    </label>
-                                ))
-                            }
-                            <div className="color-red">{errors.type}</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="website">Website</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="website"
-                                value={formValues.website || ''}
-                                name="website"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.website}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="phone">phone</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="phone"
-                                value={formValues.phone || ''}
-                                name="phone"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.phone}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="offers">offers</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="offers"
-                                value={formValues.offers || ''}
-                                name="offers"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.offers}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="address">address</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="address"
-                                value={formValues.address || ''}
-                                name="address"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.address}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">email</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="email"
-                                value={formValues.email || ''}
-                                name="email"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.email}</div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="status">Display</label>
-                            {
-                                processData.sponsorStatus.map(mapitem => (
-                                    <label className='radio-control' key={mapitem.key}>
-                                        <input type="radio"
-                                            value={mapitem.key}
-                                            name="status"
-                                            onChange={onChangeForm}
-                                            checked={formValues.status == mapitem.key || ''}
-                                        /> {mapitem.name}
-                                    </label>
-                                ))
-                            }
-                            <div className="color-red">{errors.status}</div>
-                        </div>
-
-                        {/* logo here */}
-
-
-
-
-                        <button type='submit' className="btn submit">Submit</button>
-                        <Link to="/admin/sponsors" className="btn">Cancel</Link>
                     </form>
-
                 </div>
             </div>
         </ProtectedLayout>

@@ -13,7 +13,6 @@
     h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
-        hyphens: auto;
     }
 
     h3 {
@@ -121,6 +120,12 @@
 @media (max-width: 768px) {
     .modal-content {
         width: 80vw;
+    }
+
+    .modal{
+        h2 {
+            width: 80vw;
+        }
     }
 }
 

@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { check, reset } from '../auth/authSlice';
-import { getStock } from '../general/generalSlice';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../auth/useAuthStore';
 
@@ -21,7 +20,7 @@ export default function (props) {
 
     return (
         <div>
-            <div className="container-blank">
+            <div className="container-blank back">
                 {props.children}
             </div>
         </div>

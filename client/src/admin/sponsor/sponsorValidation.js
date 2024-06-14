@@ -1,23 +1,32 @@
+import { vr } from "../../helpers/vr";
 
 export const validateForm = (key, value) => {
     switch (key) {
+        
         case "name":
-            if (value.length === 0) {
-                return "Name equired"
-            } 
-        case "status":
-            if (value.length === 0) {
-                return "Status required"
-            } else {
-                return false
-            }
+            return value.length === 0 ? "Name required" : false;
+
         case "email":
             if (value.length === 0) {
                 return "Email required";
             } else {
-                const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                const regex = vr.regex("email");
                 return !regex.test(value) ? "Email not valid" : false;
             }
+
+        case "website":
+            if (value.length === 0) {
+                return false;
+            } else {
+                const regex = vr.regex("url");
+                return !regex.test(value) ? "Not valid URL" : false;
+            }
+
+        case "status":
+            return value.length === 0 ? "Status required" : false;
+
+        case "type":
+            return value.length === 0 ? "Type required" : false;
 
         default:
             return false;
@@ -25,17 +34,3 @@ export const validateForm = (key, value) => {
     }
 
 }
-
-
-export const validateSecurityForm = (key, value, formData) => {
-    switch (key) {
-        case 'old_password':
-            return value.length === 0 ? 'Old Password is required' : false;
-        case 'password':
-            return value.length === 0 ? 'Password is required' : false;
-        case 'password_confirmation':
-            return value !== formData.password ? 'Passwords not matching' : false;
-        default:
-            return false;
-    }
-};

@@ -43,6 +43,22 @@ export const sponsersData = [
     },
 ]
 
+export const sponserOne = {
+    name: 25,
+    description: "lorem 2",
+    logo: "",
+    photos: [],
+    // logo: "http://127.0.0.1:8800/uploads/hpright-1.jpg",
+    // photos: ['http://127.0.0.1:8800/uploads/hpright-1.jpg', 'http://127.0.0.1:8800/uploads/hpright-1.jpg'],
+    type: "gold",
+    website: "www.hpright2.com",
+    status: "active",
+    phone: "+123 45562",
+    address: "test addres22s",
+    email: "test@hprigh22t.com",
+    offers: "test offer"
+}
+
 export const dummySettings = {
     facebook: 'https://www.facebook.com/southperthfc/',
     instagram: "https://www.instagram.com/spufc/",

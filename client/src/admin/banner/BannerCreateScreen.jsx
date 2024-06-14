@@ -4,6 +4,9 @@ import { validateForm } from './bannerValidation'
 import { vr } from '../../helpers/vr'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import useBannerStore from './useBannerStore'
+import InputFile from '../../formc/InputFile'
+import InputField from '../../formc/InputField'
+import Submit from '../../formc/Submit'
 
 export default function () {
 
@@ -49,37 +52,10 @@ export default function () {
 
                         {error && <p className='red-alert'>{error}</p>}
 
-                        <div className="form-group">
-                            <label htmlFor="name">Title</label>
-                            <input type="text"
-                                className="form-control input-field"
-                                id="name"
-                                value={formValues.name || ''}
-                                name="name"
-                                onChange={onChangeForm}
-                            />
-                            <div className="color-red">{errors.name}</div>
-                        </div>
-                        <div className="form-group">
-                            <label>Upload Banner Image</label>
-                            <label htmlFor="file"><i className="fas fa-file icon"></i></label>
-
-                            <input
-                                type="file"
-                                ref={fileInputRef}
-                                id="file"
-                                name="file"
-                                onChange={onChangeForm}
-                                placeholder="test"
-                            />
-                            <div>{formValues.file?.name || ''}</div>
-                            <div className="color-red">{errors.file}</div>
-                        </div>
-
-
-
-                        <button type='submit' className="btn submit">Submit</button>
-                        <Link to="/admin/banners" className="btn">Cancel</Link>
+                        <InputField name="name" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <InputFile name="file" formValues={formValues} errors={errors} onChangeForm={onChangeForm} />
+                        <Submit cto="/admin/banners" />
+                        
                     </form>
 
                 </div>

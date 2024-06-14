@@ -1,18 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
 import AppIcon from '../components/AppIcon'
-import { destroy, index, remove, update } from './userSlice'
 import { useEffect, useState } from 'react'
 import SortArrow from '../components/SortArrow'
 import Pagination from "react-js-pagination"
 import { Link } from 'react-router-dom'
 import ProtectedLayout from '../layouts/ProtectedLayout'
 import StatusIcon from '../components/StatusIcon'
+import useUserStore from './useUserStore'
 
 export default function () {
 
     const dispatch = useDispatch()
     const { items, perPage, total } = useSelector(state => state.user)
     const [formValues, setFormValues] = useState({ search: "", so: "", sb: "", page: 1 })
+    const { index, remove, destroy, update, error } = useUserStore()
 
     useEffect(() => {
         const data = Object.fromEntries(
@@ -20,18 +21,18 @@ export default function () {
                 .filter(([key, value]) => value !== "")
                 .map(([key, value]) => [key, value])
         );
-        dispatch(index(data))
+        index(data)
 
-    }, [dispatch, formValues])
+    }, [, formValues])
 
     const handleDelete = (user) => {
-        dispatch(remove(user))
-        dispatch(destroy(user))
+        remove(user)
+        destroy(user)
     }
 
     const handleStatus = (id, status) => {
         const data = { id, status }
-        dispatch(update(data))
+        update(data)
     }
 
     const handleSearch = e => {
@@ -85,7 +86,6 @@ export default function () {
                                             <td className='action'>
                                                 <AppIcon onClick={handleDelete} item={item} icon="trash" />
                                                 <AppIcon to={`/admin/users/${item.id}`} icon="edit" />
-                                                <StatusIcon onClick={handleStatus} item={item} />
                                             </td>
                                         </tr>
                                     ))

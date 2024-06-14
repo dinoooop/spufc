@@ -13,8 +13,6 @@ export default function ProtectedLayout({ roles, children, error = false }) {
         if (!user) {
             navigate('/login')
         }
-
-        console.log(user);
     }, [user])
 
 
